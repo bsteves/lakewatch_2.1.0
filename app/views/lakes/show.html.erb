@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @lake.name %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%=h @lake.county %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%=h @lake.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%=h @lake.longitude %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @lake.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_lake_path(@lake) %> |
+<%= link_to 'Back', lakes_path %>

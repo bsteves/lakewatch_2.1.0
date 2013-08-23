@@ -1,0 +1,28 @@
+<h1>Listing lakes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>County</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Notes</th>
+  </tr>
+
+<% for lake in @lakes %>
+  <tr>
+    <td><%=h lake.name %></td>
+    <td><%=h lake.county %></td>
+    <td><%=h lake.latitude %></td>
+    <td><%=h lake.longitude %></td>
+    <td><%=h lake.notes %></td>
+    <td><%= link_to 'Show', lake %></td>
+    <td><%= link_to 'Edit', edit_lake_path(lake) %></td>
+    <td><%= link_to 'Destroy', lake, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lake', new_lake_path %>

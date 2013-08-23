@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  county: MyString
+  latitude: 9.99
+  longitude: 9.99
+  notes: MyText
+
+two:
+  name: MyString
+  county: MyString
+  latitude: 9.99
+  longitude: 9.99
+  notes: MyText
