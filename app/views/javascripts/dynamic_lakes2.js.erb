@@ -1,0 +1,56 @@
+var lakes = new Array();
+<% for lake in @lakes -%>
+  lakes.push(new Array(<%= lake.county_id %>, '<%=h lake.name %>', <%= lake.id %>));
+<% end -%>
+var sites = new Array();
+<% for site in @sites -%>
+  sites.push(new Array(<%= site.lake_id %>, '<%=h site.name %>', <%= site.id %>));
+<% end -%>
+
+
+function countySelected() {
+  $('sampling_lake_id').enable();
+  $('sampling_lake_id').select('option:selected').invoke('remove');
+ 
+  county_id = $('sampling_county_id').getValue();
+  options = $('sampling_lake_id').options;
+  options.length = 1;
+  lakes.each(function(lake) {
+    if (lake[0] == county_id) {
+      options[options.length] = new Option(lake[1], lake[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('lake_field').hide();
+    $('site_field').hide();
+  } else {
+    $('lake_field').show();
+  }
+}
+
+function lakeSelected() {
+  $('sampling_site_id').enable();
+  $('sampling_site_id').select('option:selected').invoke('remove');
+  lake_id = $('sampling_lake_id').getValue();
+  options = $('sampling_site_id').options;
+  options.length = 1;
+  sites.each(function(site) {
+    if (site[0] == lake_id) {
+      options[options.length] = new Option(site[1], site[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('site_field').hide();
+  } else {
+    $('site_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  //countySelected();
+  $('sampling_lake_id').disable();
+  //lakeSelected();
+  $('sampling_site_id').disable();
+  $('sampling_county_id').observe('change', countySelected);
+  $('sampling_lake_id').observe('change', lakeSelected);
+});

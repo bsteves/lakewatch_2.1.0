@@ -1,0 +1,27 @@
+<% title "Physical Data" %>
+
+<table>
+  <tr>
+    <th>Sampling</th>
+    <th>Sampling Type</th>
+    <th>Depth</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Notes</th>
+  </tr>
+  <% for physical_datum in @physical_data %>
+    <tr>
+      <td><%=h physical_datum.sampling_id %></td>
+      <td><%=h physical_datum.sampling_type %></td>
+      <td><%=h physical_datum.depth %></td>
+      <td><%=h physical_datum.value %></td>
+      <td><%=h physical_datum.units %></td>
+      <td><%=h physical_datum.notes %></td>
+      <td><%= link_to "Show", physical_datum %></td>
+      <td><%= link_to "Edit", edit_physical_datum_path(physical_datum) %></td>
+      <td><%= link_to "Destroy", physical_datum, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Physical Datum", new_physical_datum_path %></p>

@@ -1,0 +1,7 @@
+function lakeSelected() {
+    $('site_latitude').value = $F("site_lake_id");
+}
+
+document.observe('dom:loaded', function() {
+  $('site_lake_id').observe('change', lakeSelected);
+});

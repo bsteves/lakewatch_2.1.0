@@ -1,0 +1,29 @@
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>Sampling Type</th>
+    <th>Depth</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Notes</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+</thead>
+<tbody>
+  <% for physical_datum in @physical_data %>
+    <tr>
+      <td><%=h physical_datum.sampling_type %></td>
+      <td><%=h physical_datum.depth %></td>
+      <td><%=h physical_datum.value %></td>
+      <td><%=h physical_datum.units %></td>
+      <td><%=h physical_datum.notes %></td>
+      <td><%= link_to image_tag("show.png", :title=>"show",:width=>20), physical_datum %></td>
+      <td><%= link_to image_tag("edit.png", :title=>"edit",:width=>20), edit_physical_datum_path(physical_datum) %></td>
+      <td><%= link_to image_tag("delete.png", :title=>"delete",:width=>20), physical_datum, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+

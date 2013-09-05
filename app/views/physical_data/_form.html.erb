@@ -1,0 +1,46 @@
+<% sampling_methods2 = Array.new %>
+<% if @physical_datum.sampling.temperature %>
+<% sampling_methods2.push('Temperature') %>
+<% end %>
+<% if @physical_datum.sampling.secchi %>
+<% sampling_methods2.push('Secchi') %>
+<% end %>
+
+
+<% form_for @physical_datum do |f| %>
+  <%= f.error_messages %>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>Sampling Type</th>
+    <th>Depth</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Notes</th>
+    <th colspan="3"/>
+  </tr>
+</thead>
+<tbody> 
+<tr> 
+ <td>
+    <%= f.hidden_field :sampling_id %>
+<%= f.select :sampling_type, sampling_methods2 , :prompt => 'Select One' %>
+  </td>
+  <td>
+    <%= f.text_field :depth , :size=>"3"%>
+  </td>
+   <td>
+    <%= f.text_field :value, :size=>"4" %>
+  </td>
+ <td>
+    <%= f.text_field :units, :size=>"4" %>
+  </td>
+  <td>
+    <%= f.text_area :notes, :columns => "10", :rows => "3" %>
+  </td>
+  <td colspan="3"><%= f.submit "submit" %></td>
+</tr>
+</tbody>
+</table>
+<% end %>
+

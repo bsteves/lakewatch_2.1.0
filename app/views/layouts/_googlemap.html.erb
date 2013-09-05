@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+			function createMarker(point,html) {
+				var marker = new GMarker(point);
+				GEvent.addListener(marker, "click", function() {
+					marker.openInfoWindowHtml(html);
+				});
+				return marker;
+			}
+        var map = new GMap2(document.getElementById("map_canvas2"));
+        map.addControl(new GLargeMapControl());
+        map.addControl(new GMapTypeControl());
+        map.setCenter(new GLatLng(60, -144), 3);
+        map.setMapType(G_HYBRID_MAP);
+        map.enableScrollWheelZoom();
+        <% for site in @sites %>
+        var point = new GLatLng(<%= site.lat%>, <%= site.lon%>);
+	var info = "<br/><br/><b>Name:</b><%=site.name%><br/><b>Bay:</b>&nbsp;<%=site.bay%><br/><b>State:</b>&nbsp;<%=site.state%><br/><b>Latitude:</b>&nbsp;<%=site.lat%><br/><b>Longitude:</b>&nbsp;<%=site.lon%><br/>";
+        var marker = createMarker(point, info);
+        map.addOverlay(marker);
+        <% end %>
+	  }
+    }
+    //]]>
+</script>
+

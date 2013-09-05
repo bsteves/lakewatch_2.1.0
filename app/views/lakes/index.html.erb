@@ -1,28 +1,31 @@
-<h1>Listing lakes</h1>
 
-<table>
+<% javascript 'lakes_table' %>
+<% title "Lakes" %>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
   <tr>
     <th>Name</th>
-    <th>County</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Notes</th>
+    <th/>
+    <th/>
+    <th/>
   </tr>
-
-<% for lake in @lakes %>
-  <tr>
-    <td><%=h lake.name %></td>
-    <td><%=h lake.county %></td>
-    <td><%=h lake.latitude %></td>
-    <td><%=h lake.longitude %></td>
-    <td><%=h lake.notes %></td>
-    <td><%= link_to 'Show', lake %></td>
-    <td><%= link_to 'Edit', edit_lake_path(lake) %></td>
-    <td><%= link_to 'Destroy', lake, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+</thead>
+<tbody>
+  <% for lake in @lakes %>
+    <tr>
+      <td><%=h lake.name %></td>
+      <td><%=h lake.latitude %></td>
+      <td><%=h lake.longitude %></td>
+      <td><%=h lake.notes %></td>
+      <td><%= link_to "Show", lake %></td>
+      <td><%= link_to "Edit", edit_lake_path(lake) %></td>
+      <td><%= link_to "Destroy", lake, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</tbody>
 </table>
 
-<br />
-
-<%= link_to 'New lake', new_lake_path %>
+<p><%= link_to "New Lake", new_lake_path %></p>

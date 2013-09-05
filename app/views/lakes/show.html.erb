@@ -1,28 +1,38 @@
+<% title "Lake" %>
+
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%=h @lake.name %>
 </p>
-
 <p>
-  <b>County:</b>
-  <%=h @lake.county %>
-</p>
-
-<p>
-  <b>Latitude:</b>
+  <strong>Latitude:</strong>
   <%=h @lake.latitude %>
 </p>
-
 <p>
-  <b>Longitude:</b>
+  <strong>Longitude:</strong>
   <%=h @lake.longitude %>
 </p>
-
 <p>
-  <b>Notes:</b>
+  <strong>Notes:</strong>
   <%=h @lake.notes %>
 </p>
 
+<% sitecount = @lake.sites.count %>
+<% if sitecount > 0 %>
+<p>
+<strong>Sites:</strong><br/>
+   <% for site in @lake.sites %>
+      <%= link_to h(site.name), site %><br/>
+   <% end %>
+<% end %>
+</p>
 
-<%= link_to 'Edit', edit_lake_path(@lake) %> |
-<%= link_to 'Back', lakes_path %>
+<p>
+<%= link_to "Add Site", new_lake_site_path(:lake_id => @lake.id) %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_lake_path(@lake) %> |
+  <%= link_to "Destroy", @lake, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", lakes_path %>
+</p>

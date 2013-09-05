@@ -1,0 +1,26 @@
+<% title "County" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @county.name %>
+</p>
+
+<% lakecount = @county.lakes.count %>
+<% if lakecount > 0 %>
+<p>
+<strong>Lakes:</strong><br/>
+   <% for lake in @county.lakes %>
+      <%= link_to h(lake.name), lake %><br/>
+   <% end %>
+<% end %>
+</p>
+
+<p>
+<%= link_to "Add Lake", new_county_lake_path( :county_id => @county.id) %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_county_path(@county) %> |
+  <%= link_to "Destroy", @county, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", counties_path %>
+</p>

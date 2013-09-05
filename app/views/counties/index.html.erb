@@ -1,0 +1,17 @@
+<% title "Counties" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for county in @counties %>
+    <tr>
+      <td><%=h county.name %></td>
+      <td><%= link_to "Show", county %></td>
+      <td><%= link_to "Edit", edit_county_path(county) %></td>
+      <td><%= link_to "Destroy", county, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New County", new_county_path %></p>

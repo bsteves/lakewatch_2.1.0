@@ -1,32 +1,8 @@
-<h1>Editing lake</h1>
+<% title "Edit Lake" %>
 
-<% form_for(@lake) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => 'form' %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :county %><br />
-    <%= f.text_field :county %>
-  </p>
-  <p>
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </p>
-  <p>
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </p>
-  <p>
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @lake %> |
-<%= link_to 'Back', lakes_path %>
+<p>
+  <%= link_to "Show", @lake %> |
+  <%= link_to "View All", lakes_path %>
+</p>

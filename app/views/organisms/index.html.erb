@@ -1,0 +1,29 @@
+<% title "Organisms" %>
+
+<table>
+  <tr>
+    <th>Sampling</th>
+    <th>Sampling Type</th>
+    <th>Taxon</th>
+    <th>Count</th>
+    <th>Size</th>
+    <th>Image</th>
+    <th>Notes</th>
+  </tr>
+  <% for organism in @organisms %>
+    <tr>
+      <td><%=h organism.sampling_id %></td>
+      <td><%=h organism.sampling_type %></td>
+      <td><%=h organism.taxon_id %></td>
+      <td><%=h organism.count %></td>
+      <td><%=h organism.size %></td>
+      <td><%=h organism.image %></td>
+      <td><%=h organism.notes %></td>
+      <td><%= link_to "Show", organism %></td>
+      <td><%= link_to "Edit", edit_organism_path(organism) %></td>
+      <td><%= link_to "Destroy", organism, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Organism", new_organism_path %></p>

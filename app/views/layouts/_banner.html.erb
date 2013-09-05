@@ -1,0 +1,19 @@
+        <div id="banner">
+ 	     <div id="bannerright"<>
+               <a href="/"><img height="200" src="/images/olw_logo.png"/></a>
+             </div>
+               
+	 <!--    <div id="bannerright"<>
+               <a href="/"><img height="100" src="/images/mitten_banner_2d.jpg"/></a>
+             </div>-->
+              <div id="loginbox">
+                <% if user_signed_in? %>
+                  Signed in as<br/>
+                  <%= current_user.email %><br/>
+                  <%= link_to "Sign out", destroy_user_session_path %><br/>
+                <% else %>
+                  <%= link_to "Sign in", new_user_session_path %><br/>
+                  <%= link_to "Sign up", new_user_registration_path %><br/>
+                <% end %>
+              </div>
+         </div> 

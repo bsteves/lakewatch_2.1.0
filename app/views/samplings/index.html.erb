@@ -1,0 +1,47 @@
+
+<% javascript 'lakes_table' %>
+<% title "Samplings" %>
+
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>User</th>
+    <th>Lake</th>
+    <th>Site</th>
+    <th>Date</th>
+    <th>Secchi</th>
+    <th>Temp.</th>
+    <th>Substr.</th>
+    <th>Trap</th>
+    <th>Rake</th>
+    <th>Zigzag</th>
+    <th>Notes</th>
+    <th/>
+    <th/>
+    <th/>
+  </tr>
+</thead>
+<tbody>
+  <% for sampling in @samplings %>
+    <tr>
+
+      <td><%=h sampling.user_id %></td>
+      <td><%=h Lake.find(sampling.lake_id).name %></td>
+      <td><%=h Site.find(sampling.site_id).name %></td>
+      <td><%=h sampling.date %></td>
+      <td><%= check_box_tag 'sampling', 'secchi', sampling.secchi, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'temperature', sampling.temperature, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'substrate', sampling.substrate, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'trap', sampling.trap, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'rake', sampling.rake, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'zigzag', sampling.zigzag, :disabled => TRUE %></td>
+      <td><%=h sampling.notes %></td>
+      <td><%= link_to "Show", sampling %></td>
+      <td><%= link_to "Edit", edit_sampling_path(sampling) %></td>
+      <td><%= link_to "Destroy", sampling, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<p><%= link_to "New Sampling", new_sampling_path %></p>

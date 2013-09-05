@@ -1,0 +1,222 @@
+<% form_for @site do |f| %>
+  <%= f.error_messages %>
+
+  <p id="lake_field">
+    <label for="site_lake_id">Lake</lake><br />
+    <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5]), :id, :name, :prompt => "Select a lake" %>
+  </p>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+<p> 
+     Pam and zoom to view marker location. 
+     <div id="map" style="width: 500px; height: 400px"></div> 
+ <script type="text/javascript">
+function get_dms (deg,x) {
+
+   var d = Math.floor (deg);
+   var minfloat = (deg-d)*60;
+   var m = Math.floor(minfloat);
+   var secfloat = (minfloat-m)*60;
+   var s = Math.round(secfloat*1000)/1000;
+   // After rounding, the seconds might become 60. These two
+   // if-tests are not necessary if no rounding is done.
+   if (s==60) {
+     m++;
+     s=0;
+   }
+   if (m==60) {
+     d++;
+     m=0;
+   }
+    if (x == "d") {
+     return (d);
+   }
+ 
+
+    if (x == "m") {
+     return (m);
+   }
+ 
+ if (x == "s") {
+     return (s);
+   }
+ 
+}
+
+function get_dec_deg(d,m,s) {
+   var deg;
+   deg = Number(d) + Number(m)/60 + Number(s)/3600;
+   deg = deg.toFixed(5);
+   return (deg);
+}
+
+function deg_to_dms() {
+  var site_lat = $('site_latitude').getValue();
+  var site_lon = $('site_longitude').getValue();
+  $('lat_deg').value = get_dms(site_lat,"d");
+  $('lat_min').value = get_dms(site_lat,"m");
+  $('lat_sec').value = get_dms(site_lat,"s");
+  $('lon_deg').value = get_dms(site_lon*-1,"d");
+  $('lon_min').value = get_dms(site_lon,"m");
+  $('lon_sec').value = get_dms(site_lon,"s");
+}
+
+function dms_to_deg() {
+  var lat_deg = $('lat_deg').getValue();
+  var lat_min = $('lat_min').getValue();
+  var lat_sec = $('lat_sec').getValue();
+  var lon_deg = $('lon_deg').getValue();
+  var lon_min = $('lon_min').getValue();
+  var lon_sec = $('lon_sec').getValue();
+  $('site_latitude').value = get_dec_deg(lat_deg,lat_min,lat_sec);
+ $('site_longitude').value = get_dec_deg(lon_deg,lon_min,lon_sec)*-1;
+}
+
+
+
+
+
+    var my_lakes = [
+        <% for lake in  Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5])%>
+       [ <%= lake.id %> ,<%= lake.latitude%>, <%= lake.longitude%>],
+        <% end %>
+    ];
+    
+    var locations2 = [
+        <% for site in @sites %>
+       [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+        <% end %>
+    ];
+
+    var locations = [
+          ['<%= @site.name %>',<%= @site.latitude %>,<%= @site.longitude %>]
+    ];
+    
+
+    var myzoom, mycenter;
+    if (locations[0][0] === "") {
+      myzoom = 7;
+      mycenter = new google.maps.LatLng(45,-122);
+    } else {
+      myzoom = 12;
+      mycenter = new google.maps.LatLng(locations[0][1],locations[0][2]);
+    }
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: myzoom,
+      center: mycenter,
+      mapTypeId: google.maps.MapTypeId.HYBRID,
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
+    
+   for (i = 0; i < locations2.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations2[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+}
+
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        draggable: true
+      });
+
+}
+
+
+    google.maps.event.addListener(marker, 'dragend', function (event) {
+          document.getElementById("site_latitude").value = this.getPosition().lat().toFixed(6);
+          document.getElementById("lat_deg").value = get_dms(this.getPosition().lat().toFixed(6),'d');
+          document.getElementById("lat_sec").value = get_dms(this.getPosition().lat().toFixed(6),'s');
+          document.getElementById("lat_min").value = get_dms(this.getPosition().lat().toFixed(6),'m');
+          document.getElementById("site_longitude").value = this.getPosition().lng().toFixed(6);
+          document.getElementById("lon_deg").value = get_dms(this.getPosition().lng().toFixed(6),'d');
+          document.getElementById("lon_sec").value = get_dms(this.getPosition().lng().toFixed(6),'s');
+          document.getElementById("lon_min").value = get_dms(this.getPosition().lng().toFixed(6),'m');
+ 
+});
+
+
+
+
+function lakeSelected() {
+    var selected_lake = document.getElementById("site_lake_id").selectedIndex;
+    var my_lake = my_lakes[selected_lake - 1];  
+    var lakelat = my_lake[1];    
+    var lakelon = my_lake[2];    
+    marker.setPosition( new google.maps.LatLng( lakelat, lakelon ) );
+    map.setZoom(13); 
+    map.panTo( new google.maps.LatLng( lakelat, lakelon  ) );
+    document.getElementById("site_latitude").value = lakelat;
+    document.getElementById("site_longitude").value = lakelon;
+   
+   //$('site_latitude').value = $F("site_lake_id");
+}   
+      
+document.observe('dom:loaded', function() {
+  $('site_lake_id').observe('change', lakeSelected);
+});
+
+document.observe('dom:loaded', function() {
+deg_to_dms();
+
+$('site_latitude').observe('change', deg_to_dms);
+$('lat_deg').observe('change', dms_to_deg);
+$('lat_min').observe('change', dms_to_deg);
+$('lat_sec').observe('change', dms_to_deg);
+$('site_longitude').observe('change', deg_to_dms);
+$('lon_deg').observe('change', dms_to_deg);
+$('lon_min').observe('change', dms_to_deg);
+$('lon_sec').observe('change', dms_to_deg);
+});
+
+
+
+  </script>
+
+</p> 
+
+
+
+   <p>
+    <%= f.label :latitude %><br />
+    <%= f.label "Decimal Degrees" %> &nbsp;&nbsp; |  &nbsp; <%= f.label "Degrees" %>&nbsp;&nbsp;&nbsp;<%=f.label "Minutes"%>&nbsp;&nbsp;&nbsp;<%= f.label "Seconds" %>&nbsp;&nbsp;&nbsp;<%= f.label "Direction"%><br/>
+    <%= f.text_field :latitude, :size => 12%> | <input type="text" id= "lat_deg" size="4"><input type="text" id= "lat_min" size="4"><input type="text" id= "lat_sec" size="4">&nbsp;&nbsp;  North<br/>
+  </p>
+
+  <p>
+    <br />
+  </p>
+   <p>
+    <%= f.label :longitude %><br/>
+    <%= f.label "Decimal Degrees" %> &nbsp;&nbsp; |  &nbsp; <%= f.label "Degrees" %>&nbsp;&nbsp;&nbsp;<%=f.label "Minutes"%>&nbsp;&nbsp;&nbsp;<%= f.label "Seconds" %>&nbsp;&nbsp;&nbsp;<%= f.label "Direction"%><br/>
+    <%= f.text_field :longitude, :size => 12 %> |  <input type="text" id= "lon_deg" size="4"><input type="text" id= "lon_min" size="4"><input type="text" id= "lon_sec" size="4">&nbsp;&nbsp;  West<br/>
+  </p>
+
+
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+

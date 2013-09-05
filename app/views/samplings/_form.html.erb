@@ -1,0 +1,51 @@
+<% javascript 'dynamic_sites' %>
+
+<% form_for @sampling do |f| %>
+  <%= f.error_messages %>
+  <div id="lake_field">
+    <label for= "sampling_lake_id">Lake:</label><br/>
+    <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5]), :id, :name, :prompt => "Select a lake" %>
+  </div>
+  <div id="site_field">
+    <label for= "sampling_site_id">Site:</label><br/>
+    <%= f.collection_select :site_id, Site.find(:all), :id, :name, :prompt => "Select a site" %>
+  </div>
+  <div id="nosite">
+    No sites found for this Lake.
+   <%= link_to "Add New Site", new_site_path %>
+  </div>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :secchi %><br />
+    <%= f.check_box :secchi %>
+  </p>
+  <p>
+    <%= f.label :temperature %><br />
+    <%= f.check_box :temperature %>
+  </p>
+  <p>
+    <%= f.label :substrate %><br />
+    <%= f.check_box :substrate %>
+  </p>
+  <p>
+    <%= f.label :trap %><br />
+    <%= f.check_box :trap %>
+  </p>
+  <p>
+    <%= f.label :rake %><br />
+    <%= f.check_box :rake %>
+  </p>
+  <p>
+    <%= f.label :zigzag %><br />
+    <%= f.check_box :zigzag %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+

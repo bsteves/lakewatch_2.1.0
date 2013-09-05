@@ -1,0 +1,107 @@
+<% title "Site" %>
+
+<p> 
+     Pam and zoom to view marker location. 
+     <div id="map" style="width: 500px; height: 400px"></div> 
+
+ <script type="text/javascript">
+    var locations = [
+       [ '<%= @site.name %>' ,<%= @site.latitude%>, <%= @site.longitude%>]
+    ];
+
+    var locations2 = [
+        <% for site in @sites %>
+       [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+        <% end %>
+    ];
+
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(<%= @site.latitude %>, <%= @site.longitude %>),
+      mapTypeId: google.maps.MapTypeId.HYBRID,
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+   for (i = 0; i < locations2.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations2[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+}
+
+
+
+
+  </script>
+
+
+<p>
+  <strong>Lake:</strong>
+  <%= link_to h(@lake.name), @lake %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @site.name %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%=h @site.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%=h @site.longitude %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%=h @site.image %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @site.notes %>
+</p>
+
+<% samplecount = @site.samplings.count %>
+<% if samplecount > 0 %>
+<p>
+
+<strong>Samplings:</strong><br/>
+   <% for sampling in @site.samplings %>
+      <%= link_to h(sampling.date), sampling %><br/>
+   <% end %>
+
+</p>
+<% end %>
+<p>
+<%= link_to "Add Sampling", new_site_sampling_path(:site_id => @site.id, :lake_id => @site.lake_id, :county_id => @site.county_id) %></p>
+<p>
+  <%= link_to "Edit", edit_site_path(@site) %> |
+  <%= link_to "Destroy", @site, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sites_path %>
+</p>

@@ -1,0 +1,45 @@
+<h2>Sign up</h2>
+
+<% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
+  <%= f.error_messages %>
+  <p><%= f.label :email %></p>
+  <p><%= f.text_field :email %></p>
+ 
+  <p id="lake_field">
+    <label for="lake1">Lake 1</lake><br />
+    <%= f.collection_select :lake1, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  </p>
+      
+  <p id="lake_field">
+    <label for="lake2">Lake 2</lake><br />
+    <%= f.collection_select :lake2, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake3">Lake 3</lake><br />
+    <%= f.collection_select :lake3, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake4">Lake 4</lake><br />
+    <%= f.collection_select :lake4, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake5">Lake 5</lake><br />
+    <%= f.collection_select :lake5, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  </p>
+
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Sign up" %></p>
+<% end -%>
+
+<%= render :partial => "shared/devise_links" %>

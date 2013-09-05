@@ -1,0 +1,36 @@
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>  
+<tr>
+    <th>Sampling Type</th>
+    <th>Taxon</th>
+    <th>Count</th>
+    <th>Size</th>
+    <th>Image</th>
+    <th>Notes</th>
+    <th/>
+    <th/>
+    <th/>
+  </tr>
+</thead>
+<tbody>
+  <% for organism in @organisms %>
+    <tr>   
+      <td><%=h organism.sampling_type %></td>
+      <td><%= link_to h(Taxon.find(organism.taxon_id).common_name), taxon_path(organism.taxon_id) %>
+ <% if (Taxon.find(organism.taxon_id).watch_list == TRUE) %>
+     <%= image_tag("stopnas.jpg", :height => 20)%></td>
+    <% else %>
+    </td>
+    <% end %>
+      <td><%=h organism.count %></td>
+      <td><%=h organism.size %></td>
+      <td><%=h organism.image %></td>
+      <td><%=h organism.notes %></td>
+      <td><%= link_to image_tag("show.png", :title=>"show",:width=>20), organism %></td>
+      <td><%= link_to image_tag("edit.png", :title=>"edit",:width=>20), edit_organism_path(organism) %></td>
+      <td><%= link_to image_tag("delete.png", :title=>"delete",:width=>20), organism, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+

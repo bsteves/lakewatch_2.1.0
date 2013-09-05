@@ -1,0 +1,28 @@
+<% form_for @taxon do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :group %><br />
+    <%= f.text_field :group %>
+  </p>
+  <p>
+    <%= f.label :scientific_name %><br />
+    <%= f.text_field :scientific_name %>
+  </p>
+  <p>
+    <%= f.label :common_name %><br />
+    <%= f.text_field :common_name %>
+  </p>
+  <p>
+    <%= f.label :watch_list %><br />
+    <%= f.check_box :watch_list %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

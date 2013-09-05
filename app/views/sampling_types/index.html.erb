@@ -1,0 +1,19 @@
+<% title "Sampling Types" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Notes</th>
+  </tr>
+  <% for sampling_type in @sampling_types %>
+    <tr>
+      <td><%=h sampling_type.name %></td>
+      <td><%=h sampling_type.notes %></td>
+      <td><%= link_to "Show", sampling_type %></td>
+      <td><%= link_to "Edit", edit_sampling_type_path(sampling_type) %></td>
+      <td><%= link_to "Destroy", sampling_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sampling Type", new_sampling_type_path %></p>

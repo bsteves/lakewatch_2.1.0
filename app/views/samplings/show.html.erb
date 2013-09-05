@@ -1,0 +1,70 @@
+<% title "Sampling" %>
+
+<p>
+  <strong>User:</strong>
+
+  <%=h User.find(@sampling.user_id).email %>
+</p>
+  <strong>Lake:</strong> <%= link_to h(@lake.name), @lake %> |  <strong>Site:</strong><%= link_to h(@site.name), @site %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%=h @sampling.date %>
+</p>
+<strong>Sampling Methods:</strong>
+<p>
+<% sampling_methods = Array.new %>
+<% if @sampling.secchi %>
+  Secchi<br/>
+<% end %>
+<% if @sampling.temperature %>
+  Temperature<br/>
+<% end %>
+<% if @sampling.substrate %>
+  Substrate<br/>
+<% sampling_methods.push('Substrate') %>
+<% end %>
+<% if @sampling.trap %>
+  Trap<br/>
+<% sampling_methods.push('Trap') %>
+<% end %>
+<% if @sampling.rake %>
+  Rake<br/>
+<% sampling_methods.push('Rake') %>
+<% end %>
+<% if @sampling.zigzag %>
+  Zigzag<br/>
+<% sampling_methods.push('Zig Zag') %>
+<% end %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @sampling.notes %>
+</p>
+<br/>
+<br/>
+<p>
+  <%= link_to image_tag("edit.png", :title=>"edit",:width=>20), edit_sampling_path(@sampling) %> 
+  <%= link_to image_tag("delete.png", :title=>"Delete", :width=>20), @sampling, :confirm => 'Are you sure?', :method => :delete %> 
+  <%= link_to image_tag("list.png", :title=>"View All", :width=>20), samplings_path %>
+</p>
+
+<% if (@sampling.secchi == TRUE or @sampling.temperature == TRUE) %>
+<hr>
+<h2>Physical Data</h2>
+<% unless @sampling.physical_data.empty?  %>
+ <%= render :partial => 'physical_data/index' %>
+<%end%>
+<%= render :partial => 'physical_data/form' %>
+<% end %>
+
+<% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
+<hr>
+<h2>Organisms</h2>
+<% unless @sampling.organisms.empty?  %>
+ <%= render :partial => 'organisms/index' %>
+<%end%>
+<%= render :partial => 'organisms/form' %>
+<% end %>
+
+
