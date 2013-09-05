@@ -6,13 +6,27 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
+  map.resources :physical_data
+ 
+  map.resources :sampling_types
+ 
+  map.resources :samplings
+  
+  map.resources :sites
+ 
+  map.resources :taxa
+  
+  map.resources :taxon
 
+  map.resources :organisms
   
   map.resources :lakes do |lake|
     lake.resources :sites
   end 
 
- map.resources :sites 
+ map.resources :sites do |site|
+    site.resources :samplings
+  end
 
  map.resources :users
 

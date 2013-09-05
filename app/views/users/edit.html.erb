@@ -12,16 +12,7 @@
     <%= f.label :email, "Email Address" %><br />
     <%= f.text_field :email %>
   </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-
-
+ 
    <p id="lake_field">
     <label for="lake1">Lake 1</lake><br />
     <%= f.collection_select :lake1, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
@@ -51,5 +42,5 @@
   </p>
 
 
-  <p><%= f.submit "Sign up" %></p>
+  <p><%= f.submit "Update" %></p>
 <% end %>

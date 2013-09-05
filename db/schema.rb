@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905181446) do
+ActiveRecord::Schema.define(:version => 20130905200729) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -123,6 +123,11 @@ ActiveRecord::Schema.define(:version => 20130905181446) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lake1"
+    t.integer  "lake2"
+    t.integer  "lake3"
+    t.integer  "lake4"
+    t.integer  "lake5"
   end
 
 end

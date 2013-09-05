@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
 
+layout "application"
 #before_filter :authenticate_user!
   def index
     @sites = Site.all(:order => 'lake_id')
