@@ -1,5 +1,8 @@
 class SamplingsController < ApplicationController
 
+layout 'application'
+before_filter :login_required, :except => [:index, :show]
+
 #before_filter :authenticate_user!
   def index
     @samplings = Sampling.all
