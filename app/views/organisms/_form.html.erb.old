@@ -1,0 +1,53 @@
+<% sampling_methods = Array.new %>
+<% if @organism.sampling.substrate %>
+<% sampling_methods.push('Substrate') %>
+<% end %>
+<% if @organism.sampling.trap %>
+<% sampling_methods.push('Trap') %>
+<% end %>
+<% if @organism.sampling.rake %>
+<% sampling_methods.push('Rake') %>
+<% end %>
+<% if @organism.sampling.zigzag %>
+<% sampling_methods.push('Zig Zag') %>
+<% end %>
+
+
+<% form_for @organism do |f| %>
+  <%= f.error_messages %>
+<table width='400'>
+  <tr>
+    <th>Sampling Type</th>
+    <th>Taxon</th>
+    <th>Count</th>
+    <th>Size</th>
+    <th>Image</th>
+    <th>Notes</th>
+  </tr>
+
+ <tr> 
+ <td>
+    <%= f.hidden_field :sampling_id %>
+<%= f.select :sampling_type, sampling_methods , :prompt => 'Select One' %>
+  </td>
+  <td>
+
+    <%= f.collection_select :taxon_id, Taxon.all(:order => 'common_name'), :id, :common_name, :prompt => 'Select One' %>
+  </td>
+  <td>
+    <%= f.text_field :count , :size=>"3"%>
+  </td>
+  <td>
+    <%= f.text_field :size, :size=>"4" %>
+  </td>
+  <td>
+    <%= f.text_field :image, :size =>"10" %>
+  </td>
+  <td>
+    <%= f.text_area :notes, :columns => "10", :rows => "3" %>
+  </td>
+  <td><%= f.submit "submit organism" %></td>
+</tr>
+</table>
+<% end %>
+
