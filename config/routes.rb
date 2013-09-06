@@ -15,8 +15,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sites
  
   map.resources :taxa
-  
-  map.resources :taxon
 
   map.resources :organisms
   
