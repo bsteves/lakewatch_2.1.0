@@ -1,0 +1,40 @@
+<% title "User" %>
+
+<p>
+  <strong>Username:</strong>
+  <%=h @user.username %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @user.email %>
+</p>
+<p>
+  <strong>Lake1:</strong>
+  <%=h @user.lake1 %>
+</p>
+<p>
+  <strong>Lake2:</strong>
+  <%=h @user.lake2 %>
+</p>
+<p>
+  <strong>Lake3:</strong>
+  <%=h @user.lake3 %>
+</p>
+<p>
+  <strong>Lake4:</strong>
+  <%=h @user.lake4 %>
+</p>
+<p>
+  <strong>Lake5:</strong>
+  <%=h @user.lake5 %>
+</p>
+
+
+
+
+
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>

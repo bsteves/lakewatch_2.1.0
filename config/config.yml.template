@@ -1,1 +1,3 @@
-:home_url: 'http://lakewatch.research.pdx.edu/rails/"
+production: 
+   # home_url: 'http://localhost/'
+    home_url: 'http://lakewatch.research.pdx.edu/rails/'
