@@ -7,13 +7,14 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @users }
       format.json  { render :json => @users }
     end
- 
-
-
  end
 
 
+  def show
+    @user = User.find(params[:id])
+  end
 
+  
 
   def new
     @user = User.new
@@ -44,8 +45,15 @@ class UsersController < ApplicationController
    end
 
   def edit
-   @user = current_user 
-   #@user = User.find(params[:id])
+   #@user = current_user 
+   @user = User.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "Successfully destroyed user."
+    redirect_to users_url
   end
 
 

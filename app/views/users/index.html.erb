@@ -3,6 +3,7 @@
 <thead>
   <tr>
     <th>User ID</th>
+    <th>Username</th>
     <th>Email</th>
     <th>Lake</th>
     <th>Lake2</th>
@@ -15,6 +16,7 @@
   <% for user in @users %>
     <tr>
       <td><%=h user.id %></td>
+      <td><%=h user.username %></td>
       <td><%=h user.email %></td>
       <td><%=h user.lake1 %></td>
       <td><%=h user.lake2 %></td>
