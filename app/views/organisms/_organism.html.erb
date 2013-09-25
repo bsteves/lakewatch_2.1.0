@@ -22,7 +22,7 @@
 </p>
 <p>
   <strong>Image:</strong>
-  <%=h @organism.image %>
+  <%= image_tag @organism.image.url(:thumb) %>
 </p>
 <p>
   <strong>Notes:</strong>
