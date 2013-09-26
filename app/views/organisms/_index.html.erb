@@ -24,7 +24,7 @@
     <% end %>
       <td><%=h organism.count %></td>
       <td><%=h organism.size %></td>
-      <td><%=image_tag organism.image.url(:thumb) %></td>
+      <td><%=image_tag organism.image.url, :size => "40x40" %></td>
       <td><%=h organism.notes %></td>
       <td><%= link_to image_tag("show.png", :title=>"show",:width=>20), organism %></td>
       <td><%= link_to image_tag("edit.png", :title=>"edit",:width=>20), edit_organism_path(organism) %></td>
