@@ -26,7 +26,7 @@
     <tr>
 
       <td><%=h sampling.user_id %></td>
-      <td><%=h Lake.find(sampling.lake_id).name %></td>
+      <td><%=h Lake.find(sampling.lake_id).lake_county %></td>
       <td><%=h Site.find(sampling.site_id).name %></td>
       <td><%=h sampling.date %></td>
       <td><%= check_box_tag 'sampling', 'secchi', sampling.secchi, :disabled => TRUE %></td>

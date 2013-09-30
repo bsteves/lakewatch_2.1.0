@@ -4,7 +4,7 @@
   <script type="text/javascript">
     var locations = [
         <% for site in @sites %>
-       [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>],
         <% end %>
     ];
 
@@ -47,16 +47,17 @@
     <th>Name</th>
     <th>Latitude</th>
     <th>Longitude</th>
-    <th>Image</th>
+    <th>Images</th>
     <th>Notes</th>
   </tr>
   <% for site in @sites %>
     <tr>
-      <td><%= link_to h(Lake.find(site.lake_id).name), lake_path(site.lake_id) %></td>
+      <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
       <td><%=h site.name %></td>
       <td><%=h site.latitude %></td>
       <td><%=h site.longitude %></td>
-      <td><%=h site.image %></td>
+
+      <td><%= image_tag site.image.url, :size => "40x40" %></td>
       <td><%=h site.notes %></td>
       <td><%= link_to "Show", site %></td>
       <td><%= link_to "Edit", edit_site_path(site) %></td>

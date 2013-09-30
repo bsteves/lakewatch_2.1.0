@@ -5,7 +5,7 @@
 
   <%=h User.find(@sampling.user_id).email %>
 </p>
-  <strong>Lake:</strong> <%= link_to h(@lake.name), @lake %> |  <strong>Site:</strong><%= link_to h(@site.name), @site %>
+  <strong>Lake:</strong> <%= link_to h(@lake.lake_county), @lake %> |  <strong>Site:</strong><%= link_to h(@site.name), @site %>
 </p>
 <p>
   <strong>Date:</strong>

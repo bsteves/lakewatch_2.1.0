@@ -21,6 +21,7 @@ before_filter :login_required, :except => [:index, :show]
     @site = Site.new
     @site.latitude = 45
     @site.longitude = -122
+   # @site.user_id = current_user.id
     @lakes = Lake.find(:all)
  #   @counties =Lake.all(:select => "DISTINCT(county)")
     @site.lake_id = params[:lake_id]

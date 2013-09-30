@@ -21,7 +21,7 @@
     <th>Taxon</th>
     <th>Count</th>
     <th>Size</th>
-    <th>Image</th>
+    <th>Images</th>
     <th>Notes</th>
   </tr>
 
@@ -40,11 +40,19 @@
   <td>
     <%= f.text_field :size, :size=>"4" %>
   </td>
-  <td>
-   <% unless @organism.new_record? %>
-    <%= image_tag @organism.image.url, :size => "40x40" %>
+   <td>
+   <% unless @organism.image_file_name.nil? %>
+    Image 1: <%= image_tag @organism.image.url, :width => '50' %>
    <% end %>
-    <%= f.file_field :image  %>
+    <%= f.file_field :image   %>
+   <% unless @organism.image2_file_name.nil? %>
+    Image 2: <%= image_tag @organism.image2.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image2  %>
+   <% unless @organism.image3_file_name.nil? %>
+    Image 3: <%= image_tag @organism.image3.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image3  %>
   </td>
   <td>
     <%= f.text_area :notes, :columns => "10", :rows => "3" %>

@@ -5,7 +5,7 @@ before_filter :login_required, :except => [:index, :show]
 
 #before_filter :authenticate_user!
   def index
-    @lakes = Lake.all
+    @lakes = Lake.all(:order => ['name, county'])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @lakes }

@@ -6,12 +6,12 @@
 
  <script type="text/javascript">
     var locations = [
-       [ '<%= @site.name %>' ,<%= @site.latitude%>, <%= @site.longitude%>]
+       [ '<%= @site.lake.lake_county %>' ,<%= @site.latitude%>, <%= @site.longitude%>]
     ];
 
     var locations2 = [
         <% for site in @sites %>
-       [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>],
         <% end %>
     ];
 
@@ -64,7 +64,7 @@
 
 <p>
   <strong>Lake:</strong>
-  <%= link_to h(@lake.name), @lake %>
+  <%= link_to h(@lake.lake_county), @lake %>
 </p>
 <p>
   <strong>Name:</strong>
@@ -78,10 +78,13 @@
   <strong>Longitude:</strong>
   <%=h @site.longitude %>
 </p>
+<% unless @site.image_file_name.nil? %>
 <p>
-  <strong>Image:</strong>
-  <%=h @site.image %>
+  <strong>Image 1:</strong>
+  <%= image_tag @site.image.url, :width => '400' %>
 </p>
+<% end %>
+
 <p>
   <strong>Notes:</strong>
   <%=h @site.notes %>

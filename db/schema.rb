@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925183627) do
+ActiveRecord::Schema.define(:version => 20130927231010) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -22,28 +22,28 @@ ActiveRecord::Schema.define(:version => 20130925183627) do
     t.string  "f_table_schema",    :limit => 256, :null => false
     t.string  "f_table_name",      :limit => 256, :null => false
     t.string  "f_geometry_column", :limit => 256, :null => false
-    t.integer "coord_dimension",                  :null => false
-    t.integer "srid",                             :null => false
+    t.integer "coord_dimension",   :limit => 11,  :null => false
+    t.integer "srid",              :limit => 11,  :null => false
     t.string  "type",              :limit => 30,  :null => false
   end
 
   create_table "lakes", :force => true do |t|
     t.string   "name"
     t.string   "county"
-    t.decimal  "latitude",   :precision => 10, :scale => 5
-    t.decimal  "longitude",  :precision => 10, :scale => 5
+    t.decimal  "latitude",                 :precision => 10, :scale => 5
+    t.decimal  "longitude",                :precision => 10, :scale => 5
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "county_id"
+    t.integer  "county_id",  :limit => 11
   end
 
   create_table "organisms", :force => true do |t|
-    t.integer  "sampling_id"
+    t.integer  "sampling_id",         :limit => 11
     t.string   "sampling_type"
-    t.integer  "taxon_id"
-    t.integer  "count"
-    t.decimal  "size"
+    t.integer  "taxon_id",            :limit => 11
+    t.integer  "count",               :limit => 11
+    t.integer  "size",                :limit => 10, :precision => 10, :scale => 0
     t.string   "image"
     t.text     "notes"
     t.datetime "created_at"
@@ -51,17 +51,28 @@ ActiveRecord::Schema.define(:version => 20130925183627) do
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.string   "image_file_size"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.string   "image2_file_size"
+    t.string   "image3_file_name"
+    t.string   "image3_content_type"
+    t.string   "image3_file_size"
+    t.string   "image4_file_name"
+    t.string   "image4_content_type"
+    t.string   "image4_file_size"
+    t.integer  "user_id",             :limit => 11
   end
 
   create_table "physical_data", :force => true do |t|
-    t.integer  "sampling_id"
+    t.integer  "sampling_id",   :limit => 11
     t.string   "sampling_type"
-    t.decimal  "depth"
-    t.decimal  "value"
+    t.integer  "depth",         :limit => 10, :precision => 10, :scale => 0
+    t.integer  "value",         :limit => 10, :precision => 10, :scale => 0
     t.string   "units"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",       :limit => 11
   end
 
   create_table "sampling_types", :force => true do |t|
@@ -72,10 +83,10 @@ ActiveRecord::Schema.define(:version => 20130925183627) do
   end
 
   create_table "samplings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "county_id"
-    t.integer  "lake_id"
-    t.integer  "site_id"
+    t.integer  "user_id",     :limit => 11
+    t.integer  "county_id",   :limit => 11
+    t.integer  "lake_id",     :limit => 11
+    t.integer  "site_id",     :limit => 11
     t.date     "date"
     t.boolean  "secchi"
     t.boolean  "temperature"
@@ -89,21 +100,28 @@ ActiveRecord::Schema.define(:version => 20130925183627) do
   end
 
   create_table "sites", :force => true do |t|
-    t.integer  "lake_id"
+    t.integer  "lake_id",             :limit => 11
     t.string   "name"
     t.string   "image"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "county_id"
-    t.decimal  "latitude",   :precision => 10, :scale => 5
-    t.decimal  "longitude",  :precision => 10, :scale => 5
+    t.integer  "county_id",           :limit => 11
+    t.decimal  "latitude",                          :precision => 10, :scale => 5
+    t.decimal  "longitude",                         :precision => 10, :scale => 5
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.string   "image2_file_size"
+    t.integer  "user_id",             :limit => 11
   end
 
   create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
+    t.integer "srid",      :limit => 11,   :null => false
     t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
+    t.integer "auth_srid", :limit => 11
     t.string  "srtext",    :limit => 2048
     t.string  "proj4text", :limit => 2048
   end
@@ -126,11 +144,11 @@ ActiveRecord::Schema.define(:version => 20130925183627) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lake1"
-    t.integer  "lake2"
-    t.integer  "lake3"
-    t.integer  "lake4"
-    t.integer  "lake5"
+    t.integer  "lake1",         :limit => 11
+    t.integer  "lake2",         :limit => 11
+    t.integer  "lake3",         :limit => 11
+    t.integer  "lake4",         :limit => 11
+    t.integer  "lake5",         :limit => 11
   end
 
 end

@@ -1,4 +1,8 @@
 class OrganismsController < ApplicationController
+layout "application"
+before_filter :login_required, :except => [:index, :show]
+
+
   def index
     @organisms = Organism.find(:all)
   end

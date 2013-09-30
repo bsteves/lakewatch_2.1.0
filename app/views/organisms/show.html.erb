@@ -20,10 +20,25 @@
   <strong>Size:</strong>
   <%=h @organism.size %>
 </p>
+
+<% unless @organism.image_file_name.nil? %>
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @organism.image.url %>
+  <strong>Image 1:</strong>
+  <%= image_tag @organism.image.url, :width => '400' %>
 </p>
+<% end %>
+<% unless @organism.image2_file_name.nil? %>
+<p>
+  <strong>Image 2:</strong>
+  <%= image_tag @organism.image2.url, :width => '400'%>
+</p>
+<% end %>
+<% unless @organism.image3_file_name.nil? %>
+<p>
+  <strong>Image 3:</strong>
+  <%= image_tag @organism.image3.url, :width => '400' %>
+</p>
+<% end %>
 <p>
   <strong>Notes:</strong>
   <%=h @organism.notes %>
