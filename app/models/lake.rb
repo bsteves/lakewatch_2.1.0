@@ -1,5 +1,5 @@
 class Lake < ActiveRecord::Base
-  attr_accessible :name, :county_id, :latitude, :longitude, :notes
+  attr_accessible :name, :county, :reachcode, :latitude, :longitude, :notes
   has_many :sites, :dependent => :destroy
 
   has_many :samplings
