@@ -1,11 +1,10 @@
-<%= current_user.id %>
 
 <% form_for @site, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
 
   <p id="lake_field">
     <label for="site_lake_id">Lake</lake><br />
-    <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5], :order => ["name, county"]), :id, :lake_county, :prompt => "Select a lake" %>
+    <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5]), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
   <p>

@@ -1,8 +1,10 @@
 <% title "Organism" %>
 
 <p>
-  <strong>Sampling:</strong>
-  <%=h @organism.sampling_id %>
+  <strong>Sampling:</strong><br/>
+  <%=h @organism.sampling.lake.name %><br/>
+  <%=h @organism.sampling.site.name %><br/>
+  <%=h @organism.sampling.date %>
 </p>
 <p>
   <strong>Sampling Type:</strong>
@@ -10,7 +12,7 @@
 </p>
 <p>
   <strong>Taxon:</strong>
-  <%=h @organism.taxon_id %>
+  <%=h @organism.taxon.common_name %> (<i><%=h @organism.taxon.scientific_name %></i>)
 </p>
 <p>
   <strong>Count:</strong>
