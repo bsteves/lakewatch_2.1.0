@@ -5,6 +5,9 @@
 <thead>
   <tr>
     <th>Name</th>
+    <th>County</th>
+    <th>Reach Code</th>
+    <th>AOL Page</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Notes</th>
@@ -17,6 +20,9 @@
   <% for lake in @lakes %>
     <tr>
       <td><%=h lake.name %></td>
+      <td><%=h lake.county %></td>
+      <td><%=h lake.reachcode %></td>
+      <td><%=h lake.aol_page %></td>
       <td><%=h lake.latitude %></td>
       <td><%=h lake.longitude %></td>
       <td><%=h lake.notes %></td>

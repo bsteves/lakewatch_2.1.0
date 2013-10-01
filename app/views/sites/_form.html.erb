@@ -1,7 +1,7 @@
 
 <% form_for @site, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
-
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <p id="lake_field">
     <label for="site_lake_id">Lake</lake><br />
     <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5]), :id, :lake_county, :prompt => "Select a lake" %>

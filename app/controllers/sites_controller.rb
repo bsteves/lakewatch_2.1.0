@@ -21,15 +21,17 @@ before_filter :login_required, :except => [:index, :show]
     @site = Site.new
     @site.latitude = 45
     @site.longitude = -122
-   # @site.user_id = current_user.id
     @lakes = Lake.find(:all)
+    @site.user_id = current_user.id
  #   @counties =Lake.all(:select => "DISTINCT(county)")
     @site.lake_id = params[:lake_id]
  #   @site.county_id = params[:county_id]
  end
 
   def create
+
     @site = Site.new(params[:site])
+    @site.user_id = current_user.id
     if @site.save
       flash[:notice] = "Successfully created site."
       redirect_to @site
