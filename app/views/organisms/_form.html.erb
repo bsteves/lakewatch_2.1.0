@@ -32,7 +32,7 @@
   </td>
   <td>
 
-    <%= f.collection_select :taxon_id, Taxon.all(:order => 'common_name'), :id, :common_name, :prompt => 'Select One' %>
+    <%= f.collection_select :taxon_id, Taxon.all(:order => 'id'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
     <%= f.text_field :count , :size=>"3"%>

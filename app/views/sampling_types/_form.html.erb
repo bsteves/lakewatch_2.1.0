@@ -1,5 +1,6 @@
 <% form_for @sampling_type do |f| %>
   <%= f.error_messages %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>

@@ -3,26 +3,18 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.resources :sessions
-
+  map.resources :password_resets
   map.resources :users
-
   map.resources :physical_data
- 
   map.resources :sampling_types
- 
   map.resources :samplings
-  
   map.resources :sites
- 
   map.resources :taxa
-
   map.resources :organisms
-  
   map.resources :lakes do |lake|
     lake.resources :sites
   end 
-
- map.resources :sites do |site|
+  map.resources :sites do |site|
     site.resources :samplings
   end
 

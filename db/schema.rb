@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001210011) do
+ActiveRecord::Schema.define(:version => 20131007224514) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20131001210011) do
   end
 
   create_table "taxa", :force => true do |t|
-    t.string   "group"
+    t.string   "taxa_group"
     t.string   "scientific_name"
     t.string   "common_name"
     t.boolean  "watch_list"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20131001210011) do
     t.integer  "lake3"
     t.integer  "lake4"
     t.integer  "lake5"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

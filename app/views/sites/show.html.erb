@@ -101,10 +101,14 @@
 
 </p>
 <% end %>
+
+      <% if @site.user_id == current_user.id %>
 <p>
 <%= link_to "Add Sampling", new_site_sampling_path(:site_id => @site.id, :lake_id => @site.lake_id, :county_id => @site.county_id) %></p>
 <p>
+
   <%= link_to "Edit", edit_site_path(@site) %> |
   <%= link_to "Destroy", @site, :confirm => 'Are you sure?', :method => :delete %> |
+    <% end %>
   <%= link_to "View All", sites_path %>
 </p>

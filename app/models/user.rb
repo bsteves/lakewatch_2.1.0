@@ -22,13 +22,25 @@ class User < ActiveRecord::Base
     self.password_hash == encrypt_password(pass)
   end
 
-  private
+  def send_password_reset
+    self.password_reset_token = SecureRandom.hex(16)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+   private
 
   def prepare_password
     unless password.blank?
       self.password_salt = Digest::SHA1.hexdigest([Time.now, rand].join)
       self.password_hash = encrypt_password(password)
     end
+  end
+
+  def prepare_reset_token
+    # self.password_reset_token = SecureRandom.hex(16)
+    # self.password_reset_sent_at = Time.zone.now
   end
 
   def encrypt_password(pass)
