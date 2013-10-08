@@ -49,7 +49,7 @@
 
 <p>
 
- <% if organism.user_id == current_user.id %>
+ <% if @organism.user_id == current_user.id %>
   <%= link_to "Edit", edit_organism_path(@organism) %> |
   <%= link_to "Destroy", @organism, :confirm => 'Are you sure?', :method => :delete %> |
  <% end %>
