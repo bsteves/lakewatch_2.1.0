@@ -2,16 +2,17 @@
 
 <p> 
      Pam and zoom to view marker location. 
+</p>
      <div id="map" style="width: 500px; height: 400px"></div> 
 
  <script type="text/javascript">
     var locations = [
-       [ '<%= @site.lake.lake_county %>' ,<%= @site.latitude%>, <%= @site.longitude%>]
+       [ '<%= @site.lake.lake_county %>' ,<%= @site.latitude%>, <%= @site.longitude%>, <%= @site.id %>, '<%= @site.name %>']
     ];
 
     var locations2 = [
         <% for site in @sites %>
-       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>],
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>, <%= site.id %>, '<%= site.name %>'],
         <% end %>
     ];
 
@@ -35,7 +36,7 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations[i][3] + "'>" + locations[i][0] + " - " + locations[i][4] +  "</a>");
           infowindow.open(map, marker);
         }
       })(marker, i));
@@ -50,7 +51,7 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations2[i][0]);
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations2[i][3] + "'>" + locations2[i][0] + " - " + locations2[i][4] +  "</a>");
           infowindow.open(map, marker);
         }
       })(marker, i));

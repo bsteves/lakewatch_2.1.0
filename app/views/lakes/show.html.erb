@@ -1,4 +1,41 @@
 <% title "Lake" %>
+<p> 
+     Pam and zoom to view marker location. 
+</p>
+     <div id="map" style="width: 500px; height: 400px"></div> 
+
+ <script type="text/javascript">
+    var locations = [
+       [ '<%= @lake.lake_county %>' ,<%= @lake.latitude%>, <%= @lake.longitude%>]
+    ];
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(<%= @lake.latitude %>, <%= @lake.longitude %>),
+      mapTypeId: google.maps.MapTypeId.HYBRID,
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+
+  </script>
 
 <p>
   <strong>Name:</strong>
@@ -44,7 +81,9 @@
 </p>
 
 <p>
+      <% if current_user.id == 1 %>
   <%= link_to "Edit", edit_lake_path(@lake) %> |
   <%= link_to "Destroy", @lake, :confirm => 'Are you sure?', :method => :delete %> |
+      <% end %>  
   <%= link_to "View All", lakes_path %>
 </p>

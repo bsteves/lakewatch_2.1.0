@@ -8,6 +8,8 @@
 
 
 <% form_for @physical_datum do |f| %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.error_messages %>
 <table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
 <thead>

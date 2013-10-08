@@ -14,6 +14,8 @@
 
 
 <% form_for @organism, :html => {:multipart => true} do |f| %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.error_messages %>
 <table width='400'>
   <tr>
@@ -21,10 +23,7 @@
     <th>Taxon</th>
     <th>Count</th>
     <th>Size</th>
-    <th>Images</th>
-    <th>Notes</th>
-  </tr>
-
+</tr>
  <tr> 
  <td>
     <%= f.hidden_field :sampling_id %>
@@ -32,7 +31,7 @@
   </td>
   <td>
 
-    <%= f.collection_select :taxon_id, Taxon.all(:order => 'id'), :id, :taxa_all, :prompt => 'Select One' %>
+    <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
     <%= f.text_field :count , :size=>"3"%>
@@ -40,6 +39,12 @@
   <td>
     <%= f.text_field :size, :size=>"4" %>
   </td>
+<tr>
+    <th>Images</th>
+    <th>Notes</th>
+  </tr>
+
+
    <td>
    <% unless @organism.image_file_name.nil? %>
     Image 1: <%= image_tag @organism.image.url, :width => '50' %>

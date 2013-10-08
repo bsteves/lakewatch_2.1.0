@@ -2,11 +2,11 @@
 
 <p>
   <strong>Group:</strong>
-  <%=h @taxon.group %>
+  <%=h @taxon.taxa_group %>
 </p>
 <p>
   <strong>Scientific Name:</strong>
-  <%=h @taxon.scientific_name %>
+  <i><%=h @taxon.scientific_name %></i>
 </p>
 <p>
   <strong>Common Name:</strong>
@@ -16,17 +16,17 @@
   <strong>Watch List:</strong>
   <%=h @taxon.watch_list %>
 </p>
+<% unless @taxon.image_file_name.nil? %>
 <p>
   <strong>Image:</strong>
-  <%=h @taxon.image %>
+  <%= image_tag @taxon.image.url, :width => '400' %>
 </p>
+<% end %>
 <p>
   <strong>Notes:</strong>
   <%=h @taxon.notes %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_taxon_path(@taxon) %> |
-  <%= link_to "Destroy", @taxon, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", taxa_path %>
 </p>

@@ -1,3 +1,14 @@
+    <script type="text/javascript">
+        function toggleVisibility(controlId)
+        {
+            var control = document.getElementById(controlId);
+            if(control.style.visibility == "visible" || control.style.visibility == "")
+                control.style.visibility = "hidden";
+            else 
+                control.style.visibility = "visible";
+              
+        }
+    </script>
 <% title "Sampling" %>
 
 <p>
@@ -58,7 +69,11 @@
 <% unless @sampling.physical_data.empty?  %>
  <%= render :partial => 'physical_data/index' %>
 <%end%>
+
+<p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
+<div id='physical_data_form' style="visibility: hidden">
 <%= render :partial => 'physical_data/form' %>
+</div>
 <% end %>
 
 <% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
@@ -67,7 +82,10 @@
 <% unless @sampling.organisms.empty?  %>
  <%= render :partial => 'organisms/index' %>
 <%end%>
+<p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
+<div id='organism_form' style="visibility: hidden">
 <%= render :partial => 'organisms/form' %>
+</div>
 <% end %>
 
 

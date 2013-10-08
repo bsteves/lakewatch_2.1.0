@@ -4,7 +4,7 @@
   <script type="text/javascript">
     var locations = [
         <% for site in @sites %>
-       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>],
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>, <%= site.id %>, '<%= site.name %>'],
         <% end %>
     ];
 
@@ -35,7 +35,7 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations[i][3] + "'>" + locations[i][0] + " - " + locations[i][4] +  "</a>");
           infowindow.open(map, marker);
         }
       })(marker, i));

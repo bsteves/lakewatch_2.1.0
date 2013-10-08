@@ -2,9 +2,10 @@
 
 <p>
   <strong>Sampling:</strong><br/>
-  <%=h @organism.sampling.lake.name %><br/>
-  <%=h @organism.sampling.site.name %><br/>
-  <%=h @organism.sampling.date %>
+
+  <%=link_to h(@organism.sampling.lake.name), @organism.sampling.site.lake %><br/>
+  <%=link_to h(@organism.sampling.site.name), @organism.sampling.site %><br/>
+  <%=link_to h(@organism.sampling.date), @organism.sampling %>
 </p>
 <p>
   <strong>Sampling Type:</strong>
@@ -12,7 +13,7 @@
 </p>
 <p>
   <strong>Taxon:</strong>
-  <%=h @organism.taxon.common_name %> (<i><%=h @organism.taxon.scientific_name %></i>)
+  <%=link_to (@organism.taxon.common_name  + " (<i>"  + @organism.taxon.scientific_name + "</i>)"), @organism.taxon %>
 </p>
 <p>
   <strong>Count:</strong>
@@ -47,7 +48,10 @@
 </p>
 
 <p>
+
+ <% if organism.user_id == current_user.id %>
   <%= link_to "Edit", edit_organism_path(@organism) %> |
   <%= link_to "Destroy", @organism, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", @organism.sampling %>
+ <% end %>
+  <%= link_to "View All", organisms_path %>
 </p>
