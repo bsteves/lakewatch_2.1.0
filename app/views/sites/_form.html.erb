@@ -17,9 +17,10 @@
      <div id="map" style="width: 500px; height: 400px"></div> 
  <script type="text/javascript">
 function get_dms (deg,x) {
-
-   var d = Math.floor (deg);
-   var minfloat = (deg-d)*60;
+   var sign = deg > 0 ? 1 : deg == 0 ? 0 : -1; 
+   var deg2 = deg * sign
+   var d = Math.floor (deg2);
+   var minfloat = (deg2-d)*60;
    var m = Math.floor(minfloat);
    var secfloat = (minfloat-m)*60;
    var s = Math.round(secfloat*1000)/1000;
@@ -33,10 +34,13 @@ function get_dms (deg,x) {
      d++;
      m=0;
    }
+    if (x == "sign") {
+      return (sign)
+    }
+
     if (x == "d") {
-     return (d);
-   }
- 
+     return (d*sign);
+   } 
 
     if (x == "m") {
      return (m);
@@ -48,7 +52,7 @@ function get_dms (deg,x) {
  
 }
 
-function get_dec_deg(d,m,s) {
+function get_dec_deg(d,m,s,sign) {
    var deg;
    deg = Number(d) + Number(m)/60 + Number(s)/3600;
    deg = deg.toFixed(5);
@@ -58,10 +62,12 @@ function get_dec_deg(d,m,s) {
 function deg_to_dms() {
   var site_lat = $('site_latitude').getValue();
   var site_lon = $('site_longitude').getValue();
-  $('lat_deg').value = get_dms(site_lat,"d");
+  var sign_lat = get_dms(site_lat, "sign");
+  var sign_lon = get_dms(site_lon, "sign");
+  $('lat_deg').value = get_dms(site_lat,"d")*sign_lat;
   $('lat_min').value = get_dms(site_lat,"m");
   $('lat_sec').value = get_dms(site_lat,"s");
-  $('lon_deg').value = get_dms(site_lon*-1,"d");
+  $('lon_deg').value = get_dms(site_lon,"d")*sign_lon;
   $('lon_min').value = get_dms(site_lon,"m");
   $('lon_sec').value = get_dms(site_lon,"s");
 }
@@ -74,7 +80,7 @@ function dms_to_deg() {
   var lon_min = $('lon_min').getValue();
   var lon_sec = $('lon_sec').getValue();
   $('site_latitude').value = get_dec_deg(lat_deg,lat_min,lat_sec);
- $('site_longitude').value = get_dec_deg(lon_deg,lon_min,lon_sec)*-1;
+ $('site_longitude').value = get_dec_deg(lon_deg,lon_min,lon_sec);
 }
 
 
@@ -197,7 +203,7 @@ $('lon_sec').observe('change', dms_to_deg);
    <p>
     <%= f.label :latitude %><br />
     <%= f.label "Decimal Degrees" %> &nbsp;&nbsp; |  &nbsp; <%= f.label "Degrees" %>&nbsp;&nbsp;&nbsp;<%=f.label "Minutes"%>&nbsp;&nbsp;&nbsp;<%= f.label "Seconds" %>&nbsp;&nbsp;&nbsp;<%= f.label "Direction"%><br/>
-    <%= f.text_field :latitude, :size => 12%> | <input type="text" id= "lat_deg" size="4"><input type="text" id= "lat_min" size="4"><input type="text" id= "lat_sec" size="4">&nbsp;&nbsp;  North<br/>
+    <%= f.text_field :latitude, :size => 13%> | <input type="text" id= "lat_deg" size="4"><input type="text" id= "lat_min" size="4"><input type="text" id= "lat_sec" size="4">&nbsp;&nbsp;  North<br/>
   </p>
 
   <p>
@@ -206,7 +212,7 @@ $('lon_sec').observe('change', dms_to_deg);
    <p>
     <%= f.label :longitude %><br/>
     <%= f.label "Decimal Degrees" %> &nbsp;&nbsp; |  &nbsp; <%= f.label "Degrees" %>&nbsp;&nbsp;&nbsp;<%=f.label "Minutes"%>&nbsp;&nbsp;&nbsp;<%= f.label "Seconds" %>&nbsp;&nbsp;&nbsp;<%= f.label "Direction"%><br/>
-    <%= f.text_field :longitude, :size => 12 %> |  <input type="text" id= "lon_deg" size="4"><input type="text" id= "lon_min" size="4"><input type="text" id= "lon_sec" size="4">&nbsp;&nbsp;  West<br/>
+    <%= f.text_field :longitude, :size => 13 %> |  <input type="text" id= "lon_deg" size="4"><input type="text" id= "lon_min" size="4"><input type="text" id= "lon_sec" size="4">&nbsp;&nbsp;  West<br/>
   </p>
 
    <p>

@@ -6,6 +6,9 @@ before_filter :login_required, :except => [:index, :show]
 #before_filter :authenticate_user!
   def index
     @sites = Site.all(:order => 'lake_id')
+    @mysites = Site.find(:all, :conditions => ['user_id = ?', current_user], :order => 'lake_id')
+    @othersites = Site.find(:all, :conditions => ['user_id != ?', current_user], :order => 'lake_id')
+
   end
 
   def show

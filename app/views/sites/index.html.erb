@@ -50,7 +50,7 @@
     <th>Images</th>
     <th>Notes</th>
   </tr>
-  <% for site in @sites %>
+  <% for site in @mysites %>
     <tr>
       <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
       <td><%=h site.name %></td>
@@ -65,6 +65,22 @@
       <% end %>
     </tr>
   <% end %>
+ <% for site in @othersites %>
+    <tr>
+      <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
+      <td><%=h site.name %></td>
+      <td><%=h site.latitude %></td>
+      <td><%=h site.longitude %></td>
+      <td><%= image_tag site.image.url, :size => "40x40" %></td>
+      <td><%=h site.notes %></td>
+      <td><%= link_to "Show", site %></td>
+      <% if site.user_id == current_user.id %>
+         <td><%= link_to "Edit", edit_site_path(site) %></td>
+         <td><%= link_to "Destroy", site, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+
 </table>
 
 <p><%= link_to "New Site", new_site_path %></p>
