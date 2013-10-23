@@ -3,11 +3,17 @@
      Pam and zoom to view marker location. 
 </p>
      <div id="map" style="width: 500px; height: 400px"></div> 
-
  <script type="text/javascript">
     var locations = [
        [ '<%= @lake.lake_county %>' ,<%= @lake.latitude%>, <%= @lake.longitude%>]
     ];
+
+    var locations2 = [
+        <% for site in @sites %>
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>, <%= site.id %>, '<%= site.name %>'],
+        <% end %>
+    ];
+
 
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -28,11 +34,28 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations[i][3] + "'>" + locations[i][0] + " - " + locations[i][4] +  "</a>");
           infowindow.open(map, marker);
         }
       })(marker, i));
     }
+
+   for (i = 0; i < locations2.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations2[i][3] + "'>" + locations2[i][0] + " - " + locations2[i][4] +  "</a>");
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+}
+
+
 
 
   </script>

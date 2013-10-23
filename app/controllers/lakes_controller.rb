@@ -18,7 +18,8 @@ before_filter :login_required, :except => [:index, :show]
 
   def show
     @lake = Lake.find(params[:id])
-
+  
+    @sites = Site.find(:all, :conditions => ['lake_id = ?', params[:id]])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @lake }
