@@ -1,7 +1,11 @@
 <H1>Sites</H1>
-  <div id="map" style="width: 500px; height: 400px;"></div>
-
-  <script type="text/javascript">
+ 
+  <div id="map" style="float: left; width: 500px; height: 400px; margin: 20px;"></div>
+ <div id="instructions" style="float: left; width: 500px; margin: 20px;">
+Either use the map to zoom into your lake and show a specific site, or find it on the table below.  You may edit or delete sites you have personally entered.   To add data for a site, click “show” and then “Add data”
+To add a new site to your lake(s), click here.
+  </div>
+ <script type="text/javascript">
     var locations = [
         <% for site in @sites %>
        [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>, <%= site.id %>, '<%= site.name %>'],
@@ -41,6 +45,7 @@
       })(marker, i));
     }
   </script>
+<div style="clear: both;">
 <table>
   <tr>
     <th>Lake</th>
@@ -84,3 +89,4 @@
 </table>
 
 <p><%= link_to "New Site", new_site_path %></p>
+</div>

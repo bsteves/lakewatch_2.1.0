@@ -23,31 +23,31 @@
 
 
    <p id="lake_field">
-    <label for="lake1">Lake 1</lake><br />
-    <%= f.collection_select :lake1, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+    <label for="lake1">Lake 1</label><br />
+    <%= f.collection_select :lake1, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
       
-  <p id="lake_field">
-    <label for="lake2">Lake 2</lake><br />
-    <%= f.collection_select :lake2, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  <p id="lake_county_field">
+    <label for="lake2">Lake 2</label><br />
+    <%= f.collection_select :lake2, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
  
-  <p id="lake_field">
-    <label for="lake3">Lake 3</lake><br />
-    <%= f.collection_select :lake3, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  <p id="lake_county_field">
+    <label for="lake3">Lake 3</label><br />
+    <%= f.collection_select :lake3, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
  
-  <p id="lake_field">
-    <label for="lake4">Lake 4</lake><br />
-    <%= f.collection_select :lake4, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  <p id="lake_county_field">
+    <label for="lake4">Lake 4</label><br />
+    <%= f.collection_select :lake4, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
  
-  <p id="lake_field">
-    <label for="lake5">Lake 5</lake><br />
-    <%= f.collection_select :lake5, Lake.find(:all), :id, :name, :prompt => "Select a lake" %>
+  <p id="lake_county_field">
+    <label for="lake5">Lake 5</label><br />
+    <%= f.collection_select :lake5, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
 

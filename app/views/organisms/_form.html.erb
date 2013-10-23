@@ -1,15 +1,15 @@
 <% sampling_methods = Array.new %>
 <% if @organism.sampling.substrate %>
-<% sampling_methods.push('Substrate') %>
+<% sampling_methods.push('Portland Substrate Sampler') %>
 <% end %>
 <% if @organism.sampling.trap %>
-<% sampling_methods.push('Trap') %>
+<% sampling_methods.push('Minnow Trap') %>
 <% end %>
 <% if @organism.sampling.rake %>
-<% sampling_methods.push('Rake') %>
+<% sampling_methods.push('Rake Toss') %>
 <% end %>
 <% if @organism.sampling.zigzag %>
-<% sampling_methods.push('Zig Zag') %>
+<% sampling_methods.push('Shoreline Observation') %>
 <% end %>
 
 
@@ -22,6 +22,7 @@
     <th>Sampling Type</th>
     <th>Taxon</th>
     <th>Abundance Code</th>
+    <th>Confidence Code</th>
 </tr>
  <tr> 
  <td>
@@ -32,8 +33,12 @@
     <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
-    <%= f.select :count, [["1 - scarce",1],["2 - infrequent",2],["3 - common",3],["4 - dominant", 4]] %>
+    <%= f.select :count, [["1 - scarce",1],["2 - infrequent",2],["3 - common",3],["4 - dominant", 4]], :prompt => 'Select One' %>
   </td>
+ <td>
+    <%= f.select :confidence, [["H - high","H"],["M - fairly certain","M"],["L - uncertain/tentative","L"]], :prompt => 'Select One'%>
+  </td>
+
  <tr>
     <th>Images</th>
     <th>Notes</th>

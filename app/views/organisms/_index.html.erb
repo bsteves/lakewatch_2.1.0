@@ -4,6 +4,7 @@
     <th>Sampling Type</th>
     <th>Taxon</th>
     <th>Abundance Code</th>
+    <th>Confidence Code</th>
     <th>Images</th>
     <th>Notes</th>
     <th/>
@@ -22,6 +23,7 @@
     </td>
     <% end %>
       <td><%=h organism.count %></td>
+      <td><%=h organism.confidence %></td>
       <td>
 	<% unless organism.image_file_name.nil?%>
 		<%=image_tag organism.image.url, :width => '50' %>

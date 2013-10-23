@@ -22,29 +22,29 @@
   <strong>Date:</strong>
   <%=h @sampling.date %>
 </p>
-<strong>Sampling Methods:</strong>
+<strong>Sampling Methods Used:</strong>
 <p>
 <% sampling_methods = Array.new %>
 <% if @sampling.secchi %>
-  Secchi<br/>
+  Secchi-Transparency<br/>
 <% end %>
 <% if @sampling.temperature %>
-  Temperature<br/>
+  Temperature Profile<br/>
 <% end %>
 <% if @sampling.substrate %>
-  Substrate<br/>
+  Portland Substrate Sampler<br/>
 <% sampling_methods.push('Substrate') %>
 <% end %>
 <% if @sampling.trap %>
-  Trap<br/>
+  Minoow Trap<br/>
 <% sampling_methods.push('Trap') %>
 <% end %>
 <% if @sampling.rake %>
-  Rake<br/>
+  Rake Toss<br/>
 <% sampling_methods.push('Rake') %>
 <% end %>
 <% if @sampling.zigzag %>
-  Zigzag<br/>
+  Shoreline Observation<br/>
 <% sampling_methods.push('Zig Zag') %>
 <% end %>
 </p>
@@ -65,7 +65,7 @@
 
 <% if (@sampling.secchi == TRUE or @sampling.temperature == TRUE) %>
 <hr>
-<h2>Physical Data</h2>
+<h2>Water Quality Data (Secchi & Temperature)</h2>
 <% unless @sampling.physical_data.empty?  %>
  <%= render :partial => 'physical_data/index' %>
 <%end%>
@@ -78,7 +78,7 @@
 
 <% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
 <hr>
-<h2>Organisms</h2>
+<h2>Aquatic Invasive Species (Plants & Animals)</h2>
 <% unless @sampling.organisms.empty?  %>
  <%= render :partial => 'organisms/index' %>
 <%end%>

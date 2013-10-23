@@ -19,6 +19,11 @@
   <strong>Abundance Code:</strong>
   <%=h @organism.count %>
 </p>
+<p>
+  <strong>Confidence Code:</strong>
+  <%=h @organism.confidence %>
+</p>
+
 <% unless @organism.image_file_name.nil? %>
 <p>
   <strong>Image 1:</strong>
