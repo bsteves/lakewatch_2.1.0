@@ -21,25 +21,20 @@
   <tr>
     <th>Sampling Type</th>
     <th>Taxon</th>
-    <th>Count</th>
-    <th>Size</th>
+    <th>Abundance Code</th>
 </tr>
  <tr> 
  <td>
     <%= f.hidden_field :sampling_id %>
-<%= f.select :sampling_type, sampling_methods , :prompt => 'Select One' %>
-  </td>
+</td>
   <td>
 
     <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
-    <%= f.text_field :count , :size=>"3"%>
+    <%= f.select :count, [["1 - scarce",1],["2 - infrequent",2],["3 - common",3],["4 - dominant", 4]] %>
   </td>
-  <td>
-    <%= f.text_field :size, :size=>"4" %>
-  </td>
-<tr>
+ <tr>
     <th>Images</th>
     <th>Notes</th>
   </tr>

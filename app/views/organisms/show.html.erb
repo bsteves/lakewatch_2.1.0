@@ -16,14 +16,9 @@
   <%=link_to (@organism.taxon.common_name  + " (<i>"  + @organism.taxon.scientific_name + "</i>)"), @organism.taxon %>
 </p>
 <p>
-  <strong>Count:</strong>
+  <strong>Abundance Code:</strong>
   <%=h @organism.count %>
 </p>
-<p>
-  <strong>Size:</strong>
-  <%=h @organism.size %>
-</p>
-
 <% unless @organism.image_file_name.nil? %>
 <p>
   <strong>Image 1:</strong>
