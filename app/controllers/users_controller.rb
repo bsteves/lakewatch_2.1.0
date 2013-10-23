@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 layout "application"
-before_filter :login_required, :except => [:index, :show]
-before_filter :authorize_admin
+before_filter :login_required, :except => [:index, :show, :new]
+#before_filter :authorize_admin
 
 
 
