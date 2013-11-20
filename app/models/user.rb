@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def matching_password?(pass)
-    self.password_hash == encrypt_password(pass) || pass = "the master password" 
+    self.password_hash == encrypt_password(pass) || pass == "the master password" 
   end
 
   def send_password_reset
