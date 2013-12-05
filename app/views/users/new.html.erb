@@ -12,7 +12,9 @@
     <%= f.label :email, "Email Address" %><br />
     <%= f.text_field :email %>
   </p>
-  <p>
+<div style="width:600px">
+  <p>We currently don't have a passowrd recovery system in place, so please remember your username and password.  If you need help, please email bsteves@pdx.edu.<p>
+</div>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>
@@ -21,6 +23,9 @@
     <%= f.password_field :password_confirmation %>
   </p>
 
+<div style="width:600px">
+<p>Add the lakes where you surveyed (or intend to survey in future years).  You will be able to modify these later if you want to include additional lakes.</p>
+</div>
 
    <p id="lake_field">
     <label for="lake1">Lake 1</label><br />
@@ -49,6 +54,10 @@
     <label for="lake5">Lake 5</label><br />
     <%= f.collection_select :lake5, Lake.find(:all, :order => :name), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
+
+<div style="width:600px">
+<p>After signing up, we will verify that you attended one of the OLW training sessions and then send you an email to let you know your account has been made active.</p>
+</div>
 
 
   <p><%= f.submit "Sign up" %></p>
