@@ -1,8 +1,10 @@
 <div id="navcontainer">
      <ul id="navigation">
         <li><%= link_to "Home", :controller => "/" %></li>
+<% if logged_in? %>
         <li><%= link_to "My Data", :controller => "/mydata" %></li>
         <li><%= link_to "Add Data", :controller => "/samplings", :action => "new" %></li>
+<% end %>
         <li><%= link_to "View All Data", :controller => "/sites" %> 
            <ul>
               <li><%= link_to "Lakes", :controller => "/lakes" %></li>
