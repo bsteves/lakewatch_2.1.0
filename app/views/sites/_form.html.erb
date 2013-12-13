@@ -3,18 +3,20 @@
   <%= f.error_messages %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p id="lake_field">
-    <label for="site_lake_id">Lake</lake><br />
+    <label for="site_lake_id">Which lake do you want to add a monitoring site to?</lake><br />
     <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5]), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label "Name this site" %> <br/>
+ Use the boat ramp or campground name, or a simple description that helps you remember it.<br/>
     <%= f.text_field :name %>
   </p>
   
 <p> 
-     Pam and zoom to view marker location. 
+After selecting a lake, pan, zoom and drag the red marker to your site or enter coordinates below if you have them.    
      <div id="map" style="width: 500px; height: 400px"></div> 
+
  <script type="text/javascript">
 function get_dms (deg,x) {
    var sign = deg > 0 ? 1 : deg == 0 ? 0 : -1; 
@@ -120,7 +122,7 @@ function dms_to_deg() {
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
     
-   for (i = 0; i < locations2.length; i++) {  
+/*   for (i = 0; i < locations2.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
         map: map,
@@ -135,7 +137,7 @@ function dms_to_deg() {
       })(marker, i));
 }
 
-
+*/
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -216,6 +218,7 @@ $('lon_sec').observe('change', dms_to_deg);
   </p>
 
    <p>
+   Optional: feel free to add a photo or any notes you want to make about the site.<br/>
    <% unless @site.new_record? %>
     <%= image_tag @site.image.url, :width => '50' %>
    <% end %>

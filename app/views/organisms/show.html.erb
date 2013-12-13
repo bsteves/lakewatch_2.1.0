@@ -51,7 +51,7 @@
 
  <% if @organism.user_id == current_user.id %>
   <%= link_to "Edit", edit_organism_path(@organism) %> |
-  <%= link_to "Destroy", @organism, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Delete", @organism, :confirm => 'Are you sure?', :method => :delete %> |
  <% end %>
   <%= link_to "View All", organisms_path %>
 </p>

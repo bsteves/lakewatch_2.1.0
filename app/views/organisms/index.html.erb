@@ -23,7 +23,7 @@
 
       <% if organism.user_id == current_user.id %>
       <td><%= link_to "Edit", edit_organism_path(organism) %></td>
-      <td><%= link_to "Destroy", organism, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Delete", organism, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     </tr>
   <% end %>

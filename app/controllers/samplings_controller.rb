@@ -3,12 +3,23 @@ class SamplingsController < ApplicationController
 layout 'application'
 before_filter :login_required, :except => [:index, :show]
 
+
+
+
 #before_filter :authenticate_user!
   def index
     @samplings = Sampling.all
     @mysamplings = Sampling.all(:conditions => ['user_id = ?', current_user])
     @othersamplings = Sampling.all(:conditions => ['user_id != ?', current_user])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @samplings }
+    end
+
+
   end
+
 
   def show
     @sampling = Sampling.find(params[:id])

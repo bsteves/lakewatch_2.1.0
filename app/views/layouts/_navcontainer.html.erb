@@ -1,14 +1,14 @@
 <div id="navcontainer">
      <ul id="navigation">
         <li><%= link_to "Home", :controller => "/" %></li>
-        <li><%= link_to "Data" %> 
+        <li><%= link_to "My Data", :controller => "/mydata" %></li>
+        <li><%= link_to "Add Data", :controller => "/samplings", :action => "new" %></li>
+        <li><%= link_to "View All Data", :controller => "/sites" %> 
            <ul>
               <li><%= link_to "Lakes", :controller => "/lakes" %></li>
               <li><%= link_to "Taxa", :controller => "/taxa" %></li>
               <li><%= link_to "Sites", :controller => "/sites" %></li>
-              <li><%= link_to "Sampling Events", :controller => "/samplings" %></li>
-              <li><%= link_to "AIS Monitoring", :controller => "/organisms" %></li>
-              <li><%= link_to "Water Quality Data", :controller => "/physical_data" %></li>
+              <li><%= link_to "Monitoring Events", :controller => "/samplings" %></li>
            </ul>
         </li>
       </ul>

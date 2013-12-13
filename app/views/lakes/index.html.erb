@@ -54,9 +54,6 @@
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Notes</th>
-    <th/>
-    <th/>
-    <th/>
   </tr>
 </thead>
 <tbody>
@@ -70,15 +67,15 @@
       <td><%=h lake.longitude %></td>
       <td><%=h lake.notes %></td>
       <td><%= link_to "Show", lake %></td>
-      <% if current_user.id == 1 %>
+      <% if logged_in? && current_user.id == 1 %>
       <td><%= link_to "Edit", edit_lake_path(lake) %></td>
-      <td><%= link_to "Destroy", lake, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Delete", lake, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     </tr>
   <% end %>
 </tbody>
 </table>
 
-      <% if current_user.id == 1 %>
+      <% if logged_in? && current_user.id == 1 %>
 <p><%= link_to "New Lake", new_lake_path %></p>
       <% end %>

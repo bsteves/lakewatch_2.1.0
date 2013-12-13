@@ -12,6 +12,13 @@ before_filter :login_required, :except => [:index, :show]
 
   end
 
+ def myindex
+    @mysites = Site.find(:all, :conditions => ['user_id = ?', current_user], :order => 'lake_id')
+    @othersites = Site.find(:all, :conditions => ['user_id != ?', current_user], :order => 'lake_id')
+
+  end
+
+
   def show
 
     @sites = Site.find(:all, :conditions => ['id != ?', params[:id]])

@@ -2,8 +2,13 @@
  
   <div id="map" style="float: left; width: 500px; height: 400px; margin: 20px;"></div>
  <div id="instructions" style="float: left; width: 500px; margin: 20px;">
-Either use the map to zoom into your lake and show a specific site, or find it on the table below.  You may edit or delete sites you have personally entered.   To add data for a site, click “show” and then “Add data”
-To add a new site to your lake(s), click here.
+These are ALL the sites where OLW volunteers have conducted monitoring, including yours.
+
+You may edit or delete* sites that <u>you</u> have created.  You can see those below or by going to the "You Data" page.
+
+*Please note: all monitoring data associated with a particular site will be lost if you choose to delete that site!
+
+To add monitoring data, go to the "Add data" page.
   </div>
  <script type="text/javascript">
     var locations = [
@@ -55,6 +60,7 @@ To add a new site to your lake(s), click here.
     <th>Images</th>
     <th>Notes</th>
   </tr>
+<% if logged_in? %>
   <% for site in @mysites %>
     <tr>
       <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
@@ -66,7 +72,7 @@ To add a new site to your lake(s), click here.
       <td><%= link_to "Show", site %></td>
       <% if site.user_id == current_user.id %>
          <td><%= link_to "Edit", edit_site_path(site) %></td>
-         <td><%= link_to "Destroy", site, :confirm => 'Are you sure?', :method => :delete %></td>
+         <td><%= link_to "Delete", site, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     </tr>
   <% end %>
@@ -79,14 +85,27 @@ To add a new site to your lake(s), click here.
       <td><%= image_tag site.image.url, :size => "40x40" %></td>
       <td><%=h site.notes %></td>
       <td><%= link_to "Show", site %></td>
-      <% if site.user_id == current_user.id %>
-         <td><%= link_to "Edit", edit_site_path(site) %></td>
-         <td><%= link_to "Destroy", site, :confirm => 'Are you sure?', :method => :delete %></td>
-      <% end %>
+    </tr>
+  <% end %>
+<% else %>
+  <% for site in @sites %>
+    <tr>
+      <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
+      <td><%=h site.name %></td>
+      <td><%=h site.latitude %></td>
+      <td><%=h site.longitude %></td>
+      <td><%= image_tag site.image.url, :size => "40x40" %></td>
+      <td><%=h site.notes %></td>
+      <td><%= link_to "Show", site %></td>
     </tr>
   <% end %>
 
+<% end %>
+
+
 </table>
 
+<% if logged_in? %>
 <p><%= link_to "New Site", new_site_path %></p>
+<% end %>
 </div>
