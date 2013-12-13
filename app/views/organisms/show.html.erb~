@@ -1,0 +1,57 @@
+<% title "AIS Monitoring" %>
+
+<p>
+  <strong>Sampling Event:</strong><br/>
+
+  <%=link_to h(@organism.sampling.lake.name), @organism.sampling.site.lake %><br/>
+  <%=link_to h(@organism.sampling.site.name), @organism.sampling.site %><br/>
+  <%=link_to h(@organism.sampling.date), @organism.sampling %>
+</p>
+<p>
+  <strong>Sampling Type:</strong>
+  <%=h @organism.sampling_type %>
+</p>
+<p>
+  <strong>Taxon:</strong>
+  <%=link_to (@organism.taxon.common_name  + " (<i>"  + @organism.taxon.scientific_name + "</i>)"), @organism.taxon %>
+</p>
+<p>
+  <strong>Abundance Code:</strong>
+  <%=h @organism.count %>
+</p>
+<p>
+  <strong>Confidence Code:</strong>
+  <%=h @organism.confidence %>
+</p>
+
+<% unless @organism.image_file_name.nil? %>
+<p>
+  <strong>Image 1:</strong>
+  <%= image_tag @organism.image.url, :width => '400' %>
+</p>
+<% end %>
+<% unless @organism.image2_file_name.nil? %>
+<p>
+  <strong>Image 2:</strong>
+  <%= image_tag @organism.image2.url, :width => '400'%>
+</p>
+<% end %>
+<% unless @organism.image3_file_name.nil? %>
+<p>
+  <strong>Image 3:</strong>
+  <%= image_tag @organism.image3.url, :width => '400' %>
+</p>
+<% end %>
+<p>
+  <strong>Notes:</strong>
+  <%=h @organism.notes %>
+</p>
+
+<p>
+
+ <% if @organism.user_id == current_user.id %>
+  <%= link_to "Edit", edit_organism_path(@organism) %> |
+  <%= link_to "Destroy", @organism, :confirm => 'Are you sure?', :method => :delete %> |
+ <% end %>
+  <%= link_to "View All", organisms_path %>
+</p>

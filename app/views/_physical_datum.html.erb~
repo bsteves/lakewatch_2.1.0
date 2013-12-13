@@ -1,0 +1,32 @@
+<% title "Physical Datum" %>
+
+<p>
+  <strong>Sampling:</strong>
+  <%=h @physical_datum.sampling_id %>
+</p>
+<p>
+  <strong>Sampling Type:</strong>
+  <%=h @physical_datum.sampling_type %>
+</p>
+<p>
+  <strong>Depth:</strong>
+  <%=h @physical_datum.depth %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%=h @physical_datum.value %>
+</p>
+<p>
+  <strong>Units:</strong>
+  <%=h @physical_datum.units %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @physical_datum.notes %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_physical_datum_path(@physical_datum) %> |
+  <%= link_to "Destroy", @physical_datum, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", physical_data_path %>
+</p>

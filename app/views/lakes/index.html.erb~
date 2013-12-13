@@ -1,0 +1,84 @@
+<h1>Lakes</h1>
+  <div id="map" style="width: 500px; height: 400px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+        <% for lake in @lakes %>
+       [ '<%= lake.lake_county %>' ,<%= lake.latitude%>, <%= lake.longitude%>, <%= lake.id %>],
+        <% end %>
+    ];
+
+
+    //var locations = [
+    //  ['Bondi Beach', -33.890542, 151.274856, 4],
+    //  ['Coogee Beach', -33.923036, 151.259052, 5],
+    //  ['Cronulla Beach', -34.028249, 151.157507, 3],
+    //  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+    //  ['Maroubra Beach', -33.950198, 151.259302, 1]
+    //];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: new google.maps.LatLng(44, -121),
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("<a href='<%= HOME_URL%>lakes/" + locations[i][3] + "'>" + locations[i][0] + "</a>");
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+<% javascript 'lakes_table' %>
+<% title "Lakes" %>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>County</th>
+    <th>Reach Code</th>
+    <th>AOL Page</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Notes</th>
+    <th/>
+    <th/>
+    <th/>
+  </tr>
+</thead>
+<tbody>
+  <% for lake in @lakes %>
+    <tr>
+      <td><%=h lake.name %></td>
+      <td><%=h lake.county %></td>
+      <td><%=h lake.reachcode %></td>
+      <td><%=h lake.aol_page %></td>
+      <td><%=h lake.latitude %></td>
+      <td><%=h lake.longitude %></td>
+      <td><%=h lake.notes %></td>
+      <td><%= link_to "Show", lake %></td>
+      <% if current_user.id == 1 %>
+      <td><%= link_to "Edit", edit_lake_path(lake) %></td>
+      <td><%= link_to "Destroy", lake, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+      <% if current_user.id == 1 %>
+<p><%= link_to "New Lake", new_lake_path %></p>
+      <% end %>

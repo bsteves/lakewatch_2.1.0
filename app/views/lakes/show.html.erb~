@@ -1,0 +1,112 @@
+<% title "Lake" %>
+<p> 
+     Pam and zoom to view marker location. 
+</p>
+     <div id="map" style="width: 500px; height: 400px"></div> 
+ <script type="text/javascript">
+    var locations = [
+       [ '<%= @lake.lake_county %>' ,<%= @lake.latitude%>, <%= @lake.longitude%>, <%= @lake.id %>]
+    ];
+
+    var locations2 = [
+        <% for site in @sites %>
+       [ '<%= site.lake.lake_county %>' ,<%= site.latitude%>, <%= site.longitude%>, <%= site.id %>, '<%= site.name %>'],
+        <% end %>
+    ];
+
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(<%= @lake.latitude %>, <%= @lake.longitude %>),
+      mapTypeId: google.maps.MapTypeId.HYBRID,
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations[i][3] + "'>" + locations[i][0] + "</a>");
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+   for (i = 0; i < locations2.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations2[i][1], locations2[i][2]),
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("<a href='<%= HOME_URL%>sites/" + locations2[i][3] + "'>" + locations2[i][0] + " - " + locations2[i][4] +  "</a>");
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+}
+
+
+
+
+  </script>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @lake.name %>
+</p>
+<p>
+  <strong>County:</strong>
+  <%=h @lake.county %>
+</p>
+<p>
+  <strong>Reach Code:</strong>
+  <%=h @lake.reachcode %>
+</p>
+<p>
+  <strong>AOL Page:</strong>
+  <%=h @lake.aol_page %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%=h @lake.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%=h @lake.longitude %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @lake.notes %>
+</p>
+
+<% sitecount = @lake.sites.count %>
+<% if sitecount > 0 %>
+<p>
+<strong>Sites:</strong><br/>
+   <% for site in @lake.sites %>
+      <%= link_to h(site.name), site %><br/>
+   <% end %>
+<% end %>
+</p>
+
+<p>
+<%= link_to "Add Site", new_site_path %>
+</p>
+
+<p>
+      <% if current_user.id == 1 %>
+  <%= link_to "Edit", edit_lake_path(@lake) %> |
+  <%= link_to "Destroy", @lake, :confirm => 'Are you sure?', :method => :delete %> |
+      <% end %>  
+  <%= link_to "View All", lakes_path %>
+</p>

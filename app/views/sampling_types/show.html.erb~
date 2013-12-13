@@ -1,0 +1,16 @@
+<% title "Sampling Type" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @sampling_type.name %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @sampling_type.notes %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_sampling_type_path(@sampling_type) %> |
+  <%= link_to "Destroy", @sampling_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sampling_types_path %>
+</p>

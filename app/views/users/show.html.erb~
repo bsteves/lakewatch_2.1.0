@@ -1,0 +1,51 @@
+<% title "User" %>
+
+<p>
+  <strong>Username:</strong>
+  <%=h @user.username %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @user.email %>
+</p>
+<p>
+  <% if @user.lake1 %>
+  <strong>Lake 1:</strong>
+    <%= link_to h(Lake.find(@user.lake1).lake_county), lake_path(@user.lake1) %>
+  <% end %>
+</p>
+<p>
+  <% if @user.lake2 %>
+  <strong>Lake 2:</strong>
+    <%= link_to h(Lake.find(@user.lake2).lake_county), lake_path(@user.lake2) %>
+  <% end %>
+</p>
+<p>
+  <% if @user.lake3 %>
+  <strong>Lake 3:</strong>
+    <%= link_to h(Lake.find(@user.lake3).lake_county), lake_path(@user.lake3) %>
+  <% end %>
+</p>
+<p>
+  <% if @user.lake4 %>
+  <strong>Lake 4:</strong>
+    <%= link_to h(Lake.find(@user.lake4).lake_county), lake_path(@user.lake4) %>
+  <% end %>
+</p>
+<p>
+  <% if @user.lake5 %>
+  <strong>Lake 5:</strong>
+    <%= link_to h(Lake.find(@user.lake5).lake_county), lake_path(@user.lake5) %>
+  <% end %>
+</p>
+
+
+
+
+
+
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>
