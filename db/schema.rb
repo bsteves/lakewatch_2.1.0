@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023214531) do
+ActiveRecord::Schema.define(:version => 20131216184423) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20131023214531) do
     t.string   "image_file_name"
     t.string   "image_file_size"
     t.string   "image_content_type"
+    t.string   "watchlist2"
   end
 
   create_table "users", :force => true do |t|

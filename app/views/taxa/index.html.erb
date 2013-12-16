@@ -10,11 +10,16 @@
     <th>Notes</th>
   </tr>
   <% for taxon in @taxa %>
-    <tr>
+   
+   <% if (taxon.watchlist2 == "watch list") %>
+   <tr bgcolor="#ddd">
+   <% else %>
+   <tr> 
+   <% end %>
       <td><%=h taxon.taxa_group %></td>
       <td><i><%=h taxon.scientific_name %></i></td>
       <td><%=h taxon.common_name %></td>
-      <td><%=h taxon.watch_list %></td>
+      <td><%=h taxon.watchlist2 %></td>
       <td><%= image_tag taxon.image.url, :size => "40x40" %></td>
       <td><%=h taxon.notes %></td>
       <td><%= link_to "Show", taxon %></td>
