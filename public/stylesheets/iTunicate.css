@@ -207,18 +207,6 @@ table {
 .sortable thead th a { color : White; }
 }
 
-.sortable th .asc {
-  background-image: url(/images/up_arrow.gif);
-}
-
-.sortable th .desc {
-  background-image: url(/images/down_arrow.gif);
-}
-
-.sortable th a { color : White; }
-
-
-
 a {
 	color: #c75f3e; 
 }
