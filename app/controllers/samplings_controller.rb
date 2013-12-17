@@ -8,7 +8,8 @@ before_filter :login_required, :except => [:index, :show]
 
 #before_filter :authenticate_user!
   def index
-    @samplings = Sampling.all
+
+    @samplings = Sampling.all(:order => params[:sort])
     @mysamplings = Sampling.all(:conditions => ['user_id = ?', current_user])
     @othersamplings = Sampling.all(:conditions => ['user_id != ?', current_user])
 

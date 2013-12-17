@@ -1,16 +1,17 @@
 <h1>Taxa List</h1>
-
-<table>
+<table id="taxatable" class="sortable">
+<thead>
   <tr>
-    <th>Group</th>
-    <th>Scientific Name</th>
-    <th>Common Name</th>
-    <th>Watch List</th>
-    <th>Image</th>
-    <th>Notes</th>
+    <th><%= sortable "taxa_group", "Group" %></th>
+    <th><%= sortable "scientific_name" %></th>
+    <th><%= sortable "common_name" %></th>
+    <th><%= sortable "status" %></th>
+    <th><%= sortable "image" %></th>
+    <th><%= sortable "notes" %></th>
   </tr>
+</thead>
+<tbody>
   <% for taxon in @taxa %>
-   
    <% if (taxon.watchlist2 == "watch list") %>
    <tr bgcolor="#ddd">
    <% else %>
@@ -23,13 +24,13 @@
       <td><%= image_tag taxon.image.url, :size => "40x40" %></td>
       <td><%=h taxon.notes %></td>
       <td><%= link_to "Show", taxon %></td>
-
       <% if  logged_in? && current_user.id == 1 %>
       <td><%= link_to "Edit", edit_taxon_path(taxon) %></td>
       <td><%= link_to "Delete", taxon, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     </tr>
   <% end %>
+</tbody>
 </table>
 
 <p><%= link_to "New Taxon", new_taxon_path %></p>

@@ -51,16 +51,22 @@ To add monitoring data, go to the "Add data" page.
     }
   </script>
 <div style="clear: both;">
-<table>
-  <tr>
-    <th>Lake</th>
-    <th>Name</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Images</th>
-    <th>Notes</th>
-  </tr>
+
 <% if logged_in? %>
+
+<h1>My Sites</H1>
+<table class="sortable">
+ <thead>
+  <tr>
+    <th><%= sortable "lake_id", "Lake" %></th>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "latitude" %></th>
+    <th><%= sortable "longitude" %></th>
+    <th><%= sortable "images" %></th>
+    <th><%= sortable "notes" %></th>
+  </tr>
+ </thead>
+ <tbody>
   <% for site in @mysites %>
     <tr>
       <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
@@ -76,6 +82,22 @@ To add monitoring data, go to the "Add data" page.
       <% end %>
     </tr>
   <% end %>
+</tbody>
+</table>
+<h1>Other Sites</H1>
+<table class="sortable">
+ <thead>
+  <tr>
+    <th><%= sortable "lake_id", "Lake" %></th>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "latitude" %></th>
+    <th><%= sortable "longitude" %></th>
+    <th><%= sortable "images" %></th>
+    <th><%= sortable "notes" %></th>
+  </tr>
+ </thead>
+ <tbody>
+
  <% for site in @othersites %>
     <tr>
       <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
@@ -87,7 +109,22 @@ To add monitoring data, go to the "Add data" page.
       <td><%= link_to "Show", site %></td>
     </tr>
   <% end %>
+</tbody>
+</table>
 <% else %>
+<h1>All Sites</h1>
+<table class="sortable">
+ <thead>
+  <tr>
+    <th><%= sortable "lake_id", "Lake" %></th>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "latitude" %></th>
+    <th><%= sortable "longitude" %></th>
+    <th><%= sortable "images" %></th>
+    <th><%= sortable "notes" %></th>
+  </tr>
+ </thead>
+ <tbody>
   <% for site in @sites %>
     <tr>
       <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
@@ -99,10 +136,8 @@ To add monitoring data, go to the "Add data" page.
       <td><%= link_to "Show", site %></td>
     </tr>
   <% end %>
-
 <% end %>
-
-
+</tbody>
 </table>
 
 <% if logged_in? %>

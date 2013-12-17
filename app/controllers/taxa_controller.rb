@@ -1,6 +1,6 @@
 class TaxaController < ApplicationController
   def index
-    @taxa = Taxon.all
+    @taxa = Taxon.all(:order => [sort_column + " " + sort_direction])
   end
 
   def show
@@ -42,3 +42,15 @@ class TaxaController < ApplicationController
     redirect_to taxa_url
   end
 end
+
+
+private
+
+def sort_column
+    Taxon.column_names.include?(params[:sort]) ? params[:sort] : "scientific_name"
+end
+
+def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
+

@@ -3,8 +3,9 @@ class Site < ActiveRecord::Base
   belongs_to :lake
   has_many :samplings, :dependent => :destroy
 
-  validates_presence_of :lake_id
 
+  validates_presence_of :lake_id
+  
 
    has_attached_file :image, 
 #          :styles => {:medium => "300x300", :thumb => "100x100"},

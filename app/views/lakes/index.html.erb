@@ -44,16 +44,15 @@
 
 <% javascript 'lakes_table' %>
 <% title "Lakes" %>
-<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="sortable">
 <thead>
   <tr>
-    <th>Name</th>
-    <th>County</th>
-    <th>Reach Code</th>
-    <th>AOL Page</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Notes</th>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "county" %></th>
+    <th><%= sortable "reachcode","Reach Code" %></th>
+    <th><%= sortable "latitude" %></th>
+    <th><%= sortable "longitude" %></th>
+    <th><%= sortable "Notes" %></th>
   </tr>
 </thead>
 <tbody>
@@ -62,7 +61,6 @@
       <td><%=h lake.name %></td>
       <td><%=h lake.county %></td>
       <td><%=h lake.reachcode %></td>
-      <td><%=h lake.aol_page %></td>
       <td><%=h lake.latitude %></td>
       <td><%=h lake.longitude %></td>
       <td><%=h lake.notes %></td>

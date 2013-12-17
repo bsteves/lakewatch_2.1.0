@@ -5,7 +5,9 @@ before_filter :login_required, :except => [:index, :show]
 
 #before_filter :authenticate_user!
   def index
-    @lakes = Lake.all(:order => ['name, county'])
+    
+    @lakes = Lake.all(:order => [sort_column + " " + sort_direction])
+    #@lakes = Lake.all(:order => ['name, county'])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @lakes }
@@ -65,3 +67,14 @@ before_filter :login_required, :except => [:index, :show]
     redirect_to lakes_url
   end
 end
+
+private
+
+def sort_column
+    Lake.column_names.include?(params[:sort]) ? params[:sort] : "name"
+end
+
+def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
+

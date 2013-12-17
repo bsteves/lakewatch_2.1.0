@@ -6,9 +6,11 @@ before_filter :login_required, :except => [:index, :show]
 
 #before_filter :authenticate_user!
   def index
-    @sites = Site.all(:order => 'lake_id')
-    @mysites = Site.find(:all, :conditions => ['user_id = ?', current_user], :order => 'lake_id')
-    @othersites = Site.find(:all, :conditions => ['user_id != ?', current_user], :order => 'lake_id')
+    @sites = Site.find(:all, :order => [sort_column + " " + sort_direction])
+   # @sites = Site.all(:order => [sort_column + " " + sort_direction])
+   # @sites = Site.all(:order => 'lake_id')
+    @mysites = Site.find(:all, :conditions => ['user_id = ?', current_user], :order => [sort_column + " " + sort_direction])
+    @othersites = Site.find(:all, :conditions => ['user_id != ?', current_user], :order => [sort_column + " " + sort_direction])
 
   end
 
@@ -74,3 +76,15 @@ before_filter :login_required, :except => [:index, :show]
     redirect_to sites_url
   end
 end
+
+
+private
+
+def sort_column
+    Site.column_names.include?(params[:sort]) ? params[:sort] : "name"
+end
+
+def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
+
