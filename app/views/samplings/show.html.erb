@@ -56,7 +56,7 @@
 <br/>
 <p>
 
-      <% if @sampling.user_id == current_user.id %>
+      <% if logged_in? && @sampling.user_id == current_user.id %>
   <%= link_to image_tag("edit.png", :title=>"edit",:width=>20), edit_sampling_path(@sampling) %> 
   <%= link_to image_tag("delete.png", :title=>"Delete", :width=>20), @sampling, :confirm => 'Are you sure?', :method => :delete %> 
     <% end %>
@@ -70,22 +70,27 @@
  <%= render :partial => 'physical_data/index' %>
 <%end%>
 
+      <% if logged_in? && @sampling.user_id == current_user.id %>
 <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
 <div id='physical_data_form' style="visibility: hidden">
 <%= render :partial => 'physical_data/form' %>
 </div>
 <% end %>
-
+<% end %>
 <% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
 <hr>
 <h2>Aquatic Invasive Species (Plants & Animals)</h2>
 <% unless @sampling.organisms.empty?  %>
  <%= render :partial => 'organisms/index' %>
 <%end%>
+
+
+      <% if logged_in? && @sampling.user_id == current_user.id %>
 <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
 <div id='organism_form' style="visibility: hidden">
 <%= render :partial => 'organisms/form' %>
 </div>
+<% end %>
 <% end %>
 
 

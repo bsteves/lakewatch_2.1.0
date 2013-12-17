@@ -26,7 +26,10 @@
 </p>
 
 <p>
+
+      <% if @physical_datum.user_id == current_user.id %>
   <%= link_to "Edit", edit_physical_datum_path(@physical_datum) %> |
   <%= link_to "Delete", @physical_datum, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", physical_data_path %>
+    <% end %> 
+ <%= link_to "View All", physical_data_path %>
 </p>

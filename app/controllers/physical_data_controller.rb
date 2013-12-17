@@ -3,6 +3,11 @@ class PhysicalDataController < ApplicationController
     @physical_data = PhysicalDatum.all
   end
 
+  def indexi2
+    @physical_data = PhysicalDatum.all
+  end
+
+
   def show
     @physical_datum = PhysicalDatum.find(params[:id])
   end

@@ -15,7 +15,9 @@
 
 <% form_for @organism, :html => {:multipart => true} do |f| %>
 
+<% if logged_in? %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
+<% end %>
   <%= f.error_messages %>
 <table width='400'>
   <tr>

@@ -1,29 +1,28 @@
-<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
-<thead>
+<h1>Water Quality Data</h1>
+
+<table>
   <tr>
+    <th>Sampling</th>
     <th>Sampling Type</th>
-    <th>Depth</th>
+    <th>Depth (m)</th>
     <th>Value</th>
     <th>Units</th>
     <th>Notes</th>
   </tr>
-</thead>
-<tbody>
   <% for physical_datum in @physical_data %>
     <tr>
+      <td><%=h physical_datum.sampling_id %></td>
       <td><%=h physical_datum.sampling_type %></td>
       <td><%=h physical_datum.depth %></td>
       <td><%=h physical_datum.value %></td>
       <td><%=h physical_datum.units %></td>
       <td><%=h physical_datum.notes %></td>
       <td><%= link_to "Show", physical_datum %></td>
-
-      <% if logged_in? && physical_datum.user_id == current_user.id %>
+      <% if physical_datum.user_id == current_user.id %>
       <td><%= link_to "Edit", edit_physical_datum_path(physical_datum) %></td>
       <td><%= link_to "Delete", physical_datum, :confirm => 'Are you sure?', :method => :delete %></td>
-      <% end %>
-    </tr>
+      <% end %> 
+   </tr>
   <% end %>
-</tbody>
 </table>
 
