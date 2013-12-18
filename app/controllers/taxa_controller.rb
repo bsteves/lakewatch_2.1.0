@@ -47,7 +47,7 @@ end
 private
 
 def sort_column
-    Taxon.column_names.include?(params[:sort]) ? params[:sort] : "scientific_name"
+    Taxon.column_names.include?(params[:sort]) ? params[:sort] : "id"
 end
 
 def sort_direction
