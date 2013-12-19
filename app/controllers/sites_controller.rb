@@ -81,7 +81,7 @@ end
 private
 
 def sort_column
-    Site.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    Site.column_names.include?(params[:sort]) ? params[:sort] : "id"
 end
 
 def sort_direction
