@@ -9,7 +9,7 @@ before_filter :login_required, :except => [:index, :show]
 #before_filter :authenticate_user!
   def index
 
-    @samplings = Sampling.all(:order => params[:sort])
+    @samplings = Sampling.all(:order => [sort_column + " " + sort_direction])
     @mysamplings = Sampling.all(:conditions => ['user_id = ?', current_user])
     @othersamplings = Sampling.all(:conditions => ['user_id != ?', current_user])
 
@@ -96,7 +96,17 @@ protected
   end
 
 
+private
+
+def sort_column
+    Sampling.column_names.include?(params[:sort]) ? params[:sort] : "id"
+end
+
+def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
 
 
 
 end
+

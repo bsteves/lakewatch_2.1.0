@@ -1,4 +1,4 @@
-<h1>Welcome</h1>
+<h1>Welcome, <%= current_user.username %>.</h1>
 <% unless logged_in? %>
 <h2><%= link_to "Sign up", signup_path %></h2>
 <p>If this is your first time entering data, you'll have to sign up and create a username.  When signing up, you'll be able to select which lake(s) you're monitoring. Once we confirm that you are one of our trained volunteers, we'll send you an email to let you know your account has been confirmed.</td>
@@ -7,7 +7,23 @@
 <h2><%= link_to "Log in", login_path %></h2>
 <p>Log-in to enter your monitoring data.</p>
 <% end %>
+<p>Thank you for being an OLW volunteer; your energy and dedication are amazing!  We hope you had a good experience monitoring this year and will continue with us next year.  Stay tuned for news about training opportunities in 2014.  There's so much to be learned from long-term lake monitoring so, please consider sticking with it!</p>
+
+<p>To learn more about your lake(s) or others, be sure to visit the Atlas of Oregon Lakes (http://aol.research.pdx.edu) where you can view an interactive map as well as individual lake pages (many with previously collected data, photos, and basin statistics) for many lakes around Oregon.</p> 
+  
+<p>If you’ve uploaded photos for ID assistance or confirmation, we’ll be working on those weekly, so check back periodically. </p>
+ 
+<p>Connect with us on <%= link_to "Facebook (www.facebook.com/OregonLakeWatch)", "http://www.facebook.com/OregonLakeWatch" %>.</p>
+
+<h2>Now what?</h2> 
+<ul>
+<li><%= link_to "Set up monitoring sites at your lakes", mydata_path %></li>
+<li><%= link_to "Enter data (water quality or AIS data)", new_sampling_path %></li>
+<li><%= link_to "Find forms & monitoring protocols", "http://stage.pdx.edu/oregon-lake-watch/protocols-and-datasheets" %></li>
+</ul>
+<h2>Need Help?</h2>
+For questions about: 
+ sampling, equipment, id assistance, etc? Email: olw@pdx.edu
+ about the website , mail:  bsteves@pdx.edu</p>
 
 
-<h2>Help</h2>
-<p>If you have trouble with the website (signing up, logging in, or entering data), please send an email to bsetves@pdx.edu.

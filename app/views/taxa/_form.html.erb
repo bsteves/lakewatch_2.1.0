@@ -3,7 +3,7 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :taxa_group %><br />
-    <%= f.text_field :taxa_group %>
+    <%= f.select(:taxa_group, ['Crayfish','Mollusk','Plant'], :include_blank => TRUE) %>
   </p>
   <p>
     <%= f.label :scientific_name %><br />
@@ -14,8 +14,8 @@
     <%= f.text_field :common_name %>
   </p>
   <p>
-    <%= f.label "Status" %><br />
-    <%= f.check_box :watchlist2 %>
+    <%= f.label "Watch List Status" %><br />
+    <%= f.select(:watchlist2, ['watch list','priority watch list','native','other']) %>
   </p>
    <p>
    <% unless @taxon.new_record? %>

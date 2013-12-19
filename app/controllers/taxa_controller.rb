@@ -9,6 +9,7 @@ class TaxaController < ApplicationController
 
   def new
     @taxon = Taxon.new
+    @taxagroups = Taxon.find(:all, :select => 'DISTINCT taxa_group')
   end
 
   def create
@@ -23,6 +24,8 @@ class TaxaController < ApplicationController
 
   def edit
     @taxon = Taxon.find(params[:id])
+    @taxagroups = Taxon.find(:all, :select => 'DISTINCT taxa_group')
+
   end
 
   def update

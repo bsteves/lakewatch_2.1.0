@@ -1,12 +1,84 @@
 
 <% javascript 'lakes_table' %>
-<H1>My Sites</H1>
- 
-  <div id="map" style="float: left; width: 500px; height: 400px; margin: 20px;"></div>
- <div id="instructions" style="float: left; width: 500px; margin: 20px;">
-Either use the map to zoom into your lake and show a specific site, or find it on the table below.  You may edit or delete sites you have personally entered.   To add data for a site, click “show” and then “Add data”
-To add a new site to your lake(s), click "New Site".
-  </div>
+<H1>My Lakes and Sites</H1>
+<div id="instructions" style="float: left; width: 500px; margin: 20px;">Use this page to view a list of all the lakes and sites that you have been, or will be monitoring as well as individual monitoring events.  You signed up for your chosen lakes when first signing up, but they will only show up here if you’ve already created your monitoring sites.  To add a new monitoring site or edit existing ones, click on the appropriate links below.  You may only edit or delete sites you have personally entered.  If you would like to add new data for an existing monitoring site, click the <%= link_to "Add New Monitoring Event", new_sampling_path %>.
+</div>
+
+<div></div> 
+<div style="clear: both;">
+<table>
+  <tr>
+    <th>Lake</th>
+    <th>site Name</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Images</th>
+    <th>Notes</th>
+  </tr>
+  <% for site in @mysites %>
+    <tr>
+      <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
+      <td><%=h site.name %></td>
+      <td><%=h site.latitude %></td>
+      <td><%=h site.longitude %></td>
+      <td><%= image_tag site.image.url, :size => "40x40" %></td>
+      <td><%=h site.notes %></td>
+      <td><%= link_to "Show", site %></td>
+      <% if site.user_id == current_user.id %>
+         <td><%= link_to "Edit", edit_site_path(site) %></td>
+         <td><%= link_to "Delete", site, :confirm => 'All monitoring data associated with this site will be lost if you choose to delete it.  Are you sure you want to do this?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Add a New Monitoring Site", new_site_path %></p>
+</div>
+
+<h1> My Monitoring Events</h1>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>User</th>
+    <th>Lake</th>
+    <th>Site Name</th>
+    <th>Date</th>
+    <th>Secchi</th>
+    <th>Temp.</th>
+    <th>Substr.</th>
+    <th>Trap</th>
+    <th>Rake</th>
+    <th>Shoreline</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <% for sampling in @mysamplings %>
+    <tr>
+      <td><%=h sampling.user.username %></td>
+      <td><%=link_to h(sampling.lake.lake_county), sampling.lake %></td>
+      <td><%=link_to h(sampling.site.name), sampling.site %></td>
+      <td><%=h sampling.date %></td>
+      <td><%= check_box_tag 'sampling', 'secchi', sampling.secchi, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'temperature', sampling.temperature, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'substrate', sampling.substrate, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'trap', sampling.trap, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'rake', sampling.rake, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'zigzag', sampling.zigzag, :disabled => TRUE %></td>
+      <td><%=h sampling.notes %></td>
+      <td><%= link_to "Show", sampling %></td>
+      <% if sampling.user_id == current_user.id %>
+         <td><%= link_to "Edit", edit_sampling_path(sampling) %></td>
+         <td><%= link_to "Delete", sampling, :confirm => 'All monitoring data associated with this sampling event will be lost if you choose to delete it.  Are you sure you want to do this?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<p><%= link_to "Add a New Monitoring Event", new_sampling_path %></p>
+
+<div id="map" style="float: left; width: 500px; height: 400px; margin: 20px;"></div>
  <script type="text/javascript">
     var locations = [
         <% for site in @mysites %>
@@ -47,75 +119,4 @@ To add a new site to your lake(s), click "New Site".
       })(marker, i));
     }
   </script>
-<div style="clear: both;">
-<table>
-  <tr>
-    <th>Lake</th>
-    <th>Name</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Images</th>
-    <th>Notes</th>
-  </tr>
-  <% for site in @mysites %>
-    <tr>
-      <td><%= link_to h(Lake.find(site.lake_id).lake_county), lake_path(site.lake_id) %></td>
-      <td><%=h site.name %></td>
-      <td><%=h site.latitude %></td>
-      <td><%=h site.longitude %></td>
-      <td><%= image_tag site.image.url, :size => "40x40" %></td>
-      <td><%=h site.notes %></td>
-      <td><%= link_to "Show", site %></td>
-      <% if site.user_id == current_user.id %>
-         <td><%= link_to "Edit", edit_site_path(site) %></td>
-         <td><%= link_to "Delete", site, :confirm => 'All monitoring data associated with this site will be lost if you choose to delete it.  Are you sure you want to do this?', :method => :delete %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
 
-<p><%= link_to "New Site", new_site_path %></p>
-</div>
-
-<h1> My Monitoring Events</h1>
-<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
-<thead>
-  <tr>
-    <th>User</th>
-    <th>Lake</th>
-    <th>Site</th>
-    <th>Date</th>
-    <th>Secchi</th>
-    <th>Temp.</th>
-    <th>Substr.</th>
-    <th>Trap</th>
-    <th>Rake</th>
-    <th>Shoreline</th>
-    <th>Notes</th>
-  </tr>
-</thead>
-<tbody>
-  <% for sampling in @mysamplings %>
-    <tr>
-      <td><%=h sampling.user.username %></td>
-      <td><%=link_to h(sampling.lake.lake_county), sampling.lake %></td>
-      <td><%=link_to h(sampling.site.name), sampling.site %></td>
-      <td><%=h sampling.date %></td>
-      <td><%= check_box_tag 'sampling', 'secchi', sampling.secchi, :disabled => TRUE %></td>
-      <td><%= check_box_tag 'sampling', 'temperature', sampling.temperature, :disabled => TRUE %></td>
-      <td><%= check_box_tag 'sampling', 'substrate', sampling.substrate, :disabled => TRUE %></td>
-      <td><%= check_box_tag 'sampling', 'trap', sampling.trap, :disabled => TRUE %></td>
-      <td><%= check_box_tag 'sampling', 'rake', sampling.rake, :disabled => TRUE %></td>
-      <td><%= check_box_tag 'sampling', 'zigzag', sampling.zigzag, :disabled => TRUE %></td>
-      <td><%=h sampling.notes %></td>
-      <td><%= link_to "Show", sampling %></td>
-      <% if sampling.user_id == current_user.id %>
-         <td><%= link_to "Edit", edit_sampling_path(sampling) %></td>
-         <td><%= link_to "Delete", sampling, :confirm => 'All monitoring data associated with this sampling event will be lost if you choose to delete it.  Are you sure you want to do this?', :method => :delete %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</tbody>
-</table>
-
-<p><%= link_to "New Sampling", new_sampling_path %></p>

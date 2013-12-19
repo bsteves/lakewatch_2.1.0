@@ -1,10 +1,10 @@
 
 <% javascript 'lakes_table' %>
 <h1>Monitoring Events</h1>
-<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="sortable">
 <thead>
   <tr>
-    <th>User</th>
+    <th><%= sortable "user_id", "User" %></th>
     <th>Lake</th>
     <th>Site</th>
     <th>Date</th>
