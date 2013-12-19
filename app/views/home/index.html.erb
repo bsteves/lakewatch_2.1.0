@@ -1,5 +1,7 @@
+<%= if logged_in? %>
 <h1>Welcome, <%= current_user.username %>.</h1>
-<% unless logged_in? %>
+<% else %>
+<h1>Welcome, guest.</h1>
 <h2><%= link_to "Sign up", signup_path %></h2>
 <p>If this is your first time entering data, you'll have to sign up and create a username.  When signing up, you'll be able to select which lake(s) you're monitoring. Once we confirm that you are one of our trained volunteers, we'll send you an email to let you know your account has been confirmed.</td>
 <p/>
