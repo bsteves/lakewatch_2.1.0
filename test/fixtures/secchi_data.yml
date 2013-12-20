@@ -1,0 +1,25 @@
+one:
+  user_id: 1
+  site_id: 1
+  secchi_time: 2013-12-20 14:22:28
+  cline_finder: MyString
+  observer: MyString
+  secchi_depth: 9.99
+  view_type: false
+  plants: false
+  hit_bottom: false
+  wave_code: MyString
+  sky_code: MyString
+
+two:
+  user_id: 1
+  site_id: 1
+  secchi_time: 2013-12-20 14:22:28
+  cline_finder: MyString
+  observer: MyString
+  secchi_depth: 9.99
+  view_type: false
+  plants: false
+  hit_bottom: false
+  wave_code: MyString
+  sky_code: MyString

@@ -36,7 +36,7 @@
 <% sampling_methods.push('Substrate') %>
 <% end %>
 <% if @sampling.trap %>
-  Minoow Trap<br/>
+  Minnow Trap<br/>
 <% sampling_methods.push('Trap') %>
 <% end %>
 <% if @sampling.rake %>
@@ -63,34 +63,50 @@
   <%= link_to image_tag("list.png", :title=>"View All", :width=>20), samplings_path %>
 </p>
 
-<% if (@sampling.secchi == TRUE or @sampling.temperature == TRUE) %>
-<hr>
-<h2>Water Quality Data (Secchi & Temperature)</h2>
-<% unless @sampling.physical_data.empty?  %>
- <%= render :partial => 'physical_data/index' %>
-<%end%>
+<% if @sampling.temperature == TRUE %>
+   <hr>
+   <h2>Water Quality Data (Temperature)</h2>
+   <% unless @sampling.physical_data.empty?  %>
+      <%= render :partial => 'physical_data/index' %>
+   <%end%>
+   <% if logged_in? && @sampling.user_id == current_user.id %>
+       <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
+       <div id='physical_data_form' style="visibility: hidden">
+       <%= render :partial => 'physical_data/form' %>
+       </div>
+   <% end %>
+<% end %>
 
-      <% if logged_in? && @sampling.user_id == current_user.id %>
-<p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
-<div id='physical_data_form' style="visibility: hidden">
-<%= render :partial => 'physical_data/form' %>
-</div>
+
+<% if @sampling.secchi == TRUE %>
+   <hr>
+   <h2>Water Quality Data (Secchi Transparency)</h2>
+   <% unless @sampling.secchi_data.empty?  %>
+      <%= render :partial => 'secchi_data/index' %>
+   <%end%>
+   <% if logged_in? && @sampling.user_id == current_user.id %>
+       <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('secchi_data_form');" /></p>
+       <div id='secchi_data_form' style="visibility: hidden">
+       <%= render :partial => 'secchi_data/form' %>
+       </div>
+   <% end %>
 <% end %>
-<% end %>
+
+
+
+
 <% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
-<hr>
-<h2>Aquatic Invasive Species (Plants & Animals)</h2>
-<% unless @sampling.organisms.empty?  %>
- <%= render :partial => 'organisms/index' %>
-<%end%>
-
-
-      <% if logged_in? && @sampling.user_id == current_user.id %>
-<p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
-<div id='organism_form' style="visibility: hidden">
-<%= render :partial => 'organisms/form' %>
-</div>
-<% end %>
+   <hr>
+   <h2>Aquatic Invasive Species (Plants & Animals)</h2>
+   <% unless @sampling.organisms.empty?  %>
+        <%= render :partial => 'organisms/index' %>
+   <%end%>
+   <% if logged_in? && @sampling.user_id == current_user.id %>
+        <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
+        <div id='organism_form' style="visibility: hidden">
+        <%= render :partial => 'organisms/form' %>
+        </div>
+   <% end %>
 <% end %>
 
 

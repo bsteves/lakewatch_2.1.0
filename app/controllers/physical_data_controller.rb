@@ -3,7 +3,7 @@ class PhysicalDataController < ApplicationController
     @physical_data = PhysicalDatum.all
   end
 
-  def indexi2
+  def index2
     @physical_data = PhysicalDatum.all
   end
 

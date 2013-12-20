@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216184423) do
+ActiveRecord::Schema.define(:version => 20131220225813) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,22 @@ ActiveRecord::Schema.define(:version => 20131216184423) do
     t.boolean  "rake"
     t.boolean  "zigzag"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "secchi_data", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sampling_id"
+    t.time     "secchi_time"
+    t.string   "cline_finder"
+    t.string   "observer"
+    t.decimal  "secchi_depth"
+    t.boolean  "view_type"
+    t.boolean  "plants"
+    t.boolean  "hit_bottom"
+    t.string   "wave_code"
+    t.string   "sky_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

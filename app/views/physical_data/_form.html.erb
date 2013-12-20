@@ -2,9 +2,6 @@
 <% if @physical_datum.sampling.temperature %>
 <% sampling_methods2.push('Temperature') %>
 <% end %>
-<% if @physical_datum.sampling.secchi %>
-<% sampling_methods2.push('Secchi') %>
-<% end %>
 
 
 <% form_for @physical_datum do |f| %>
@@ -27,7 +24,7 @@
 <tr> 
  <td>
     <%= f.hidden_field :sampling_id %>
-<%= f.select :sampling_type, sampling_methods2 , :prompt => 'Select One' %>
+<%= f.select :sampling_type, sampling_methods2  %>
   </td>
   <td>
     <%= f.text_field :depth , :size=>"3"%>

@@ -29,6 +29,9 @@ before_filter :login_required, :except => [:index, :show]
     @site = Sampling.find(params[:id]).site
     @physical_data = PhysicalDatum.find(:all, :conditions => ['sampling_id = ?', params[:id]])
     @physical_datum = PhysicalDatum.new(:sampling_id => @sampling.id)
+    @secchi_data = SecchiDatum.find(:all, :conditions => ['sampling_id = ?', params[:id]])
+    @secchi_datum = SecchiDatum.new(:sampling_id => @sampling.id)
+ 
     @organisms = Organism.find(:all, :conditions => ['sampling_id = ?', params[:id]])
     @organism = Organism.new(:sampling_id => @sampling.id)
   end
