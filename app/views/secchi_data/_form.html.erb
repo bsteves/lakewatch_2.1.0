@@ -12,12 +12,11 @@
 <table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
 <thead>
   <tr>
-    <th>Sampling Type</th>
     <th>Observer</th>
-    <th>Secchi Time</th>
+    <th>ClineFinder ID</th>
+    <th>Secchi Time (hh:mm)</th>
     <th>Secchi Depth (m)</th>
-    <th>View Tube Used?</th>
-    <th>Plants Visible?</th>
+    <th>Sample Quality?<br/>
     <th>Wave Code</th>
     <th>Sky Code</th>
     <th colspan="3"/>
@@ -25,30 +24,31 @@
 </thead>
 <tbody> 
 <tr> 
- <td>
     <%= f.hidden_field :sampling_id %>
-<%=  sampling_methods3  %>
-  </td>
   <td>
     <%= f.text_field :observer , :size=>"15"%>
   </td>
+  <td>
+    <%= f.text_field :cline_finder, :size=>"4"%>
+  </td>
    <td>
-    <%= f.text_field :secchi_time %>
+    <%= f.time_select :secchi_time, :size=>"15" %>
   </td>
  <td>
     <%= f.text_field :secchi_depth, :size=>"4" %>
   </td>
   <td>
-    <%= f.text_field :view_type %>
+   View Tube Used? <%= f.check_box :view_type %><br/>
+   Plants Visible? <%= f.check_box :plants %><br/>
+       Hit Bottom? <%= f.check_box :hit_bottom %>
   </td>
-   <td>
-    <%= f.text_field :plants %>
-  </td>
- <td>
-    <%= f.text_field :wave_code %>
+ 
+<td>
+    <%= f.select :wave_code, [["1 - calm","1"],["2 - ripples","2"],["3 - waves","3"],["4 - whitcaps","4"]], :prompt => 'Select One'%>
   </td>
   <td>
-    <%= f.text_field :sky_code %>
+   
+    <%= f.select :sky_code, [["1 - clear","1"],["2 - partly cloudy","2"],["3 - cloudy","3"],["4 - precipitation","4"]], :prompt => 'Select One'%>
   </td>
 
   <td colspan="3"><%= f.submit "submit" %></td>
