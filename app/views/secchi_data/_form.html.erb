@@ -13,7 +13,6 @@
 <thead>
   <tr>
     <th>Observer</th>
-    <th>ClineFinder ID</th>
     <th>Secchi Time (hh:mm)</th>
     <th>Secchi Depth (m)</th>
     <th>Sample Quality?<br/>
@@ -27,9 +26,6 @@
     <%= f.hidden_field :sampling_id %>
   <td>
     <%= f.text_field :observer , :size=>"15"%>
-  </td>
-  <td>
-    <%= f.text_field :cline_finder, :size=>"4"%>
   </td>
    <td>
     <%= f.time_select :secchi_time, :size=>"15" %>

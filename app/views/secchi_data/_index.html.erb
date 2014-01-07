@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Secchi Time</th>
-    <th>Cline Finder</th>
     <th>Observer</th>
     <th>Secchi Depth</th>
     <th>View Type</th>
@@ -15,7 +14,6 @@
   <% for secchi_datum in @secchi_data %>
     <tr>
       <td><%=h secchi_datum.secchi_time.strftime("%H:%M") %></td>
-      <td><%=h secchi_datum.cline_finder %></td>
       <td><%=h secchi_datum.observer %></td>
       <td><%=h secchi_datum.secchi_depth %></td>
       <td><%=h secchi_datum.view_type %></td>

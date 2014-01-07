@@ -2,6 +2,7 @@
 <thead>
   <tr>
     <th>Sampling Type</th>
+    <th>Cline Finder ID</th>
     <th>Depth</th>
     <th>Value</th>
     <th>Units</th>
@@ -12,6 +13,7 @@
   <% for physical_datum in @physical_data %>
     <tr>
       <td><%=h physical_datum.sampling_type %></td>
+      <td><%=h physical_datum.cline_finder %></td>
       <td><%=h physical_datum.depth %></td>
       <td><%=h physical_datum.value %></td>
       <td><%=h physical_datum.units %></td>
