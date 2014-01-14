@@ -87,9 +87,6 @@ function dms_to_deg() {
 }
 
 
-
-
-
     var my_lakes = [
         <% for lake in  Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5])%>
        [ <%= lake.id %> ,<%= lake.latitude%>, <%= lake.longitude%>],
@@ -97,8 +94,10 @@ function dms_to_deg() {
     ];
     
     var locations2 = [
-        <% for site in @sites %>
-       [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+        <% if @sites %>
+             <% for site in @sites %>
+                 [ '<%= site.name %>' ,<%= site.latitude%>, <%= site.longitude%>],
+             <% end %>
         <% end %>
     ];
 

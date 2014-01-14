@@ -4,7 +4,7 @@ class Site < ActiveRecord::Base
   has_many :samplings, :dependent => :destroy
 
 
-  validates_presence_of :lake_id
+  validates_presence_of :lake_id, :name, :latitude, :longitude
   
 
    has_attached_file :image, 

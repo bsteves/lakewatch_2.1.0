@@ -27,7 +27,9 @@ function lakeSelected() {
 
 document.observe('dom:loaded', function() {
  // countySelected();
-  $('sampling_site_id').disable();
+  lakeSelected();
+  //$('sampling_site_id').disable();
   $('nosite').hide();
-  $('sampling_lake_id').observe('change', lakeSelected);
+  $('sampling_lake_id').observe('click', lakeSelected);
+  $('sampling_site_id').observer('click', lakeSelected);
 });
