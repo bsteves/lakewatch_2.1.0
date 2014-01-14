@@ -14,12 +14,16 @@
  <div id="site_field">
  <label for= "sampling_site_id">Site:</label><br/>
     <%= f.collection_select :site_id, Site.find(:all), :id, :name, :prompt => "Select a site" %>
+  
+   <%= link_to "Add New Site", new_site_path %>
+
   </div>
   <div id="nosite">
     No sites found for this Lake.
-  </div>
-
+ 
    <%= link_to "Add New Site", new_site_path %>
+ </div>
+
  
  <p>
     <%= f.label :date %><br />
