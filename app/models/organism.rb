@@ -4,7 +4,7 @@ class Organism < ActiveRecord::Base
   belongs_to :taxon
   
 
-  validates_presence_of :sampling_type
+  validates_presence_of :sampling_type, :count, :confidence
 
    has_attached_file :image, 
 #          :styles => {:medium => "300x300", :thumb => "100x100"},

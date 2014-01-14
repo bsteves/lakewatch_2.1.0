@@ -5,8 +5,7 @@
     <th>Sampling</th>
     <th>Sampling Type</th>
     <th>Depth (m)</th>
-    <th>Value</th>
-    <th>Units</th>
+    <th>Temperature (C)</th>
     <th>Notes</th>
   </tr>
   <% for physical_datum in @physical_data %>
@@ -15,7 +14,6 @@
       <td><%=h physical_datum.sampling_type %></td>
       <td><%=h physical_datum.depth %></td>
       <td><%=h physical_datum.value %></td>
-      <td><%=h physical_datum.units %></td>
       <td><%=h physical_datum.notes %></td>
       <td><%= link_to "Show", physical_datum %></td>
       <% if physical_datum.user_id == current_user.id %>
