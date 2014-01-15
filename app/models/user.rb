@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
-  attr_accessible :username, :email, :password, :password_confirmation, :lake1, :lake2, :lake3, :lake4, :lake5
+  attr_accessible :username, :email, :password, :password_confirmation,  :lake1, :lake2, :lake3, :lake4, :lake5, :password_reset_token
   attr_accessor :password
-  before_save :prepare_password
+  before_save :prepare_password, :prepare_reset_token
 
   validates_presence_of :username
   validates_uniqueness_of :username, :email, :allow_blank => true
@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
   end
 
   def prepare_reset_token
-    # self.password_reset_token = SecureRandom.hex(16)
-    # self.password_reset_sent_at = Time.zone.now
+     self.password_reset_token = SecureRandom.hex(16)
+     self.password_reset_sent_at = Time.zone.now
   end
 
   def encrypt_password(pass)

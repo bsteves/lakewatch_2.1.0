@@ -10,20 +10,23 @@
     <%= f.label :email, "Email Address" %><br />
     <%= f.text_field :email %>
   </p>
+
   <p>
     <%= f.label :password, "Password" %><br />
     <%= f.text_field :password %>
   </p>
  
-   <p>
-    <%= f.label :password_hash, "Password Hash" %><br />
-    <%= f.text_field :password_hash %>
+  <p>
+    <%= f.label :password_confirmation, "Confirm Password" %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
-   <p>
-    <%= f.label :password_salt, "Password Salt" %><br />
-    <%= f.text_field :password_salt %>
+
+  <p>
+    <%= f.label :password_reset_token, "Password Reset Token" %><br />
+    <%= f.text_field :password_reset_token %>
   </p>
- 
+
+
    <p id="lake_field">
     <label for="lake1">Lake 1</lake><br />
     <%= f.collection_select :lake1, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
