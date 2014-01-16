@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106231603) do
+ActiveRecord::Schema.define(:version => 20140115234621) do
 
   create_table "counties", :force => true do |t|
     t.string   "name"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20140106231603) do
     t.integer  "lake5"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "clinefinder"
   end
 
 end

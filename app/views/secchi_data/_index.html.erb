@@ -23,7 +23,7 @@
       <td><%=h secchi_datum.sky_code %></td>
       <td><%= link_to "Show", secchi_datum %></td>
 
-      <% if secchi_datum.user_id == current_user.id %>
+      <% if logged_in? && secchi_datum.user_id == current_user.id %>
       <td><%= link_to "Edit", edit_secchi_datum_path(secchi_datum) %></td>
       <td><%= link_to "Destroy", secchi_datum, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>

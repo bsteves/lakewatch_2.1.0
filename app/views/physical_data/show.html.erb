@@ -10,7 +10,7 @@
 </p>
 <p>
   <strong>Cline Finder ID:</strong>
-  <%=h @physical_datum.cline_finder %>
+      <td><%=h @physical_datum.sampling.user.clinefinder %></td>
 </p>
 
 <p>
@@ -28,7 +28,7 @@
 
 <p>
 
-      <% if @physical_datum.user_id == current_user.id %>
+      <% if logged_in? && @physical_datum.user_id == current_user.id %>
   <%= link_to "Edit", edit_physical_datum_path(@physical_datum) %> |
   <%= link_to "Delete", @physical_datum, :confirm => 'Are you sure?', :method => :delete %> |
     <% end %> 

@@ -27,7 +27,7 @@
 <%= f.select :sampling_type, sampling_methods2  %>
   </td>
   <td>
-    <%= f.text_field :cline_finder, :size=>"4"%>
+    <%= current_user.clinefinder %>
   </td>
   <td>
     <%= f.text_field :depth , :size=>"3"%>
