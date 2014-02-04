@@ -37,7 +37,7 @@
     <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
-    <%= f.select :count, [["1 - scarce",1],["2 - infrequent",2],["3 - common",3],["4 - dominant", 4]], :prompt => 'Select One' %>
+    <%= f.select :count, [["4 - dominant", 4],["3 - common",3], ["2 - infrequent",2],["1 - scarce",1],["N/A",0]], :prompt => 'Select One' %>
   </td>
  <td>
     <%= f.select :confidence, [["H - high","H"],["M - fairly certain","M"],["L - uncertain/tentative","L"]], :prompt => 'Select One'%>
