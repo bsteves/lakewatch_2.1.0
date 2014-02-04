@@ -2,7 +2,6 @@
 <thead>
   <tr>
     <th>Sampling Type</th>
-    <th>Cline Finder ID</th>
     <th>Depth (m)</th>
     <th>Temperature (C)</th>
     <th>Notes</th>
@@ -12,7 +11,6 @@
   <% for physical_datum in @physical_data %>
     <tr>
       <td><%=h physical_datum.sampling_type %></td>
-      <td><%=h physical_datum.sampling.user.clinefinder %></td>
       <td><%=h physical_datum.depth %></td>
       <td><%=h physical_datum.value %></td>
       <td><%=h physical_datum.notes %></td>

@@ -12,7 +12,6 @@
 <table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
 <thead>
   <tr>
-    <th>Cline Finder ID</th>
     <th>Depth (m)</th>
     <th>Temperature (C)</th>
     <th>Notes</th>
@@ -23,9 +22,6 @@
 <tr> 
     <%= f.hidden_field :sampling_id %>
     <%= f.hidden_field :sampling_type, :value => "Temperature" %>
-  <td>
-    <%= current_user.clinefinder %>
-  </td>
   <td>
     <%= f.text_field :depth , :size=>"3"%>
   </td>
