@@ -1,5 +1,5 @@
 class Organism < ActiveRecord::Base
-  attr_accessible :sampling_id, :sampling_type, :taxon_id, :count,:confidence, :size, :image, :image2, :image3, :notes
+  attr_accessible :user_id, :sampling_id, :sampling_type, :taxon_id, :count,:confidence, :size, :image, :image2, :image3, :notes
   belongs_to :sampling
   belongs_to :taxon
   

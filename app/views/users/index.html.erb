@@ -39,11 +39,16 @@
       <%=link_to h(Lake.find(user.lake5).lake_county), Lake.find(user.lake5) %>
       <% end %>
       </td>
+
+      <% if logged_in? && current_user.id == 1 %>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
       <td><%= link_to "Delete", user, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+      <% end %>   
+ </tr>
   <% end %>
 </tbody>
 </table>
 
+      <% if logged_in? && current_user.id == 1 %>
 <p><%= link_to "New User", new_user_path %></p>
+      <% end %>

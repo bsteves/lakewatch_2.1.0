@@ -4,5 +4,5 @@ class PhysicalDatum < ActiveRecord::Base
   belongs_to :sampling
 
 
-  validates_presence_of :sampling_type, :cline_finder, :depth, :units, :value
+  validates_presence_of :sampling_type, :cline_finder, :depth, :value
 end
