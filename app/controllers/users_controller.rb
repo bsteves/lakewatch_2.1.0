@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 #layout "application"
-before_filter :login_required, :except => [:new, :create]
+before_filter :login_required, :except => [:new, :create, :index]
 
 
   def new
@@ -9,7 +9,7 @@ before_filter :login_required, :except => [:new, :create]
   def index
     @users = User.find(:all, :order => "created_at DESC") 
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
