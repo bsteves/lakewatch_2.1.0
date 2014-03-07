@@ -1,5 +1,5 @@
 class Taxon < ActiveRecord::Base
-  attr_accessible :group, :scientific_name, :common_name, :watchlist2, :image, :notes
+  attr_accessible :taxa_group, :scientific_name, :common_name, :watchlist2, :image, :notes
   has_many :organisms, :dependent => :destroy
 
    has_attached_file :image, 
