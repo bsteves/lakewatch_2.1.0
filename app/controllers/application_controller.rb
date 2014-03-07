@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+protected
+  
+  def authorize_admin
+  	unless logged_in? && current_user.admin  == 1
+  		flash[:notice] = "Hey you're not an Admin!"
+  		redirect_to(:controller => "../", :action => "login")
+  	end
+  end
+
+
+
 end

@@ -65,7 +65,7 @@
       <td><%=h lake.longitude %></td>
       <td><%=h lake.notes %></td>
       <td><%= link_to "Show", lake %></td>
-      <% if logged_in? && current_user.id == 1 %>
+      <% if current_user.admin == TRUE %>
       <td><%= link_to "Edit", edit_lake_path(lake) %></td>
       <td><%= link_to "Delete", lake, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
@@ -74,6 +74,6 @@
 </tbody>
 </table>
 
-      <% if logged_in? && current_user.id == 1 %>
+      <% if current_user.admin? %>
 <p><%= link_to "New Lake", new_lake_path %></p>
       <% end %>

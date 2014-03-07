@@ -24,7 +24,7 @@
       <td><%= image_tag taxon.image.url, :size => "40x40" %></td>
       <td><%=h taxon.notes %></td>
       <td><%= link_to "Show", taxon %></td>
-      <% if  logged_in? && ( current_user.id == 26 ||  current_user.id == 1 )  %>
+      <% if   current_user.admin?  %>
       <td><%= link_to "Edit", edit_taxon_path(taxon) %></td>
       <td><%= link_to "Delete", taxon, :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
