@@ -10,7 +10,6 @@
         }
     </script>
 <% title "Sampling Event" %>
-
 <p>
   <strong>User:</strong>
 
@@ -67,7 +66,16 @@
    <hr>
    <h2>Water Quality Data (Temperature)</h2>
    <% unless @sampling.physical_data.empty?  %>
+<% sorted_physical_data = @physical_data.sort_by &:depth %>
+<% chart_data5 = sorted_physical_data.map {|i| [i.value, i.depth*-1]} %>
+<% visualization "chart_id5", "ScatterChart", :title => "Temperature Depth Profile", :legend => 'none', :vAxis => '{title: ''hello''}',  :width => 400, :height => 400, :html => {:class => "graph_chart" } do |chart| %>
+<% chart.number "" %>
+<% chart.number "Temperature (C)" %>
+<% chart.add_rows(chart_data5) %>
+   <% end %>
+
       <%= render :partial => 'physical_data/index' %>
+
    <%end%>
    <% if logged_in? && @sampling.user_id == current_user.id %>
        <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>

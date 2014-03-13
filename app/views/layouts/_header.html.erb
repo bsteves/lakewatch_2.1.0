@@ -2,6 +2,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag "dropdown_menu" %>
+    <%= include_visualization_api %>
+    <%= render_visualizations %>
 <%= stylesheet_link_tag "iTunicate", :media => "all" %>
   <%= yield(:head) %> 
    <title>Oregon Lake Watch</title>
