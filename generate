@@ -1,0 +1,320 @@
+Script started on Fri 07 Mar 2014 09:35:52 AM PST
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ exitgit pushllshrebase --skippull[Kshllrebase --skippush[Kllsh[4Pexit[Kscript/[K[K[K[K[K[K[Kexitgit pushll[K[K[K[K[K[K[K[Kscript/generate migration add_admin_ user[K[K[K[Kto_su[K[Kusers admin_[K"[K:boolean
+/home/stevesb/.rvm/gems/ruby-1.8.7-p371/gems/rails-2.1.0/lib/rails_generator/lookup.rb:211:Warning: Gem::SourceIndex#search support for Regexp patterns is deprecated, use #find_name
+      exists  db/migrate
+      create  db/migrate/20140307173646_add_admin_to_users.rb
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ vo, a[[K[K[K[K[K[Kvim db/mid[Kgrate/20140307173646_add_admmin_to_users.rb 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"db/migrate/20140307173646_add_admin_to_users.rb" 9L, 168C[>c[1;1H[35mclass[m [32mAddAdminToUsers[m < [32mActiveRecord[m::[32mMigration[m
+  [35mdef[m [31mself[m.[36mup[m
+    add_column [31m:users[m, [31m:admin[m, [31m:boolean[m
+  [35mend
+
+[m  [35mdef[m [31mself[m.[36mdown[m
+    remove_column [31m:users[m, [31m:admin[m
+  [35mend
+end[m
+[1m[34m~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll]2;20140307173646_add_admin_to_use.../lakewatch_2.1.0/db/migrate) - VIM]1;20140307173646_add_admin_to_users.rb[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;1H[K[24;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0]1;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migrate
+(in /home/stevesb/RailsApps/lakewatch_2.1.0)
+== 20140303184831 CreateUsers: migrating ======================================
+-- create_table(:users)
+NOTICE:  CREATE TABLE will create implicit sequence "users_id_seq1" for serial column "users.id"
+rake aborted!
+PG::Error: ERROR:  relation "users" already exists
+: CREATE TABLE "users" ("id" serial primary key, "username" character varying(255) DEFAULT NULL NULL, "email" character varying(255) DEFAULT NULL NULL, "password_hash" character varying(255) DEFAULT NULL NULL, "password_salt" character varying(255) DEFAULT NULL NULL, "created_at" timestamp DEFAULT NULL NULL, "updated_at" timestamp DEFAULT NULL NULL) 
+
+(See full trace by running task with --trace)
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migratevim db/migrate/20140307173646_add_admmin_to_users.rb 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"db/migrate/20140307173646_add_admin_to_users.rb" 9L, 168C[>c[1;1H[35mclass[m [32mAddAdminToUsers[m < [32mActiveRecord[m::[32mMigration[m
+  [35mdef[m [31mself[m.[36mup[m
+    add_column [31m:users[m, [31m:admin[m, [31m:boolean[m
+  [35mend
+
+[m  [35mdef[m [31mself[m.[36mdown[m
+    remove_column [31m:users[m, [31m:admin[m
+  [35mend
+end[m
+[1m[34m~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll]2;20140307173646_add_admin_to_use.../lakewatch_2.1.0/db/migrate) - VIM]1;20140307173646_add_admin_to_users.rb[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;63H2[2;1H[?12l[?25h[?25l[24;63H3[3;1H[?12l[?25h[?25l[24;1H[K[24;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0]1;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ vim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ [21Prake db:migrate
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ [21Prake db:migrate
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C --[KENV==[KProduction[C-ENV=Production[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Krake db:migrate RAILS_ENV=test[K[K[K[Kproduction [A
+(in /home/stevesb/RailsApps/lakewatch_2.1.0)
+== 20140303184831 CreateUsers: migrating ======================================
+-- create_table(:users)
+NOTICE:  CREATE TABLE will create implicit sequence "users_id_seq1" for serial column "users.id"
+rake aborted!
+PG::Error: ERROR:  relation "users" already exists
+: CREATE TABLE "users" ("id" serial primary key, "username" character varying(255) DEFAULT NULL NULL, "email" character varying(255) DEFAULT NULL NULL, "password_hash" character varying(255) DEFAULT NULL NULL, "password_salt" character varying(255) DEFAULT NULL NULL, "created_at" timestamp DEFAULT NULL NULL, "updated_at" timestamp DEFAULT NULL NULL) 
+
+(See full trace by running task with --trace)
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migrate RAILS_ENV=production [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim db/migrate/20140307173646_add_admmin_to_users.rb 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"db/migrate/20140307173646_add_admin_to_users.rb" 9L, 168C[>c[1;1H[35mclass[m [32mAddAdminToUsers[m < [32mActiveRecord[m::[32mMigration[m
+  [35mdef[m [31mself[m.[36mup[m
+    add_column [31m:users[m, [31m:admin[m, [31m:boolean[m
+  [35mend
+
+[m  [35mdef[m [31mself[m.[36mdown[m
+    remove_column [31m:users[m, [31m:admin[m
+  [35mend
+end[m
+[1m[34m~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll]2;20140307173646_add_admin_to_use.../lakewatch_2.1.0/db/migrate) - VIM]1;20140307173646_add_admin_to_users.rb[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;1H[K[24;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0]1;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ vim db/migrate/20140307173646_add_admmin_to_users.rb 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"db/migrate/20140307173646_add_admin_to_users.rb" 9L, 168C[>c[1;1H[35mclass[m [32mAddAdminToUsers[m < [32mActiveRecord[m::[32mMigration[m
+  [35mdef[m [31mself[m.[36mup[m
+    add_column [31m:users[m, [31m:admin[m, [31m:boolean[m
+  [35mend
+
+[m  [35mdef[m [31mself[m.[36mdown[m
+    remove_column [31m:users[m, [31m:admin[m
+  [35mend
+end[m
+[1m[34m~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H1,1[11CAll]2;20140307173646_add_admin_to_use.../lakewatch_2.1.0/db/migrate) - VIM]1;20140307173646_add_admin_to_users.rb[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;1H[K[24;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0]1;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ vim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migrate RAILS_ENV=production [K[A
+(in /home/stevesb/RailsApps/lakewatch_2.1.0)
+== 20140307173646 AddAdminToUsers: migrating ==================================
+-- add_column(:users, :admin, :boolean)
+   -> 0.0023s
+== 20140307173646 AddAdminToUsers: migrated (0.0024s) =========================
+
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migrate RAILS_ENV=production [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ rake db:migrate RAILS_ENV=production [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ [21Prake db:migrate
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim db/migrate/20140307173646_add_admmin_to_users.rb [A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ script/generate migration add_admin_to_users admin:boolean[A]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ exit[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit pushllshrebase --skippull[Ksh[K[K[K[K[K[K[K[Kgi[K[Kvi [Km app/controllers/application.rb 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"app/controllers/application.rb" 28L, 951C[>c[1;1H[34m# Filters added to this controller apply to all controllers in the application.
+# Likewise, all the methods added will be available for all controllers.[m
+
+[35mclass[m [32mApplicationController[m < [32mActionController[m::[32mBase[m
+  [35minclude[m [32mAuthentication[m
+  helper [31m:all[m [34m# include all helpers, all the time
+
+[m  [34m# See ActionController::RequestForgeryProtection for details
+[m  [34m# Uncomment the :secret if you're not using the cookie session store[m
+  protect_from_forgery [34m# :secret => 'c8f8f874fb97fd089b10c32330344dd1'
+
+[m  [34m# See ActionController::Base for details 
+[m  [34m# Uncomment this to filter the contents of submitted sensitive data parameters[14;3H# from your application log (in this case, all fields with names like "passworr[15;1Hd"). 
+[m  [34m# filter_parameter_logging :password[m[18;5H[33mprivate[m
+
+  [35mdef[m [36mauthorize_admin[m[21;9H[33munless[m logged_in? && current_user.id  == [31m1[m[22;17Hflash[[31m:notice[m] = [35m"[m[31mHey you're not an Admin![m[35m"[m[23;17Hredirect_to([31m:controller[m => [35m"[m[31m../[m[35m"[m, [31m:action[m => [35m"[m[31mlogin[m[35m"[m)[24;63H1,1[11CTop]2;application.rb (~/RailsApps/lakewatch_2.1.0/app/controllers) - VIM]1;application.rb[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;63H2[2;1H[?12l[?25h[?25l[24;63H3,0-1[3;1H[?12l[?25h[?25l[24;63H4,1  [4;1H[?12l[?25h[?25l[24;63H5[5;1H[?12l[?25h[?25l[24;63H6[6;1H[?12l[?25h[?25l[24;63H7,0-1[7;1H[?12l[?25h[?25l[24;63H8,1  [8;1H[?12l[?25h[?25l[24;63H9[9;1H[?12l[?25h[?25l[24;63H10,1[10;1H[?12l[?25h[?25l[24;64H1[11;1H[?12l[?25h[?25l[24;64H2[12;1H[?12l[?25h[?25l[24;64H3[13;1H[?12l[?25h[?25l[24;64H4[14;1H[?12l[?25h[?25l[24;64H5[16;1H[?12l[?25h[?25l[24;64H6,0-1[17;1H[?12l[?25h[?25l[24;64H7,1  [18;1H[?12l[?25h[?25l[24;64H8[19;1H[?12l[?25h[?25l[24;64H9[20;1H[?12l[?25h[?25l[24;63H20[21;1H[?12l[?25h[?25l[24;66H2[21;2H[?12l[?25h[?25l[24;66H3-8[21;8H[?12l[?25h[?25l[24;66H4-9[21;9H[?12l[?25h[?25l[24;66H5-10[21;10H[?12l[?25h[?25l[24;66H6-11[21;11H[?12l[?25h[?25l[24;66H7-12[21;12H[?12l[?25h[?25l[24;66H8-13[21;13H[?12l[?25h[?25l[24;66H9-14[21;14H[?12l[?25h[?25l[24;66H10-15[21;15H[?12l[?25h[?25l[24;67H1-16[21;16H[?12l[?25h[?25l[24;67H2-17[21;17H[?12l[?25h[?25l[24;67H3-18[21;18H[?12l[?25h[?25l[24;67H4-19[21;19H[?12l[?25h[?25l[24;67H5-20[21;20H[?12l[?25h[?25l[24;67H6-21[21;21H[?12l[?25h[?25l[24;67H7-22[21;22H[?12l[?25h[?25l[24;67H8-23[21;23H[?12l[?25h[?25l[24;67H9-24[21;24H[?12l[?25h[?25l[24;66H20-25[21;25H[?12l[?25h[?25l[24;67H1-26[21;26H[?12l[?25h[?25l[24;67H2-27[21;27H[?12l[?25h[?25l[24;67H3-28[21;28H[?12l[?25h[?25l[24;67H4-29[21;29H[?12l[?25h[?25l[24;67H5-30[21;30H[?12l[?25h[?25l[24;67H6-31[21;31H[?12l[?25h[?25l[24;67H7-32[21;32H[?12l[?25h[?25l[24;67H8-33[21;33H[?12l[?25h[?25l[24;67H9-34[21;34H[?12l[?25h[?25l[24;66H30-35[21;35H[?12l[?25h[?25l[24;67H1-36[21;36H[?12l[?25h[?25l[24;67H2-37[21;37H[?12l[?25h[?25l[24;67H3-38[21;38H[?12l[?25h[?25l[24;67H4-39[21;39H[?12l[?25h[?25l[24;67H5-40[21;40H[?12l[?25h[?25l[24;67H6-41[21;41H[?12l[?25h[?25l[24;67H7-42[21;42H[?12l[?25h[?25l[24;67H8-43[21;43H[?12l[?25h[?25l[24;67H9-44[21;44H[?12l[?25h[?25l[24;66H40-45[21;45H[?12l[?25h[?25l
+
+
+[1m-- INSERT --[m[24;13H[K[24;63H20,40-45      Top[21;45H[?12l[?25h[?25l  == [31m1[m[21;50H[K[24;66H39-44]2;application.rb + (~/RailsApps/lakewatch_2.1.0/app/controllers) - VIM]1;application.rb[21;44H[?12l[?25h[?25l  == [31m1[m[21;49H[K[24;67H8-43[21;43H[?12l[?25h[?25la  == [31m1[m[24;67H9-44[21;44H[?12l[?25h[?25ld  == [31m1[m[24;66H40-45[21;45H[?12l[?25h[?25lm  == [31m1[m[24;67H1-46[21;46H[?12l[?25h[?25li  == [31m1[m[24;67H2-47[21;47H[?12l[?25h[?25ln  == [31m1[m[24;67H3-48[21;48H[?12l[?25h[?25l[24;67H4-49[21;49H[?12l[?25h[?25l[24;67H5-50[21;50H[?12l[?25h[?25l[24;67H6-51[21;51H[?12l[?25h[?25l[24;67H7-52[21;52H[?12l[?25h[?25l[24;67H8-53[21;53H[?12l[?25h[?25l[24;67H9-54[21;54H[?12l[?25h[?25l[21;53H[K[24;67H8-53[21;53H[?12l[?25h[?25l[35m'[m
+[31m                flash[[7C] = "[m[7C[35m'[mre [33mnot[m an [32mAdmin[m!
+[31m                redirect_to([11C => [m[1C../[1C[31m, [7C => [m[1Clogin[1C[31m)[m[24;67H9-54[21;54H[?12l[?25h[?25l[31mt[m[24;66H50-55[21;55H[?12l[?25h[?25l[35m'[m
+                flash[[7C] = [35m"[m[7C[31m're not an Admin![m
+                redirect_to([11C => [1C[31m../[m[1C, [7C => [1C[31mlogin[m[1C)[24;67H1-56[21;56H[?12l[?25h[?25l[21;55H[K[22;1H[31m                flash[[7C] = "[m[7C[35m'[mre [33mnot[m an [32mAdmin[m!
+[31m                redirect_to([11C => [m[1C../[1C[31m, [7C => [m[1Clogin[1C[31m)[m[24;67H0-55[21;55H[?12l[?25h[?25l[21;54H[K[24;66H49-54[21;54H[?12l[?25h[?25l[21;53H[K[22;1H                flash[[7C] = [35m"[m[7C[31m're not an Admin![m
+                redirect_to([11C => [1C[31m../[m[1C, [7C => [1C[31mlogin[m[1C)[24;67H8-53[21;53H[?12l[?25h[?25l[31m1[m[24;67H9-54[21;54H[?12l[?25h[?25l[24;64H1,42[22;54H[?12l[?25h[?25l[24;64H2[23;54H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9H[33mend[m[24;63H[K[24;63H23,7-12[7C16%[23;12H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3H[35mend[m[24;63H[K[24;63H24,6[10C33%[23;6H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[24;63H[K[24;63H25,1[10C50%[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[24;63H[K[24;63H26,1[10C66%[23;1H[?12l[?25h[24;1H[K[23;1H[?25l[24;63H26,0-1[8C66%[23;1H[?12l[?25h[?25l[24;63H[K[24;1H:[?12l[?25hw[?25l[?12l[?25h[?25l"app/controllers/application.rb" 28L, 954C written[12C26,0-1[8C66%]2;application.rb (~/RailsApps/lakewatch_2.1.0/app/controllers) - VIM]1;application.rb[24;63H[K[24;63H26,0-1[8C66%[23;1H[?12l[?25h[?25l[24;1H[K[24;1H:[?12l[?25hq[?25l[?12l[?25h[?25l]2;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0]1;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ script/server
+=> Booting WEBrick...
+=> Rails 2.1.0 application started on http://0.0.0.0:3000
+=> Ctrl-C to shutdown server; call with --help for options
+[2014-03-07 09:49:52] INFO  WEBrick 1.3.1
+[2014-03-07 09:49:52] INFO  ruby 1.8.7 (2012-10-12) [x86_64-linux]
+[2014-03-07 09:49:52] INFO  WEBrick::HTTPServer#start: pid=1324 port=3000
+127.0.0.1 - - [07/Mar/2014:09:49:59 PST] "GET / HTTP/1.1" 304 0
+- -> /
+127.0.0.1 - - [07/Mar/2014:09:50:02 PST] "GET /login HTTP/1.1" 200 2676
+http://localhost:3000/ -> /login
+127.0.0.1 - - [07/Mar/2014:09:50:03 PST] "POST /sessions HTTP/1.1" 302 88
+http://localhost:3000/login -> /sessions
+127.0.0.1 - - [07/Mar/2014:09:50:04 PST] "GET / HTTP/1.1" 200 3640
+http://localhost:3000/login -> /
+127.0.0.1 - - [07/Mar/2014:09:50:05 PST] "GET /lakes HTTP/1.1" 200 213721
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:09:50:06 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 200 109
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:09:50:06 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/lakes -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:09:50:11 PST] "GET /lakes/200/edit HTTP/1.1" 200 3643
+http://localhost:3000/lakes -> /lakes/200/edit
+127.0.0.1 - - [07/Mar/2014:09:50:15 PST] "GET /logout HTTP/1.1" 302 88
+http://localhost:3000/ -> /logout
+127.0.0.1 - - [07/Mar/2014:09:50:15 PST] "GET / HTTP/1.1" 200 3922
+http://localhost:3000/ -> /
+127.0.0.1 - - [07/Mar/2014:09:50:17 PST] "GET /login HTTP/1.1" 304 0
+http://localhost:3000/ -> /login
+127.0.0.1 - - [07/Mar/2014:09:50:26 PST] "POST /sessions HTTP/1.1" 302 88
+http://localhost:3000/login -> /sessions
+127.0.0.1 - - [07/Mar/2014:09:50:26 PST] "GET / HTTP/1.1" 200 3637
+http://localhost:3000/login -> /
+127.0.0.1 - - [07/Mar/2014:09:50:28 PST] "GET /lakes HTTP/1.1" 200 66792
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:09:50:28 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:09:51:37 PST] "GET /lakes HTTP/1.1" 500 18565
+http://localhost:3000/ -> /lakes
+^C[2014-03-07 09:52:28] INFO  going to shutdown ...
+[2014-03-07 09:52:28] INFO  WEBrick::HTTPServer#start done.
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ script/server
+=> Booting WEBrick...
+=> Rails 2.1.0 application started on http://0.0.0.0:3000
+=> Ctrl-C to shutdown server; call with --help for options
+[2014-03-07 09:52:30] INFO  WEBrick 1.3.1
+[2014-03-07 09:52:30] INFO  ruby 1.8.7 (2012-10-12) [x86_64-linux]
+[2014-03-07 09:52:30] INFO  WEBrick::HTTPServer#start: pid=1511 port=3000
+127.0.0.1 - - [07/Mar/2014:09:52:32 PST] "GET /lakes HTTP/1.1" 500 18565
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:09:53:06 PST] "GET /lakes HTTP/1.1" 500 18565
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:09:53:10 PST] "GET /lakes HTTP/1.1" 500 18565
+http://localhost:3000/ -> /lakes
+^C[2014-03-07 09:53:16] INFO  going to shutdown ...
+[2014-03-07 09:53:17] INFO  WEBrick::HTTPServer#start done.
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ script/server
+=> Booting WEBrick...
+=> Rails 2.1.0 application started on http://0.0.0.0:3000
+=> Ctrl-C to shutdown server; call with --help for options
+[2014-03-07 09:53:18] INFO  WEBrick 1.3.1
+[2014-03-07 09:53:18] INFO  ruby 1.8.7 (2012-10-12) [x86_64-linux]
+[2014-03-07 09:53:18] INFO  WEBrick::HTTPServer#start: pid=1519 port=3000
+127.0.0.1 - - [07/Mar/2014:10:00:32 PST] "GET /login HTTP/1.1" 200 2823
+- -> /login
+127.0.0.1 - - [07/Mar/2014:10:00:34 PST] "POST /sessions HTTP/1.1" 302 88
+http://localhost:3000/login -> /sessions
+127.0.0.1 - - [07/Mar/2014:10:00:35 PST] "GET / HTTP/1.1" 200 3640
+http://localhost:3000/login -> /
+127.0.0.1 - - [07/Mar/2014:10:00:37 PST] "GET /lakes HTTP/1.1" 200 213721
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:10:00:37 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:00:37 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/lakes -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:10:00:40 PST] "GET /lakes/1/edit HTTP/1.1" 200 3631
+http://localhost:3000/lakes -> /lakes/1/edit
+127.0.0.1 - - [07/Mar/2014:10:00:49 PST] "GET /logout HTTP/1.1" 302 88
+http://localhost:3000/lakes -> /logout
+127.0.0.1 - - [07/Mar/2014:10:00:49 PST] "GET / HTTP/1.1" 200 3922
+http://localhost:3000/lakes -> /
+127.0.0.1 - - [07/Mar/2014:10:00:52 PST] "GET /login HTTP/1.1" 200 2676
+http://localhost:3000/ -> /login
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "POST /sessions HTTP/1.1" 302 88
+http://localhost:3000/login -> /sessions
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET / HTTP/1.1" 200 3637
+http://localhost:3000/login -> /
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/prototype.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/prototype.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/effects.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/effects.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/controls.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/controls.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/dragdrop.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/dragdrop.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/dropdown_menu.js?1370635179 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/dropdown_menu.js?1370635179
+127.0.0.1 - - [07/Mar/2014:10:01:03 PST] "GET /javascripts/application.js?1377278302 HTTP/1.1" 304 0
+http://localhost:3000/ -> /javascripts/application.js?1377278302
+127.0.0.1 - - [07/Mar/2014:10:01:05 PST] "GET /lakes HTTP/1.1" 200 213720
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:10:01:05 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /lakes HTTP/1.1" 304 0
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/effects.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/effects.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/prototype.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/prototype.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/controls.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/controls.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/dragdrop.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/dragdrop.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/application.js?1377278302 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/application.js?1377278302
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/dropdown_menu.js?1370635179 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/dropdown_menu.js?1370635179
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /stylesheets/iTunicate.css?1387321070 HTTP/1.1" 304 0
+http://localhost:3000/login -> /stylesheets/iTunicate.css?1387321070
+127.0.0.1 - - [07/Mar/2014:10:01:22 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:01:23 PST] "GET /images/olw_logo.png HTTP/1.1" 304 0
+http://localhost:3000/login -> /images/olw_logo.png
+127.0.0.1 - - [07/Mar/2014:10:01:23 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/lakes -> /stylesheets/images/bg_header.jpg
+^C[2014-03-07 10:01:28] INFO  going to shutdown ...
+[2014-03-07 10:01:29] INFO  WEBrick::HTTPServer#start done.
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ script/server
+=> Booting WEBrick...
+=> Rails 2.1.0 application started on http://0.0.0.0:3000
+=> Ctrl-C to shutdown server; call with --help for options
+[2014-03-07 10:01:30] INFO  WEBrick 1.3.1
+[2014-03-07 10:01:30] INFO  ruby 1.8.7 (2012-10-12) [x86_64-linux]
+[2014-03-07 10:01:30] INFO  WEBrick::HTTPServer#start: pid=1664 port=3000
+127.0.0.1 - - [07/Mar/2014:10:01:33 PST] "GET /lakes HTTP/1.1" 304 0
+http://localhost:3000/ -> /lakes
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/prototype.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/prototype.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/dropdown_menu.js?1370635179 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/dropdown_menu.js?1370635179
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/application.js?1377278302 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/application.js?1377278302
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/controls.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/controls.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/dragdrop.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/dragdrop.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/effects.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/effects.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /stylesheets/iTunicate.css?1387321070 HTTP/1.1" 304 0
+http://localhost:3000/login -> /stylesheets/iTunicate.css?1387321070
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/lakes -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /images/olw_logo.png HTTP/1.1" 304 0
+http://localhost:3000/login -> /images/olw_logo.png
+127.0.0.1 - - [07/Mar/2014:10:01:34 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/lakes -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:10:01:36 PST] "GET /lakes/new HTTP/1.1" 200 3451
+http://localhost:3000/lakes -> /lakes/new
+127.0.0.1 - - [07/Mar/2014:10:01:44 PST] "GET /taxa HTTP/1.1" 200 21164
+http://localhost:3000/lakes -> /taxa
+127.0.0.1 - - [07/Mar/2014:10:01:44 PST] "GET /images/original/missing.png?1380217259 HTTP/1.1" 200 12245
+http://localhost:3000/taxa -> /images/original/missing.png?1380217259
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /taxa HTTP/1.1" 200 54996
+http://localhost:3000/lakes -> /taxa
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/dragdrop.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/dragdrop.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/prototype.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/prototype.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/effects.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/effects.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/controls.js?1366238418 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/controls.js?1366238418
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/dropdown_menu.js?1370635179 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/dropdown_menu.js?1370635179
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /javascripts/application.js?1377278302 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /javascripts/application.js?1377278302
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /stylesheets/iTunicate.css?1387321070 HTTP/1.1" 304 0
+http://localhost:3000/login -> /stylesheets/iTunicate.css?1387321070
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /images/olw_logo.png HTTP/1.1" 304 0
+http://localhost:3000/login -> /images/olw_logo.png
+127.0.0.1 - - [07/Mar/2014:10:02:35 PST] "GET /images/original/missing.png?1380217259 HTTP/1.1" 304 0
+http://localhost:3000/taxa -> /images/original/missing.png?1380217259
+127.0.0.1 - - [07/Mar/2014:10:02:41 PST] "GET /sites HTTP/1.1" 200 16940
+http://localhost:3000/taxa -> /sites
+127.0.0.1 - - [07/Mar/2014:10:03:20 PST] "GET /samplings HTTP/1.1" 200 57700
+http://localhost:3000/sites -> /samplings
+127.0.0.1 - - [07/Mar/2014:10:03:21 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/samplings -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:03:21 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/samplings -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:10:04:21 PST] "GET /mydata HTTP/1.1" 200 11438
+http://localhost:3000/samplings -> /mydata
+127.0.0.1 - - [07/Mar/2014:10:04:21 PST] "GET /javascripts/lakes_table.js HTTP/1.1" 304 0
+http://localhost:3000/mydata -> /javascripts/lakes_table.js
+127.0.0.1 - - [07/Mar/2014:10:04:21 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/mydata -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:10:04:24 PST] "GET /samplings/54 HTTP/1.1" 200 19973
+http://localhost:3000/mydata -> /samplings/54
+127.0.0.1 - - [07/Mar/2014:10:04:24 PST] "GET /stylesheets/images/bg_header.jpg HTTP/1.1" 404 639
+http://localhost:3000/samplings/54 -> /stylesheets/images/bg_header.jpg
+127.0.0.1 - - [07/Mar/2014:10:04:27 PST] "GET /secchi_data/14 HTTP/1.1" 200 3446
+http://localhost:3000/samplings/54 -> /secchi_data/14
+127.0.0.1 - - [07/Mar/2014:10:05:46 PST] "GET / HTTP/1.1" 304 0
+http://localhost:3000/secchi_data/14 -> /
+^X^Z
+[1]+  Stopped                 script/server
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ exit
+exit
+There are stopped jobs.
+]0;stevesb@ubuntu: ~/RailsApps/lakewatch_2.1.0stevesb@ubuntu:~/RailsApps/lakewatch_2.1.0$ exit
+exit
+[2014-03-07 10:24:32] ERROR SignalException: SIGTERM
+	/home/stevesb/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:91:in `select'
+
+Script done on Fri 07 Mar 2014 10:24:32 AM PST
