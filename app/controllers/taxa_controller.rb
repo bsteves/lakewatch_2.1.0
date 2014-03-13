@@ -1,6 +1,7 @@
 class TaxaController < ApplicationController
   def index
-    @taxa = Taxon.all(:order => [sort_column + " " + sort_direction])
+    #@taxa = Taxon.all(:order => [sort_column + " " + sort_direction])
+    @taxa = Taxon.all(:order => 'taxa_group')
   end
 
   def show
