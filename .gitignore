@@ -20,3 +20,4 @@ pickle-email-*.html
 /config/environments/production.rb
 /config/environments/test.rb
 /config/config.yml
+.Rproj.user
