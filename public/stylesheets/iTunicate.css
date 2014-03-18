@@ -197,11 +197,11 @@ table {
 }
 
 .sortable th .asc {
-  background-image: url(images/up_arrow.gif);
+  background-image: url(/rails/images/up_arrow.gif);
 }
 
 .sortable th .desc {
-  background-image: url(images/down_arrow.gif);
+  background-image: url(/rails/images/down_arrow.gif);
 }
  
 .sortable thead th a { color : White; }
