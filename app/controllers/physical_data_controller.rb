@@ -16,12 +16,14 @@ class PhysicalDataController < ApplicationController
     @physical_datum = PhysicalDatum.new
   end
 
+
   def create
     @physical_datum = PhysicalDatum.new(params[:physical_datum])
     if @physical_datum.save
       flash[:notice] = "Successfully created physical datum."
 
-      redirect_to @physical_datum.sampling
+      redirect_to @physical_datum
+      #redirect_to @physical_datum.sampling
     else
       render :action => 'new'
     end

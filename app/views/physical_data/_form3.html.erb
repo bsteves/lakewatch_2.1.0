@@ -1,0 +1,40 @@
+<% sampling_methods2 = Array.new %>
+<% sampling_methods2.push('Temperature') %>
+
+
+<% form_for @physical_datum do |f| %>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>
+  <tr>
+    <th>Depth (m)</th>
+    <th>Temperature (C)</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+<tbody> 
+<% (1..10).each do |i| -%>
+<tr> 
+<% if logged_in? %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+<% end %>
+
+    <%= f.hidden_field :sampling_id %>
+    <%= f.hidden_field :sampling_type, :value => "Temperature" %>
+  <td>
+    <%= f.text_field :depth , :size=>"3"%>
+  </td>
+   <td>
+    <%= f.text_field :value, :size=>"4" %>
+  </td>
+  <td>
+    <%= f.text_area :notes, :columns => "10", :rows => "3" %>
+  </td>
+</tr>
+<% end -%>
+<tr>
+  <td colspan="3"><%= f.submit "submit" %></td>
+</tr>
+</tbody>
+</table>
+<% end %>
+
