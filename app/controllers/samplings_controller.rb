@@ -28,6 +28,8 @@ before_filter :login_required, :except => [:index, :show]
     @lake = Sampling.find(params[:id]).lake
     @site = Sampling.find(params[:id]).site
     @physical_data = PhysicalDatum.find(:all, :conditions => ['sampling_id = ?', params[:id]])
+
+#    @physical_data = Array.new(20) {PhysicalDatum.new(:sampling_id => @sampling.id)}
     @physical_data_count = PhysicalDatum.count(:all, :conditions => ['sampling_id = ?', params[:id]])
 
     @physical_datum = PhysicalDatum.new(:sampling_id => @sampling.id)

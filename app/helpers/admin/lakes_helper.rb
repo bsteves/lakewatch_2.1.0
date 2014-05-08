@@ -1,0 +1,2 @@
+module Admin::LakesHelper
+end

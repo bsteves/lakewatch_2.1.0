@@ -3,9 +3,6 @@ class PhysicalDataController < ApplicationController
     @physical_data = PhysicalDatum.all
   end
 
-  def index2
-    @physical_data = PhysicalDatum.all
-  end
 
 
   def show
@@ -16,14 +13,37 @@ class PhysicalDataController < ApplicationController
     @physical_datum = PhysicalDatum.new
   end
 
+  def new2
+    @physical_data = Array.new(20) {PhysicalDatum.new}
+  end
+
+
+
+  def create2
+        @physical_datum = PhysicalDatum.new   
+   	@physical_data = params[:physical_data].values.collect { |physical_datum| PhysicalDatum.new(physical_datum) }
+  	if @physical_data.all?(&:valid?)
+   		# @owners.each(&:save!)
+     		@physical_data.each do |physical_datum|
+     			unless physical_datum.depth.blank? || physical_datum.value.blank? 
+        			physical_datum.save!
+     			end
+                end
+  		redirect_to @physical_datum
+  	else
+    		render :action => 'new'
+  	end
+  end
+
+
 
   def create
     @physical_datum = PhysicalDatum.new(params[:physical_datum])
     if @physical_datum.save
       flash[:notice] = "Successfully created physical datum."
 
-      redirect_to @physical_datum
-      #redirect_to @physical_datum.sampling
+      #redirect_to @physical_datum
+      redirect_to @physical_datum.sampling
     else
       render :action => 'new'
     end

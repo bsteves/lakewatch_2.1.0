@@ -96,9 +96,13 @@
 </p>
 
 <p>
-<%= link_to "Add Site", new_site_path %>
+<%= link_to "Add Site", new_admin_site_path %>
 </p>
 
 <p>
-  <%= link_to "View All", lakes_path %>
+      <% if current_user.id == 1 %>
+  <%= link_to "Edit", edit_admin_lake_path(@lake) %> |
+  <%= link_to "Delete", @lake, :confirm => 'Are you sure?', :method => :delete %> |
+      <% end %>  
+  <%= link_to "View All", admin_lakes_path %>
 </p>
