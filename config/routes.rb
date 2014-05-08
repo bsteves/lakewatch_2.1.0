@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     site.resources :samplings
   end
   map.namespace :admin do |admin|
-    admin.resources :lake
+    admin.resources :lakes
   end
 
   
