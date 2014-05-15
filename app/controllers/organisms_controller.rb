@@ -43,7 +43,6 @@ before_filter :login_required, :except => [:index, :show]
     @organism = Organism.find(params[:id])
     @organism.destroy
     flash[:notice] = "Successfully destroyed organism."
-    #redirect_to organisms_url
-      redirect_to @organism.sampling
+    redirect_to organisms_url
   end
 end

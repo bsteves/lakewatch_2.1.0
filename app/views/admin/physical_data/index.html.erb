@@ -1,0 +1,24 @@
+<h1>Water Quality Data</h1>
+
+<table>
+  <tr>
+    <th>Sampling</th>
+    <th>Sampling Type</th>
+    <th>Depth (m)</th>
+    <th>Temperature (C)</th>
+    <th>Notes</th>
+  </tr>
+  <% for physical_datum in @physical_data %>
+    <tr>
+      <td><%=h physical_datum.sampling_id %></td>
+      <td><%=h physical_datum.sampling_type %></td>
+      <td><%=h physical_datum.depth %></td>
+      <td><%=h physical_datum.value %></td>
+      <td><%=h physical_datum.notes %></td>
+      <td><%= link_to "Show", [:admin, physical_datum] %></td>
+      <td><%= link_to "Edit", edit_admin_physical_datum_path(physical_datum) %></td>
+      <td><%= link_to "Delete", edit_physical_datum, :confirm => 'Are you sure?', :method => :delete %></td>
+   </tr>
+  <% end %>
+</table>
+

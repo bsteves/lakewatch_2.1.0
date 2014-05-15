@@ -1,0 +1,48 @@
+<% title "Secchi Datum" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @secchi_datum.user_id %>
+</p>
+<p>
+  <strong>Sampling:</strong>
+  <%=h @secchi_datum.sampling_id %>
+</p>
+<p>
+  <strong>Secchi Time:</strong>
+  <%=h @secchi_datum.secchi_time %>
+</p>
+<p>
+  <strong>Observer:</strong>
+  <%=h @secchi_datum.observer %>
+</p>
+<p>
+  <strong>Secchi Depth:</strong>
+  <%=h @secchi_datum.secchi_depth %>
+</p>
+<p>
+  <strong>View Type:</strong>
+  <%=h @secchi_datum.view_type %>
+</p>
+<p>
+  <strong>Plants:</strong>
+  <%=h @secchi_datum.plants %>
+</p>
+<p>
+  <strong>Hit Bottom:</strong>
+  <%=h @secchi_datum.hit_bottom %>
+</p>
+<p>
+  <strong>Wave Code:</strong>
+  <%=h @secchi_datum.wave_code %>
+</p>
+<p>
+  <strong>Sky Code:</strong>
+  <%=h @secchi_datum.sky_code %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_secchi_datum_path(@secchi_datum) %> |
+  <%= link_to "Destroy", @secchi_datum, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", secchi_data_path %>
+</p>

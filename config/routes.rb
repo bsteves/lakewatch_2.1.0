@@ -20,7 +20,14 @@ ActionController::Routing::Routes.draw do |map|
     site.resources :samplings
   end
   map.namespace :admin do |admin|
+    admin.resources :samplings
+    admin.resources :organisms
+    admin.resources :taxa
+    admin.resources :users
     admin.resources :lakes
+    admin.resources :sites
+    admin.resources :physical_data
+    admin.resources :secchi_data
   end
 
   

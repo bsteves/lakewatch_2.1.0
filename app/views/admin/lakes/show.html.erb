@@ -90,7 +90,7 @@
 <p>
 <strong>Sites:</strong><br/>
    <% for site in @lake.sites %>
-      <%= link_to h(site.name), site %><br/>
+      <%= link_to h(site.name), [:admin, site] %><br/>
    <% end %>
 <% end %>
 </p>
@@ -100,9 +100,7 @@
 </p>
 
 <p>
-      <% if current_user.id == 1 %>
   <%= link_to "Edit", edit_admin_lake_path(@lake) %> |
   <%= link_to "Delete", @lake, :confirm => 'Are you sure?', :method => :delete %> |
-      <% end %>  
   <%= link_to "View All", admin_lakes_path %>
 </p>

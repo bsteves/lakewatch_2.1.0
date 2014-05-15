@@ -1,0 +1,31 @@
+
+<% form_for @taxon, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :taxa_group %><br />
+    <%= f.select(:taxa_group, ['Crayfish','Mollusk','Plant'], :include_blank => TRUE) %>
+  </p>
+  <p>
+    <%= f.label :scientific_name %><br />
+    <%= f.text_field :scientific_name %>
+  </p>
+  <p>
+    <%= f.label :common_name %><br />
+    <%= f.text_field :common_name %>
+  </p>
+  <p>
+    <%= f.label "Watch List Status" %><br />
+    <%= f.select(:watchlist2, ['watch list','priority watch list','native','other']) %>
+  </p>
+   <p>
+   <% unless @taxon.new_record? %>
+    <%= image_tag @taxon.image.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image  %>
+   </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

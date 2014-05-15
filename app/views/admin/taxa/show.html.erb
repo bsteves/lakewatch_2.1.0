@@ -1,0 +1,32 @@
+<% title "Taxon" %>
+
+<p>
+  <strong>Group:</strong>
+  <%=h @taxon.taxa_group %>
+</p>
+<p>
+  <strong>Scientific Name:</strong>
+  <i><%=h @taxon.scientific_name %></i>
+</p>
+<p>
+  <strong>Common Name:</strong>
+  <%=h @taxon.common_name %>
+</p>
+<p>
+  <strong>Watch List Status:</strong>
+  <%=h @taxon.watchlist2 %>
+</p>
+<% unless @taxon.image_file_name.nil? %>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @taxon.image.url, :width => '400' %>
+</p>
+<% end %>
+<p>
+  <strong>Notes:</strong>
+  <%=h @taxon.notes %>
+</p>
+
+<p>
+  <%= link_to "View All", taxa_path %>
+</p>

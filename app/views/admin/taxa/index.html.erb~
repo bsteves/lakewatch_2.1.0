@@ -1,0 +1,30 @@
+<h1>Taxa List</h1>
+
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Scientific Name</th>
+    <th>Common Name</th>
+    <th>Watch List</th>
+    <th>Image</th>
+    <th>Notes</th>
+  </tr>
+  <% for taxon in @taxa %>
+    <tr>
+      <td><%=h taxon.taxa_group %></td>
+      <td><i><%=h taxon.scientific_name %></i></td>
+      <td><%=h taxon.common_name %></td>
+      <td><%=h taxon.watch_list %></td>
+      <td><%= image_tag taxon.image.url, :size => "40x40" %></td>
+      <td><%=h taxon.notes %></td>
+      <td><%= link_to "Show", taxon %></td>
+
+      <% if current_user.id == 1 %>
+      <td><%= link_to "Edit", edit_taxon_path(taxon) %></td>
+      <td><%= link_to "Destroy", taxon, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Taxon", new_taxon_path %></p>

@@ -1,0 +1,30 @@
+<% title "Secchi Data" %>
+
+<table>
+  <tr>
+    <th>Secchi Time</th>
+    <th>Observer</th>
+    <th>Secchi Depth (m)</th>
+    <th>View Type</th>
+    <th>Plants</th>
+    <th>Hit Bottom</th>
+    <th>Wave Code</th>
+    <th>Sky Code</th>
+  </tr>
+  <% for secchi_datum in @secchi_data %>
+    <tr>
+      <td><%=h secchi_datum.secchi_time.strftime("%H:%M") %></td>
+      <td><%=h secchi_datum.observer %></td>
+      <td><%=h secchi_datum.secchi_depth %></td>
+      <td><%=h secchi_datum.view_type %></td>
+      <td><%=h secchi_datum.plants %></td>
+      <td><%=h secchi_datum.hit_bottom %></td>
+      <td><%=h secchi_datum.wave_code %></td>
+      <td><%=h secchi_datum.sky_code %></td>
+      <td><%= link_to "Show", [:admin, secchi_datum] %></td>
+      <td><%= link_to "Edit", edit_admin_secchi_datum_path(secchi_datum) %></td>
+      <td><%= link_to "Destroy", secchi_datum, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+

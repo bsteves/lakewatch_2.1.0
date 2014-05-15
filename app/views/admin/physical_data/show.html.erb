@@ -1,0 +1,36 @@
+<% title "Water Quality Datum" %>
+
+<p>
+  <strong>Sampling:</strong>
+  <%=h @physical_datum.sampling_id %>
+</p>
+<p>
+  <strong>Sampling Type:</strong>
+  <%=h @physical_datum.sampling_type %>
+</p>
+<p>
+  <strong>Cline Finder ID:</strong>
+      <td><%=h @physical_datum.sampling.user.clinefinder %></td>
+</p>
+
+<p>
+  <strong>Depth (m):</strong>
+  <%=h @physical_datum.depth %>
+</p>
+<p>
+  <strong>Temperature (C):</strong>
+  <%=h @physical_datum.value %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @physical_datum.notes %>
+</p>
+
+<p>
+
+      <% if logged_in? && @physical_datum.user_id == current_user.id %>
+  <%= link_to "Edit", edit_physical_datum_path(@physical_datum) %> |
+  <%= link_to "Delete", @physical_datum, :confirm => 'Are you sure?', :method => :delete %> |
+    <% end %> 
+ <%= link_to "View All", physical_data_path %>
+</p>

@@ -1,0 +1,46 @@
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="pretty">
+<thead>  
+<tr>
+    <th>Sampling Type</th>
+    <th>Taxon</th>
+    <th>Abundance Code</th>
+    <th>Confidence Code</th>
+    <th>Images</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+<tbody>
+  <% for organism in @organisms %>
+    <tr>   
+      <td><%=h organism.sampling_type %></td>
+      <td><%= link_to h(Taxon.find(organism.taxon_id).common_name), admin_taxon_path(organism.taxon_id) %>
+ <% if (Taxon.find(organism.taxon_id).watch_list == TRUE) %>
+     <%= image_tag("stopnas.jpg", :height => 20)%></td>
+    <% else %>
+    </td>
+    <% end %>
+      <td><%=h organism.count %></td>
+      <td><%=h organism.confidence %></td>
+      <td>
+	<% unless organism.image_file_name.nil?%>
+		<%=image_tag organism.image.url, :width => '50' %>
+	<% end %>
+	<% unless organism.image2_file_name.nil?%>
+		<%=image_tag organism.image2.url, :width => '50' %>
+	<% end %>
+	<% unless organism.image3_file_name.nil?%>
+		<%=image_tag organism.image3.url, :width => '50' %>
+        <% end %>
+      </td>
+      <td><%=h organism.notes %></td>
+      <td><%= link_to "Show", [:admin, organism] %></td>
+ 
+      <% if logged_in? && organism.user_id == current_user.id %>
+      <td><%= link_to "Edit", edit_admin_organism_path(organism) %></td>
+      <td><%= link_to "Delete", organism, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+

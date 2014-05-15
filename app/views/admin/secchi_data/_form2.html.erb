@@ -1,0 +1,48 @@
+<% form_for @secchi_datum do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :sampling_id %><br />
+    <%= f.text_field :sampling_id %>
+  </p>
+  <p>
+    <%= f.label :secchi_time %><br />
+    <%= f.datetime_select :secchi_time %>
+  </p>
+  <p>
+    <%= f.label :cline_finder %><br />
+    <%= f.text_field :cline_finder %>
+  </p>
+  <p>
+    <%= f.label :observer %><br />
+    <%= f.text_field :observer %>
+  </p>
+  <p>
+    <%= f.label :secchi_depth %><br />
+    <%= f.text_field :secchi_depth %>
+  </p>
+  <p>
+    <%= f.label :view_type %><br />
+    <%= f.check_box :view_type %>
+  </p>
+  <p>
+    <%= f.label :plants %><br />
+    <%= f.check_box :plants %>
+  </p>
+  <p>
+    <%= f.label :hit_bottom %><br />
+    <%= f.check_box :hit_bottom %>
+  </p>
+  <p>
+    <%= f.label :wave_code %><br />
+    <%= f.text_field :wave_code %>
+  </p>
+  <p>
+    <%= f.label :sky_code %><br />
+    <%= f.text_field :sky_code %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

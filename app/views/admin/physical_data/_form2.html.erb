@@ -1,0 +1,26 @@
+<% sampling_methods2 = Array.new %>
+<% if @physical_datum.sampling.temperature %>
+<% sampling_methods2.push('Temperature') %>
+<% end %>
+
+
+ <% form_tag :action => 'create' do %>
+ <% @physical_data.each_with_index do |physical_datum, index| %>
+
+   <% fields_for "physical_data[#{index}]", physical_datum do |f| %>
+   <% if logged_in? %>
+       <%= f.hidden_field :user_id, :value => current_user.id %>
+   <% end %>
+   <%= f.hidden_field :sampling_id %>
+   <%= f.hidden_field :sampling_type, :value => "Temperature" %>
+   Depth: <%= f.text_field :depth  %>
+   Temperature: <%= f.text_field :value  %>
+   <% end %><br/>
+ <% end %>
+
+        <%= submit_tag %>
+ <% end %>
+
+
+
+

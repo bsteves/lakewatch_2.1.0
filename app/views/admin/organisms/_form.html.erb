@@ -1,0 +1,73 @@
+<% sampling_methods = Array.new %>
+<% if @organism.sampling.substrate %>
+<% sampling_methods.push('Portland Substrate Sampler') %>
+<% end %>
+<% if @organism.sampling.trap %>
+<% sampling_methods.push('Minnow Trap') %>
+<% end %>
+<% if @organism.sampling.rake %>
+<% sampling_methods.push('Rake Toss') %>
+<% end %>
+<% if @organism.sampling.zigzag %>
+<% sampling_methods.push('Shoreline Observation') %>
+<% end %>
+
+
+<% form_for [:admin, @organism], :html => {:multipart => true} do |f| %>
+
+<% if logged_in? %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+<% end %>
+  <%= f.error_messages %>
+<table width='400'>
+  <tr>
+    <th>Sampling Type</th>
+    <th>Taxon</th>
+    <th>Abundance Code</th>
+    <th>Confidence Code</th>
+</tr>
+ <tr> 
+ <td>
+    <%= f.hidden_field :sampling_id %>
+
+<%= f.select :sampling_type, sampling_methods , :prompt => 'Select One' %>
+</td>
+  <td>
+
+    <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
+  </td>
+  <td>
+    <%= f.select :count, [["4 - dominant", 4],["3 - common",3], ["2 - infrequent",2],["1 - scarce",1],["N/A",0]], :prompt => 'Select One' %>
+  </td>
+ <td>
+    <%= f.select :confidence, [["H - high","H"],["M - fairly certain","M"],["L - uncertain/tentative","L"]], :prompt => 'Select One'%>
+  </td>
+
+ <tr>
+    <th>Images</th>
+    <th>Notes</th>
+  </tr>
+
+
+   <td>
+   <% unless @organism.image_file_name.nil? %>
+    Image 1: <%= image_tag @organism.image.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image   %>
+   <% unless @organism.image2_file_name.nil? %>
+    Image 2: <%= image_tag @organism.image2.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image2  %>
+   <% unless @organism.image3_file_name.nil? %>
+    Image 3: <%= image_tag @organism.image3.url, :width => '50' %>
+   <% end %>
+    <%= f.file_field :image3  %>
+  </td>
+  <td>
+    <%= f.text_area :notes, :columns => "10", :rows => "3" %>
+  </td>
+  <td><%= f.submit "submit organism" %></td>
+</tr>
+</table>
+<% end %>
+
