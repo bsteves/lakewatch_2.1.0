@@ -1,5 +1,5 @@
 class PhysicalDatum < ActiveRecord::Base
-  attr_accessible :sampling_id, :sampling_type, :depth, :value, :units, :notes
+  attr_accessible :sampling_id, :user_id, :sampling_type, :depth, :value, :units, :notes
 
   belongs_to :sampling
 

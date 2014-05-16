@@ -9,9 +9,9 @@ before_filter :login_required, :except => [:index, :show]
 #before_filter :authenticate_user!
   def index
 
-    @samplings = Sampling.all(:order => [sort_column + " " + sort_direction])
+    @samplings = Sampling.all(:conditions => ["isverified = 'verified'"], :order => [sort_column + " " + sort_direction])
     @mysamplings = Sampling.all(:conditions => ['user_id = ?', current_user])
-    @othersamplings = Sampling.all(:conditions => ['user_id != ?', current_user])
+    @othersamplings = Sampling.all(:conditions => ["isverified = 'verified' and user_id != ?" , current_user])
 
     respond_to do |format|
       format.html # index.html.erb

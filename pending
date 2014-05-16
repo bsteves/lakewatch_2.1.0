@@ -1,0 +1,3 @@
+      exists  db/migrate
+      create  db/migrate/20140516204853_add_is_verified_to_samplings.rb
+wrong number of arguments (1 for 2)

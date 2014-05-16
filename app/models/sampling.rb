@@ -1,5 +1,5 @@
 class Sampling < ActiveRecord::Base
-  attr_accessible :user_id, :county_id, :lake_id, :site_id, :date, :secchi, :temperature, :substrate, :trap, :rake, :zigzag, :notes
+  attr_accessible :user_id, :county_id, :lake_id, :site_id, :date, :secchi, :temperature, :substrate, :trap, :rake, :zigzag, :notes, :isverified
   belongs_to :lake
   belongs_to :site
   belongs_to :user
