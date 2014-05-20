@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def authorize_admin
   	unless logged_in? && current_user.admin == true
   		flash[:notice] = "Hey you're not an Admin!"
-  		redirect_to(:controller => "../users", :action => "sign_in")
+                redirect_to root_path
   	end
   end
 

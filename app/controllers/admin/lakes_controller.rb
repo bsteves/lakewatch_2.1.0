@@ -1,7 +1,8 @@
 class Admin::LakesController < ApplicationController
 
 layout "application"
-before_filter :login_required, :except => [:index, :show]
+#before_filter :login_required, :except => [:index, :show]
+before_filter :authorize_admin
 
 #before_filter :authenticate_user!
   def index   

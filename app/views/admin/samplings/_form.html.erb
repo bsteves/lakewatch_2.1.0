@@ -4,6 +4,10 @@
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.error_messages %>
+<p>
+
+    <%= f.select :isverified, [["pending"],["verified"],["rejected"]] %>
+</p> 
   
   <div id="lake_field">
  <label for= "sampling_lake_id">Lake:</label><br/>

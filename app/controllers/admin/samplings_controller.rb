@@ -1,8 +1,9 @@
 class Admin::SamplingsController < ApplicationController
 
 layout 'application'
-before_filter :login_required, :except => [:index, :show]
+#before_filter :login_required, :except => [:index, :show]
 
+before_filter :authorize_admin
 
 
 

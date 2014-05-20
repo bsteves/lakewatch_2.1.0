@@ -1,4 +1,12 @@
 class Admin::TaxaController < ApplicationController
+layout 'application'
+#before_filter :login_required, :except => [:index, :show]
+
+before_filter :authorize_admin
+
+
+
+
   def index
    @taxa = Taxon.all(:order => [sort_column + " " + sort_direction])
     #@taxa = Taxon.all(:order => 'taxa_group')
