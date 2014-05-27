@@ -103,6 +103,8 @@
 <% if (@sampling.trap == TRUE or @sampling.substrate == TRUE or @sampling.rake == TRUE or @sampling.zigzag == TRUE) %>
    <hr>
    <h2>Aquatic Invasive Species (Plants & Animals)</h2>
+<p>All Watch List species and many native look-alikes are already on the taxa list. If you don't find the correct species there, you have two options: <br/>1) add the general group description ("crayfish - other" or "plant - emergent - other") and record your tentative ID in the notes field;<br/> or <br/>2) if you're very confident of your ID, you can add a new taxon by scrolling to the bottom of the <%= link_to "taxa list", taxa_path %>, and click on <%= link_to '"New Taxon"', new_taxon_path %>.</p>
+
    <% unless @sampling.organisms.empty?  %>
         <%= render :partial => 'organisms/index' %>
    <%end%>

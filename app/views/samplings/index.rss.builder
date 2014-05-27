@@ -10,8 +10,8 @@ xml.rss :version => "2.0" do
         xml.title sampling.id
         xml.description sampling.user.username + ": " + sampling.site.lake.name + ": " +  sampling.site.name
         xml.pubDate sampling.created_at.to_s(:rfc822)
-        xml.link sampling_url(sampling)
-        xml.guid sampling_url(sampling)
+        xml.link admin_sampling_url(sampling)
+        xml.guid admin_sampling_url(sampling)
       end
     end
   end

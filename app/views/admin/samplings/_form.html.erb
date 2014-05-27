@@ -1,17 +1,16 @@
-<% javascript 'dynamic_sites' %>
 <h1>Sampling Event</h1>
 <% form_for([:admin, @sampling]) do |f| %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.error_messages %>
 <p>
-
+    <label for="sampling_isverified">Verification Status:</label><br/>
     <%= f.select :isverified, [["pending"],["verified"],["rejected"]] %>
 </p> 
   
   <div id="lake_field">
  <label for= "sampling_lake_id">Lake:</label><br/>
-    <%= f.collection_select :lake_id, Lake.find(:all, :conditions => ["id in (?,?,?,?,?)", current_user.lake1, current_user.lake2, current_user.lake3, current_user.lake4, current_user.lake5], :order => ['name, county']), :id, :lake_county, :prompt => "Select a lake" %>
+    <%= f.collection_select :lake_id, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :prompt => "Select a lake" %>
  
   </div>
    
