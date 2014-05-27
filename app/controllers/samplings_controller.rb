@@ -1,6 +1,6 @@
 class SamplingsController < ApplicationController
 
-layout 'application'
+#layout 'application'
 before_filter :login_required, :except => [:index, :show]
 
 
@@ -8,15 +8,10 @@ before_filter :login_required, :except => [:index, :show]
 
 #before_filter :authenticate_user!
   def index
-
+    @allsamplings = Sampling.all(:order => ["created_at DESC"], :limit => 20)
     @samplings = Sampling.all(:conditions => ["isverified = 'verified'"], :order => [sort_column + " " + sort_direction])
     @mysamplings = Sampling.all(:conditions => ['user_id = ?', current_user])
     @othersamplings = Sampling.all(:conditions => ["isverified = 'verified' and user_id != ?" , current_user])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @samplings }
-    end
 
 
   end
