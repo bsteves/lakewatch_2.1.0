@@ -98,9 +98,9 @@ protected
  # def before_update_save(record)
  #   record.user_id = current_user.id
  # end
-  def before_create_save(record)
-    record.user_id = current_user.id
-  end
+ # def before_create_save(record)
+ #   record.user_id = current_user.id
+ # end
   def conditions_for_collection
     ['samplings.user_id = ?', current_user.id]
   end

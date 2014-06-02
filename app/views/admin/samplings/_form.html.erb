@@ -1,7 +1,6 @@
 <h1>Sampling Event</h1>
 <% form_for([:admin, @sampling]) do |f| %>
 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.error_messages %>
 <p>
     <label for="sampling_isverified">Verification Status:</label><br/>
