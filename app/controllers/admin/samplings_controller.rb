@@ -95,9 +95,9 @@ protected
    self.user_signed_in?
   end
 
-  def before_update_save(record)
-    record.user_id = current_user.id
-  end
+ # def before_update_save(record)
+ #   record.user_id = current_user.id
+ # end
   def before_create_save(record)
     record.user_id = current_user.id
   end
