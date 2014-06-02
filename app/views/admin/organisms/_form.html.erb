@@ -34,7 +34,7 @@
 </td>
   <td>
 
-    <%= f.collection_select :taxon_id, Taxon.all(:order => 'watch_list DESC, id'), :id, :taxa_all, :prompt => 'Select One' %>
+    <%= f.collection_select :taxon_id, Taxon.all(:order => 'taxa_group, scientific_name'), :id, :taxa_all, :prompt => 'Select One' %>
   </td>
   <td>
     <%= f.select :count, [["4 - dominant", 4],["3 - common",3], ["2 - infrequent",2],["1 - scarce",1],["N/A",0]], :prompt => 'Select One' %>
