@@ -7,7 +7,9 @@
 <%= render(:partial => "layouts/banner") %>
 <%= render(:partial => "layouts/navcontainer") %>
        <div id="main">
-         <br/>
+          <p class="notice"><%= flash[:notice] %></p>
+          <p class="alert"><%= flash[:alert] %></p>
+          <br/>
           <%= yield %>
         </div>
 <script type="text/javascript">
