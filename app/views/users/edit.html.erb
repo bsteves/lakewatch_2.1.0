@@ -1,6 +1,6 @@
 <% title "Edit User Information" %>
 
-<% form_for (@user, :url => password_reset_path(params[:id])) do |f| %>
+<% form_for @user do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :username %><br />
