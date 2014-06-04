@@ -1,6 +1,7 @@
-<h1>Reset Password for <%= @user.username.capitalize %></h1>
-<% form_for @user do |f| %>
- <% if @user.errors.any? %>
+<h1>Reset Password</h1>
+
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
       <ul>
@@ -11,7 +12,7 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :password %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
   <div class="field">
