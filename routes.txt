@@ -1,0 +1,331 @@
+(in /home/stevesb/RailsApps/lakewatch_2.1.0)
+                        secchi_data GET    /secchi_data                               {:action=>"index", :controller=>"secchi_data"}
+              formatted_secchi_data GET    /secchi_data.:format                       {:action=>"index", :controller=>"secchi_data"}
+                                    POST   /secchi_data                               {:action=>"create", :controller=>"secchi_data"}
+                                    POST   /secchi_data.:format                       {:action=>"create", :controller=>"secchi_data"}
+                   new_secchi_datum GET    /secchi_data/new                           {:action=>"new", :controller=>"secchi_data"}
+         formatted_new_secchi_datum GET    /secchi_data/new.:format                   {:action=>"new", :controller=>"secchi_data"}
+                  edit_secchi_datum GET    /secchi_data/:id/edit                      {:action=>"edit", :controller=>"secchi_data"}
+        formatted_edit_secchi_datum GET    /secchi_data/:id/edit.:format              {:action=>"edit", :controller=>"secchi_data"}
+                       secchi_datum GET    /secchi_data/:id                           {:action=>"show", :controller=>"secchi_data"}
+             formatted_secchi_datum GET    /secchi_data/:id.:format                   {:action=>"show", :controller=>"secchi_data"}
+                                    PUT    /secchi_data/:id                           {:action=>"update", :controller=>"secchi_data"}
+                                    PUT    /secchi_data/:id.:format                   {:action=>"update", :controller=>"secchi_data"}
+                                    DELETE /secchi_data/:id                           {:action=>"destroy", :controller=>"secchi_data"}
+                                    DELETE /secchi_data/:id.:format                   {:action=>"destroy", :controller=>"secchi_data"}
+                             signup        /signup                                    {:action=>"new", :controller=>"users"}
+                             logout        /logout                                    {:action=>"destroy", :controller=>"sessions"}
+                              login        /login                                     {:action=>"new", :controller=>"sessions"}
+                           sessions GET    /sessions                                  {:action=>"index", :controller=>"sessions"}
+                 formatted_sessions GET    /sessions.:format                          {:action=>"index", :controller=>"sessions"}
+                                    POST   /sessions                                  {:action=>"create", :controller=>"sessions"}
+                                    POST   /sessions.:format                          {:action=>"create", :controller=>"sessions"}
+                        new_session GET    /sessions/new                              {:action=>"new", :controller=>"sessions"}
+              formatted_new_session GET    /sessions/new.:format                      {:action=>"new", :controller=>"sessions"}
+                       edit_session GET    /sessions/:id/edit                         {:action=>"edit", :controller=>"sessions"}
+             formatted_edit_session GET    /sessions/:id/edit.:format                 {:action=>"edit", :controller=>"sessions"}
+                            session GET    /sessions/:id                              {:action=>"show", :controller=>"sessions"}
+                  formatted_session GET    /sessions/:id.:format                      {:action=>"show", :controller=>"sessions"}
+                                    PUT    /sessions/:id                              {:action=>"update", :controller=>"sessions"}
+                                    PUT    /sessions/:id.:format                      {:action=>"update", :controller=>"sessions"}
+                                    DELETE /sessions/:id                              {:action=>"destroy", :controller=>"sessions"}
+                                    DELETE /sessions/:id.:format                      {:action=>"destroy", :controller=>"sessions"}
+                    password_resets GET    /password_resets                           {:action=>"index", :controller=>"password_resets"}
+          formatted_password_resets GET    /password_resets.:format                   {:action=>"index", :controller=>"password_resets"}
+                                    POST   /password_resets                           {:action=>"create", :controller=>"password_resets"}
+                                    POST   /password_resets.:format                   {:action=>"create", :controller=>"password_resets"}
+                 new_password_reset GET    /password_resets/new                       {:action=>"new", :controller=>"password_resets"}
+       formatted_new_password_reset GET    /password_resets/new.:format               {:action=>"new", :controller=>"password_resets"}
+                edit_password_reset GET    /password_resets/:id/edit                  {:action=>"edit", :controller=>"password_resets"}
+      formatted_edit_password_reset GET    /password_resets/:id/edit.:format          {:action=>"edit", :controller=>"password_resets"}
+                     password_reset GET    /password_resets/:id                       {:action=>"show", :controller=>"password_resets"}
+           formatted_password_reset GET    /password_resets/:id.:format               {:action=>"show", :controller=>"password_resets"}
+                                    PUT    /password_resets/:id                       {:action=>"update", :controller=>"password_resets"}
+                                    PUT    /password_resets/:id.:format               {:action=>"update", :controller=>"password_resets"}
+                                    DELETE /password_resets/:id                       {:action=>"destroy", :controller=>"password_resets"}
+                                    DELETE /password_resets/:id.:format               {:action=>"destroy", :controller=>"password_resets"}
+                              users GET    /users                                     {:action=>"index", :controller=>"users"}
+                    formatted_users GET    /users.:format                             {:action=>"index", :controller=>"users"}
+                                    POST   /users                                     {:action=>"create", :controller=>"users"}
+                                    POST   /users.:format                             {:action=>"create", :controller=>"users"}
+                           new_user GET    /users/new                                 {:action=>"new", :controller=>"users"}
+                 formatted_new_user GET    /users/new.:format                         {:action=>"new", :controller=>"users"}
+                          edit_user GET    /users/:id/edit                            {:action=>"edit", :controller=>"users"}
+                formatted_edit_user GET    /users/:id/edit.:format                    {:action=>"edit", :controller=>"users"}
+                               user GET    /users/:id                                 {:action=>"show", :controller=>"users"}
+                     formatted_user GET    /users/:id.:format                         {:action=>"show", :controller=>"users"}
+                                    PUT    /users/:id                                 {:action=>"update", :controller=>"users"}
+                                    PUT    /users/:id.:format                         {:action=>"update", :controller=>"users"}
+                                    DELETE /users/:id                                 {:action=>"destroy", :controller=>"users"}
+                                    DELETE /users/:id.:format                         {:action=>"destroy", :controller=>"users"}
+                      physical_data GET    /physical_data                             {:action=>"index", :controller=>"physical_data"}
+            formatted_physical_data GET    /physical_data.:format                     {:action=>"index", :controller=>"physical_data"}
+                                    POST   /physical_data                             {:action=>"create", :controller=>"physical_data"}
+                                    POST   /physical_data.:format                     {:action=>"create", :controller=>"physical_data"}
+                 new_physical_datum GET    /physical_data/new                         {:action=>"new", :controller=>"physical_data"}
+       formatted_new_physical_datum GET    /physical_data/new.:format                 {:action=>"new", :controller=>"physical_data"}
+                edit_physical_datum GET    /physical_data/:id/edit                    {:action=>"edit", :controller=>"physical_data"}
+      formatted_edit_physical_datum GET    /physical_data/:id/edit.:format            {:action=>"edit", :controller=>"physical_data"}
+                     physical_datum GET    /physical_data/:id                         {:action=>"show", :controller=>"physical_data"}
+           formatted_physical_datum GET    /physical_data/:id.:format                 {:action=>"show", :controller=>"physical_data"}
+                                    PUT    /physical_data/:id                         {:action=>"update", :controller=>"physical_data"}
+                                    PUT    /physical_data/:id.:format                 {:action=>"update", :controller=>"physical_data"}
+                                    DELETE /physical_data/:id                         {:action=>"destroy", :controller=>"physical_data"}
+                                    DELETE /physical_data/:id.:format                 {:action=>"destroy", :controller=>"physical_data"}
+                     sampling_types GET    /sampling_types                            {:action=>"index", :controller=>"sampling_types"}
+           formatted_sampling_types GET    /sampling_types.:format                    {:action=>"index", :controller=>"sampling_types"}
+                                    POST   /sampling_types                            {:action=>"create", :controller=>"sampling_types"}
+                                    POST   /sampling_types.:format                    {:action=>"create", :controller=>"sampling_types"}
+                  new_sampling_type GET    /sampling_types/new                        {:action=>"new", :controller=>"sampling_types"}
+        formatted_new_sampling_type GET    /sampling_types/new.:format                {:action=>"new", :controller=>"sampling_types"}
+                 edit_sampling_type GET    /sampling_types/:id/edit                   {:action=>"edit", :controller=>"sampling_types"}
+       formatted_edit_sampling_type GET    /sampling_types/:id/edit.:format           {:action=>"edit", :controller=>"sampling_types"}
+                      sampling_type GET    /sampling_types/:id                        {:action=>"show", :controller=>"sampling_types"}
+            formatted_sampling_type GET    /sampling_types/:id.:format                {:action=>"show", :controller=>"sampling_types"}
+                                    PUT    /sampling_types/:id                        {:action=>"update", :controller=>"sampling_types"}
+                                    PUT    /sampling_types/:id.:format                {:action=>"update", :controller=>"sampling_types"}
+                                    DELETE /sampling_types/:id                        {:action=>"destroy", :controller=>"sampling_types"}
+                                    DELETE /sampling_types/:id.:format                {:action=>"destroy", :controller=>"sampling_types"}
+                          samplings GET    /samplings                                 {:action=>"index", :controller=>"samplings"}
+                formatted_samplings GET    /samplings.:format                         {:action=>"index", :controller=>"samplings"}
+                                    POST   /samplings                                 {:action=>"create", :controller=>"samplings"}
+                                    POST   /samplings.:format                         {:action=>"create", :controller=>"samplings"}
+                       new_sampling GET    /samplings/new                             {:action=>"new", :controller=>"samplings"}
+             formatted_new_sampling GET    /samplings/new.:format                     {:action=>"new", :controller=>"samplings"}
+                      edit_sampling GET    /samplings/:id/edit                        {:action=>"edit", :controller=>"samplings"}
+            formatted_edit_sampling GET    /samplings/:id/edit.:format                {:action=>"edit", :controller=>"samplings"}
+                           sampling GET    /samplings/:id                             {:action=>"show", :controller=>"samplings"}
+                 formatted_sampling GET    /samplings/:id.:format                     {:action=>"show", :controller=>"samplings"}
+                                    PUT    /samplings/:id                             {:action=>"update", :controller=>"samplings"}
+                                    PUT    /samplings/:id.:format                     {:action=>"update", :controller=>"samplings"}
+                                    DELETE /samplings/:id                             {:action=>"destroy", :controller=>"samplings"}
+                                    DELETE /samplings/:id.:format                     {:action=>"destroy", :controller=>"samplings"}
+                             mydata GET    /mydata                                    {:action=>"index", :controller=>"mydata"}
+                   formatted_mydata GET    /mydata.:format                            {:action=>"index", :controller=>"mydata"}
+                                    POST   /mydata                                    {:action=>"create", :controller=>"mydata"}
+                                    POST   /mydata.:format                            {:action=>"create", :controller=>"mydata"}
+                        new_mydatum GET    /mydata/new                                {:action=>"new", :controller=>"mydata"}
+              formatted_new_mydatum GET    /mydata/new.:format                        {:action=>"new", :controller=>"mydata"}
+                       edit_mydatum GET    /mydata/:id/edit                           {:action=>"edit", :controller=>"mydata"}
+             formatted_edit_mydatum GET    /mydata/:id/edit.:format                   {:action=>"edit", :controller=>"mydata"}
+                            mydatum GET    /mydata/:id                                {:action=>"show", :controller=>"mydata"}
+                  formatted_mydatum GET    /mydata/:id.:format                        {:action=>"show", :controller=>"mydata"}
+                                    PUT    /mydata/:id                                {:action=>"update", :controller=>"mydata"}
+                                    PUT    /mydata/:id.:format                        {:action=>"update", :controller=>"mydata"}
+                                    DELETE /mydata/:id                                {:action=>"destroy", :controller=>"mydata"}
+                                    DELETE /mydata/:id.:format                        {:action=>"destroy", :controller=>"mydata"}
+                                    GET    /sites                                     {:action=>"index", :controller=>"sites"}
+                                    GET    /sites.:format                             {:action=>"index", :controller=>"sites"}
+                                    POST   /sites                                     {:action=>"create", :controller=>"sites"}
+                                    POST   /sites.:format                             {:action=>"create", :controller=>"sites"}
+                                    GET    /sites/new                                 {:action=>"new", :controller=>"sites"}
+                                    GET    /sites/new.:format                         {:action=>"new", :controller=>"sites"}
+                                    GET    /sites/:id/edit                            {:action=>"edit", :controller=>"sites"}
+                                    GET    /sites/:id/edit.:format                    {:action=>"edit", :controller=>"sites"}
+                                    GET    /sites/:id                                 {:action=>"show", :controller=>"sites"}
+                                    GET    /sites/:id.:format                         {:action=>"show", :controller=>"sites"}
+                                    PUT    /sites/:id                                 {:action=>"update", :controller=>"sites"}
+                                    PUT    /sites/:id.:format                         {:action=>"update", :controller=>"sites"}
+                                    DELETE /sites/:id                                 {:action=>"destroy", :controller=>"sites"}
+                                    DELETE /sites/:id.:format                         {:action=>"destroy", :controller=>"sites"}
+                               taxa GET    /taxa                                      {:action=>"index", :controller=>"taxa"}
+                     formatted_taxa GET    /taxa.:format                              {:action=>"index", :controller=>"taxa"}
+                                    POST   /taxa                                      {:action=>"create", :controller=>"taxa"}
+                                    POST   /taxa.:format                              {:action=>"create", :controller=>"taxa"}
+                          new_taxon GET    /taxa/new                                  {:action=>"new", :controller=>"taxa"}
+                formatted_new_taxon GET    /taxa/new.:format                          {:action=>"new", :controller=>"taxa"}
+                         edit_taxon GET    /taxa/:id/edit                             {:action=>"edit", :controller=>"taxa"}
+               formatted_edit_taxon GET    /taxa/:id/edit.:format                     {:action=>"edit", :controller=>"taxa"}
+                              taxon GET    /taxa/:id                                  {:action=>"show", :controller=>"taxa"}
+                    formatted_taxon GET    /taxa/:id.:format                          {:action=>"show", :controller=>"taxa"}
+                                    PUT    /taxa/:id                                  {:action=>"update", :controller=>"taxa"}
+                                    PUT    /taxa/:id.:format                          {:action=>"update", :controller=>"taxa"}
+                                    DELETE /taxa/:id                                  {:action=>"destroy", :controller=>"taxa"}
+                                    DELETE /taxa/:id.:format                          {:action=>"destroy", :controller=>"taxa"}
+                          organisms GET    /organisms                                 {:action=>"index", :controller=>"organisms"}
+                formatted_organisms GET    /organisms.:format                         {:action=>"index", :controller=>"organisms"}
+                                    POST   /organisms                                 {:action=>"create", :controller=>"organisms"}
+                                    POST   /organisms.:format                         {:action=>"create", :controller=>"organisms"}
+                       new_organism GET    /organisms/new                             {:action=>"new", :controller=>"organisms"}
+             formatted_new_organism GET    /organisms/new.:format                     {:action=>"new", :controller=>"organisms"}
+                      edit_organism GET    /organisms/:id/edit                        {:action=>"edit", :controller=>"organisms"}
+            formatted_edit_organism GET    /organisms/:id/edit.:format                {:action=>"edit", :controller=>"organisms"}
+                           organism GET    /organisms/:id                             {:action=>"show", :controller=>"organisms"}
+                 formatted_organism GET    /organisms/:id.:format                     {:action=>"show", :controller=>"organisms"}
+                                    PUT    /organisms/:id                             {:action=>"update", :controller=>"organisms"}
+                                    PUT    /organisms/:id.:format                     {:action=>"update", :controller=>"organisms"}
+                                    DELETE /organisms/:id                             {:action=>"destroy", :controller=>"organisms"}
+                                    DELETE /organisms/:id.:format                     {:action=>"destroy", :controller=>"organisms"}
+                              lakes GET    /lakes                                     {:action=>"index", :controller=>"lakes"}
+                    formatted_lakes GET    /lakes.:format                             {:action=>"index", :controller=>"lakes"}
+                                    POST   /lakes                                     {:action=>"create", :controller=>"lakes"}
+                                    POST   /lakes.:format                             {:action=>"create", :controller=>"lakes"}
+                           new_lake GET    /lakes/new                                 {:action=>"new", :controller=>"lakes"}
+                 formatted_new_lake GET    /lakes/new.:format                         {:action=>"new", :controller=>"lakes"}
+                          edit_lake GET    /lakes/:id/edit                            {:action=>"edit", :controller=>"lakes"}
+                formatted_edit_lake GET    /lakes/:id/edit.:format                    {:action=>"edit", :controller=>"lakes"}
+                               lake GET    /lakes/:id                                 {:action=>"show", :controller=>"lakes"}
+                     formatted_lake GET    /lakes/:id.:format                         {:action=>"show", :controller=>"lakes"}
+                                    PUT    /lakes/:id                                 {:action=>"update", :controller=>"lakes"}
+                                    PUT    /lakes/:id.:format                         {:action=>"update", :controller=>"lakes"}
+                                    DELETE /lakes/:id                                 {:action=>"destroy", :controller=>"lakes"}
+                                    DELETE /lakes/:id.:format                         {:action=>"destroy", :controller=>"lakes"}
+                         lake_sites GET    /lakes/:lake_id/sites                      {:action=>"index", :controller=>"sites"}
+               formatted_lake_sites GET    /lakes/:lake_id/sites.:format              {:action=>"index", :controller=>"sites"}
+                                    POST   /lakes/:lake_id/sites                      {:action=>"create", :controller=>"sites"}
+                                    POST   /lakes/:lake_id/sites.:format              {:action=>"create", :controller=>"sites"}
+                      new_lake_site GET    /lakes/:lake_id/sites/new                  {:action=>"new", :controller=>"sites"}
+            formatted_new_lake_site GET    /lakes/:lake_id/sites/new.:format          {:action=>"new", :controller=>"sites"}
+                     edit_lake_site GET    /lakes/:lake_id/sites/:id/edit             {:action=>"edit", :controller=>"sites"}
+           formatted_edit_lake_site GET    /lakes/:lake_id/sites/:id/edit.:format     {:action=>"edit", :controller=>"sites"}
+                          lake_site GET    /lakes/:lake_id/sites/:id                  {:action=>"show", :controller=>"sites"}
+                formatted_lake_site GET    /lakes/:lake_id/sites/:id.:format          {:action=>"show", :controller=>"sites"}
+                                    PUT    /lakes/:lake_id/sites/:id                  {:action=>"update", :controller=>"sites"}
+                                    PUT    /lakes/:lake_id/sites/:id.:format          {:action=>"update", :controller=>"sites"}
+                                    DELETE /lakes/:lake_id/sites/:id                  {:action=>"destroy", :controller=>"sites"}
+                                    DELETE /lakes/:lake_id/sites/:id.:format          {:action=>"destroy", :controller=>"sites"}
+                              sites GET    /sites                                     {:action=>"index", :controller=>"sites"}
+                    formatted_sites GET    /sites.:format                             {:action=>"index", :controller=>"sites"}
+                                    POST   /sites                                     {:action=>"create", :controller=>"sites"}
+                                    POST   /sites.:format                             {:action=>"create", :controller=>"sites"}
+                           new_site GET    /sites/new                                 {:action=>"new", :controller=>"sites"}
+                 formatted_new_site GET    /sites/new.:format                         {:action=>"new", :controller=>"sites"}
+                          edit_site GET    /sites/:id/edit                            {:action=>"edit", :controller=>"sites"}
+                formatted_edit_site GET    /sites/:id/edit.:format                    {:action=>"edit", :controller=>"sites"}
+                               site GET    /sites/:id                                 {:action=>"show", :controller=>"sites"}
+                     formatted_site GET    /sites/:id.:format                         {:action=>"show", :controller=>"sites"}
+                                    PUT    /sites/:id                                 {:action=>"update", :controller=>"sites"}
+                                    PUT    /sites/:id.:format                         {:action=>"update", :controller=>"sites"}
+                                    DELETE /sites/:id                                 {:action=>"destroy", :controller=>"sites"}
+                                    DELETE /sites/:id.:format                         {:action=>"destroy", :controller=>"sites"}
+                     site_samplings GET    /sites/:site_id/samplings                  {:action=>"index", :controller=>"samplings"}
+           formatted_site_samplings GET    /sites/:site_id/samplings.:format          {:action=>"index", :controller=>"samplings"}
+                                    POST   /sites/:site_id/samplings                  {:action=>"create", :controller=>"samplings"}
+                                    POST   /sites/:site_id/samplings.:format          {:action=>"create", :controller=>"samplings"}
+                  new_site_sampling GET    /sites/:site_id/samplings/new              {:action=>"new", :controller=>"samplings"}
+        formatted_new_site_sampling GET    /sites/:site_id/samplings/new.:format      {:action=>"new", :controller=>"samplings"}
+                 edit_site_sampling GET    /sites/:site_id/samplings/:id/edit         {:action=>"edit", :controller=>"samplings"}
+       formatted_edit_site_sampling GET    /sites/:site_id/samplings/:id/edit.:format {:action=>"edit", :controller=>"samplings"}
+                      site_sampling GET    /sites/:site_id/samplings/:id              {:action=>"show", :controller=>"samplings"}
+            formatted_site_sampling GET    /sites/:site_id/samplings/:id.:format      {:action=>"show", :controller=>"samplings"}
+                                    PUT    /sites/:site_id/samplings/:id              {:action=>"update", :controller=>"samplings"}
+                                    PUT    /sites/:site_id/samplings/:id.:format      {:action=>"update", :controller=>"samplings"}
+                                    DELETE /sites/:site_id/samplings/:id              {:action=>"destroy", :controller=>"samplings"}
+                                    DELETE /sites/:site_id/samplings/:id.:format      {:action=>"destroy", :controller=>"samplings"}
+                    admin_samplings GET    /admin/samplings                           {:action=>"index", :controller=>"admin/samplings"}
+          formatted_admin_samplings GET    /admin/samplings.:format                   {:action=>"index", :controller=>"admin/samplings"}
+                                    POST   /admin/samplings                           {:action=>"create", :controller=>"admin/samplings"}
+                                    POST   /admin/samplings.:format                   {:action=>"create", :controller=>"admin/samplings"}
+                 new_admin_sampling GET    /admin/samplings/new                       {:action=>"new", :controller=>"admin/samplings"}
+       formatted_new_admin_sampling GET    /admin/samplings/new.:format               {:action=>"new", :controller=>"admin/samplings"}
+                edit_admin_sampling GET    /admin/samplings/:id/edit                  {:action=>"edit", :controller=>"admin/samplings"}
+      formatted_edit_admin_sampling GET    /admin/samplings/:id/edit.:format          {:action=>"edit", :controller=>"admin/samplings"}
+                     admin_sampling GET    /admin/samplings/:id                       {:action=>"show", :controller=>"admin/samplings"}
+           formatted_admin_sampling GET    /admin/samplings/:id.:format               {:action=>"show", :controller=>"admin/samplings"}
+                                    PUT    /admin/samplings/:id                       {:action=>"update", :controller=>"admin/samplings"}
+                                    PUT    /admin/samplings/:id.:format               {:action=>"update", :controller=>"admin/samplings"}
+                                    DELETE /admin/samplings/:id                       {:action=>"destroy", :controller=>"admin/samplings"}
+                                    DELETE /admin/samplings/:id.:format               {:action=>"destroy", :controller=>"admin/samplings"}
+                    admin_organisms GET    /admin/organisms                           {:action=>"index", :controller=>"admin/organisms"}
+          formatted_admin_organisms GET    /admin/organisms.:format                   {:action=>"index", :controller=>"admin/organisms"}
+                                    POST   /admin/organisms                           {:action=>"create", :controller=>"admin/organisms"}
+                                    POST   /admin/organisms.:format                   {:action=>"create", :controller=>"admin/organisms"}
+                 new_admin_organism GET    /admin/organisms/new                       {:action=>"new", :controller=>"admin/organisms"}
+       formatted_new_admin_organism GET    /admin/organisms/new.:format               {:action=>"new", :controller=>"admin/organisms"}
+                edit_admin_organism GET    /admin/organisms/:id/edit                  {:action=>"edit", :controller=>"admin/organisms"}
+      formatted_edit_admin_organism GET    /admin/organisms/:id/edit.:format          {:action=>"edit", :controller=>"admin/organisms"}
+                     admin_organism GET    /admin/organisms/:id                       {:action=>"show", :controller=>"admin/organisms"}
+           formatted_admin_organism GET    /admin/organisms/:id.:format               {:action=>"show", :controller=>"admin/organisms"}
+                                    PUT    /admin/organisms/:id                       {:action=>"update", :controller=>"admin/organisms"}
+                                    PUT    /admin/organisms/:id.:format               {:action=>"update", :controller=>"admin/organisms"}
+                                    DELETE /admin/organisms/:id                       {:action=>"destroy", :controller=>"admin/organisms"}
+                                    DELETE /admin/organisms/:id.:format               {:action=>"destroy", :controller=>"admin/organisms"}
+                         admin_taxa GET    /admin/taxa                                {:action=>"index", :controller=>"admin/taxa"}
+               formatted_admin_taxa GET    /admin/taxa.:format                        {:action=>"index", :controller=>"admin/taxa"}
+                                    POST   /admin/taxa                                {:action=>"create", :controller=>"admin/taxa"}
+                                    POST   /admin/taxa.:format                        {:action=>"create", :controller=>"admin/taxa"}
+                    new_admin_taxon GET    /admin/taxa/new                            {:action=>"new", :controller=>"admin/taxa"}
+          formatted_new_admin_taxon GET    /admin/taxa/new.:format                    {:action=>"new", :controller=>"admin/taxa"}
+                   edit_admin_taxon GET    /admin/taxa/:id/edit                       {:action=>"edit", :controller=>"admin/taxa"}
+         formatted_edit_admin_taxon GET    /admin/taxa/:id/edit.:format               {:action=>"edit", :controller=>"admin/taxa"}
+                        admin_taxon GET    /admin/taxa/:id                            {:action=>"show", :controller=>"admin/taxa"}
+              formatted_admin_taxon GET    /admin/taxa/:id.:format                    {:action=>"show", :controller=>"admin/taxa"}
+                                    PUT    /admin/taxa/:id                            {:action=>"update", :controller=>"admin/taxa"}
+                                    PUT    /admin/taxa/:id.:format                    {:action=>"update", :controller=>"admin/taxa"}
+                                    DELETE /admin/taxa/:id                            {:action=>"destroy", :controller=>"admin/taxa"}
+                                    DELETE /admin/taxa/:id.:format                    {:action=>"destroy", :controller=>"admin/taxa"}
+                        admin_users GET    /admin/users                               {:action=>"index", :controller=>"admin/users"}
+              formatted_admin_users GET    /admin/users.:format                       {:action=>"index", :controller=>"admin/users"}
+                                    POST   /admin/users                               {:action=>"create", :controller=>"admin/users"}
+                                    POST   /admin/users.:format                       {:action=>"create", :controller=>"admin/users"}
+                     new_admin_user GET    /admin/users/new                           {:action=>"new", :controller=>"admin/users"}
+           formatted_new_admin_user GET    /admin/users/new.:format                   {:action=>"new", :controller=>"admin/users"}
+                    edit_admin_user GET    /admin/users/:id/edit                      {:action=>"edit", :controller=>"admin/users"}
+          formatted_edit_admin_user GET    /admin/users/:id/edit.:format              {:action=>"edit", :controller=>"admin/users"}
+                         admin_user GET    /admin/users/:id                           {:action=>"show", :controller=>"admin/users"}
+               formatted_admin_user GET    /admin/users/:id.:format                   {:action=>"show", :controller=>"admin/users"}
+                                    PUT    /admin/users/:id                           {:action=>"update", :controller=>"admin/users"}
+                                    PUT    /admin/users/:id.:format                   {:action=>"update", :controller=>"admin/users"}
+                                    DELETE /admin/users/:id                           {:action=>"destroy", :controller=>"admin/users"}
+                                    DELETE /admin/users/:id.:format                   {:action=>"destroy", :controller=>"admin/users"}
+                        admin_lakes GET    /admin/lakes                               {:action=>"index", :controller=>"admin/lakes"}
+              formatted_admin_lakes GET    /admin/lakes.:format                       {:action=>"index", :controller=>"admin/lakes"}
+                                    POST   /admin/lakes                               {:action=>"create", :controller=>"admin/lakes"}
+                                    POST   /admin/lakes.:format                       {:action=>"create", :controller=>"admin/lakes"}
+                     new_admin_lake GET    /admin/lakes/new                           {:action=>"new", :controller=>"admin/lakes"}
+           formatted_new_admin_lake GET    /admin/lakes/new.:format                   {:action=>"new", :controller=>"admin/lakes"}
+                    edit_admin_lake GET    /admin/lakes/:id/edit                      {:action=>"edit", :controller=>"admin/lakes"}
+          formatted_edit_admin_lake GET    /admin/lakes/:id/edit.:format              {:action=>"edit", :controller=>"admin/lakes"}
+                         admin_lake GET    /admin/lakes/:id                           {:action=>"show", :controller=>"admin/lakes"}
+               formatted_admin_lake GET    /admin/lakes/:id.:format                   {:action=>"show", :controller=>"admin/lakes"}
+                                    PUT    /admin/lakes/:id                           {:action=>"update", :controller=>"admin/lakes"}
+                                    PUT    /admin/lakes/:id.:format                   {:action=>"update", :controller=>"admin/lakes"}
+                                    DELETE /admin/lakes/:id                           {:action=>"destroy", :controller=>"admin/lakes"}
+                                    DELETE /admin/lakes/:id.:format                   {:action=>"destroy", :controller=>"admin/lakes"}
+                        admin_sites GET    /admin/sites                               {:action=>"index", :controller=>"admin/sites"}
+              formatted_admin_sites GET    /admin/sites.:format                       {:action=>"index", :controller=>"admin/sites"}
+                                    POST   /admin/sites                               {:action=>"create", :controller=>"admin/sites"}
+                                    POST   /admin/sites.:format                       {:action=>"create", :controller=>"admin/sites"}
+                     new_admin_site GET    /admin/sites/new                           {:action=>"new", :controller=>"admin/sites"}
+           formatted_new_admin_site GET    /admin/sites/new.:format                   {:action=>"new", :controller=>"admin/sites"}
+                    edit_admin_site GET    /admin/sites/:id/edit                      {:action=>"edit", :controller=>"admin/sites"}
+          formatted_edit_admin_site GET    /admin/sites/:id/edit.:format              {:action=>"edit", :controller=>"admin/sites"}
+                         admin_site GET    /admin/sites/:id                           {:action=>"show", :controller=>"admin/sites"}
+               formatted_admin_site GET    /admin/sites/:id.:format                   {:action=>"show", :controller=>"admin/sites"}
+                                    PUT    /admin/sites/:id                           {:action=>"update", :controller=>"admin/sites"}
+                                    PUT    /admin/sites/:id.:format                   {:action=>"update", :controller=>"admin/sites"}
+                                    DELETE /admin/sites/:id                           {:action=>"destroy", :controller=>"admin/sites"}
+                                    DELETE /admin/sites/:id.:format                   {:action=>"destroy", :controller=>"admin/sites"}
+                admin_physical_data GET    /admin/physical_data                       {:action=>"index", :controller=>"admin/physical_data"}
+      formatted_admin_physical_data GET    /admin/physical_data.:format               {:action=>"index", :controller=>"admin/physical_data"}
+                                    POST   /admin/physical_data                       {:action=>"create", :controller=>"admin/physical_data"}
+                                    POST   /admin/physical_data.:format               {:action=>"create", :controller=>"admin/physical_data"}
+           new_admin_physical_datum GET    /admin/physical_data/new                   {:action=>"new", :controller=>"admin/physical_data"}
+ formatted_new_admin_physical_datum GET    /admin/physical_data/new.:format           {:action=>"new", :controller=>"admin/physical_data"}
+          edit_admin_physical_datum GET    /admin/physical_data/:id/edit              {:action=>"edit", :controller=>"admin/physical_data"}
+formatted_edit_admin_physical_datum GET    /admin/physical_data/:id/edit.:format      {:action=>"edit", :controller=>"admin/physical_data"}
+               admin_physical_datum GET    /admin/physical_data/:id                   {:action=>"show", :controller=>"admin/physical_data"}
+     formatted_admin_physical_datum GET    /admin/physical_data/:id.:format           {:action=>"show", :controller=>"admin/physical_data"}
+                                    PUT    /admin/physical_data/:id                   {:action=>"update", :controller=>"admin/physical_data"}
+                                    PUT    /admin/physical_data/:id.:format           {:action=>"update", :controller=>"admin/physical_data"}
+                                    DELETE /admin/physical_data/:id                   {:action=>"destroy", :controller=>"admin/physical_data"}
+                                    DELETE /admin/physical_data/:id.:format           {:action=>"destroy", :controller=>"admin/physical_data"}
+                  admin_secchi_data GET    /admin/secchi_data                         {:action=>"index", :controller=>"admin/secchi_data"}
+        formatted_admin_secchi_data GET    /admin/secchi_data.:format                 {:action=>"index", :controller=>"admin/secchi_data"}
+                                    POST   /admin/secchi_data                         {:action=>"create", :controller=>"admin/secchi_data"}
+                                    POST   /admin/secchi_data.:format                 {:action=>"create", :controller=>"admin/secchi_data"}
+             new_admin_secchi_datum GET    /admin/secchi_data/new                     {:action=>"new", :controller=>"admin/secchi_data"}
+   formatted_new_admin_secchi_datum GET    /admin/secchi_data/new.:format             {:action=>"new", :controller=>"admin/secchi_data"}
+            edit_admin_secchi_datum GET    /admin/secchi_data/:id/edit                {:action=>"edit", :controller=>"admin/secchi_data"}
+  formatted_edit_admin_secchi_datum GET    /admin/secchi_data/:id/edit.:format        {:action=>"edit", :controller=>"admin/secchi_data"}
+                 admin_secchi_datum GET    /admin/secchi_data/:id                     {:action=>"show", :controller=>"admin/secchi_data"}
+       formatted_admin_secchi_datum GET    /admin/secchi_data/:id.:format             {:action=>"show", :controller=>"admin/secchi_data"}
+                                    PUT    /admin/secchi_data/:id                     {:action=>"update", :controller=>"admin/secchi_data"}
+                                    PUT    /admin/secchi_data/:id.:format             {:action=>"update", :controller=>"admin/secchi_data"}
+                                    DELETE /admin/secchi_data/:id                     {:action=>"destroy", :controller=>"admin/secchi_data"}
+                                    DELETE /admin/secchi_data/:id.:format             {:action=>"destroy", :controller=>"admin/secchi_data"}
+                               root        /                                          {:action=>"index", :controller=>"home"}
+                               home        /:page                                     {:action=>"show", :controller=>"home"}
+                                           /:controller/:action                       
+                                           /:controller/:action/:id                   
+                                           /:controller/:action.:format               
