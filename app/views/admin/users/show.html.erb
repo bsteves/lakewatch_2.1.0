@@ -43,16 +43,17 @@
     <%= link_to h(Lake.find(@user.lake5).lake_county), lake_path(@user.lake5) %>
   <% end %>
 </p>
+ <p>
+    <strong>User Approved?:</strong>
+    <%= h @user.approved %>
+  </p>
+
+
+
+
+
 
 <p>
-  <strong>Approved?:</strong>
-  <%=h @user.approved %>
-</p>
-
-
-
-
-
-<p>
-  <%= link_to "Edit", edit_user_path(@user) %> 
+  <%= link_to "Edit", edit_admin_user_path(@user) %> |  
+  <%= link_to "View All", admin_users_path %>
 </p>

@@ -1,7 +1,7 @@
 class MydataController < ApplicationController
 layout "application"
-before_filter :login_required, :except => [:index, :show]
 
+before_filter :user_approved
 
 
   def index
