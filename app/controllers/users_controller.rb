@@ -44,4 +44,14 @@ before_filter :login_required, :except => [:new, :create, :index]
       render :action => 'new'
     end
   end
+ 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "Successfully destroyed user."
+    redirect_to admin_users_url
+    # redirect_to([:admin, @user])
+  end
+
+
 end

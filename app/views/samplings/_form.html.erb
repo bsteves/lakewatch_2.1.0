@@ -15,7 +15,6 @@
  <label for= "sampling_site_id">Site:</label><br/>
     <%= f.collection_select :site_id, Site.find(:all), :id, :name, :prompt => "Select a site" %>
   
-    <%= f.text_field :site_id %>
    <%= link_to "Add New Site", new_site_path %>
 
   </div>
