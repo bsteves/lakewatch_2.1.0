@@ -44,4 +44,15 @@ before_filter :authorize_admin
       render :action => 'new'
     end
   end
+
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "Successfully destroyed user."
+    redirect_to admin_user_url
+     # redirect_to([:admin, @user])
+  end
+
+
 end
