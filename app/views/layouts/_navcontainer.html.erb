@@ -3,6 +3,8 @@
         <li><%= link_to "Home", :controller => "/" %></li>
 <% if logged_in? %>
         <li><%= link_to "My Profile", :controller => "/users/#{current_user.id}" %></li>
+<% end %>
+<% if logged_in? && current_user.approved == TRUE %>
         <li><%= link_to "My Data", :controller => "/mydata" %></li>
         <li><%= link_to "Add Data", :controller => "/samplings", :action => "new" %></li>
 <% end %>

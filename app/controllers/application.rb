@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
     private
+
+  def user_approved
+      unless logged_in? && current_user.approved == true
+             flash[:notice] = "Your account is awaiting review and approval."
+             redirect_to root_path
+      end
+  end  
   
   def authorize_admin
   	unless logged_in? && current_user.admin == true

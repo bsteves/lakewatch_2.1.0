@@ -1,0 +1,68 @@
+<% title "Edit User Information" %>
+<% form_for([:admin,@user]) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email, "Email Address" %><br />
+    <%= f.text_field :email %>
+  </p>
+ <p>
+    <%= f.label :clinefinder, "ClineFinder ID" %><br />
+    <%= f.text_field :clinefinder %>
+  </p>
+
+  <p>
+    <%= f.label :password, "Password" %><br />
+    <%= f.password_field :password %>
+  </p>
+ 
+  <p>
+    <%= f.label :password_confirmation, "Confirm Password" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.label :password_reset_token, "Password Reset Token" %><br />
+    <%= f.text_field :password_reset_token %>
+  </p>
+
+
+   <p id="lake_field">
+    <label for="lake1">Lake 1</lake><br />
+    <%= f.collection_select :lake1, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
+  </p>
+      
+  <p id="lake_field">
+    <label for="lake2">Lake 2</lake><br />
+    <%= f.collection_select :lake2, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake3">Lake 3</lake><br />
+    <%= f.collection_select :lake3, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake4">Lake 4</lake><br />
+    <%= f.collection_select :lake4, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
+  </p>
+
+ 
+  <p id="lake_field">
+    <label for="lake5">Lake 5</lake><br />
+    <%= f.collection_select :lake5, Lake.find(:all, :order => ['name, county']), :id, :lake_county, :include_blank => true, :prompt => "Select a lake" %>
+  </p>
+
+  <p>
+    <%= f.label :approved, "Approved?" %><br />
+    <%= f.check_box :approved %>
+  </p>
+ 
+
+  <p><%= f.submit  %></p>
+<% end %>

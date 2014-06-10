@@ -33,4 +33,6 @@
 </tbody>
 </table>
 
+<% if logged_in? && current_user.approved == TRUE %>
 <p><%= link_to "New Taxon", new_taxon_path %></p>
+<% end %>
