@@ -1,5 +1,13 @@
 <% if logged_in? && current_user.approved == TRUE %>
 <h1>Welcome <%= current_user.username %>!</h1>
+
+<p>Thank you for being a OLW volunteer - your energy and dedication to Oregon's great lakes and reservoirs is amazing and greatly appreciated.  To learn more about your lake(s) or others, be sure to visit the Atlas of Oregon Lakes (<a href="http://aol.research.pdx.edu">http://aol.research.pdx.edu</a>) where you can view an interactive map as well as individual lake pages (many with previously collected data, photos, and basin statistics) for many lakes around Oregon.</p> 
+  
+<p>If you’ve uploaded photos for ID assistance or confirmation, we’ll be working on those weekly, so check back periodically. </p>
+
+<p>We hope you have a super experience monitoring for OLW this year!  Please remember to be safe, stay curious, and have fun out there. And let us know if you have questions or suggestions (email us at <a href="mailto:olw@pdx.edu">olw@pdx.edu</a>).</p> 
+<
+
 <% elsif logged_in? && current_user.approved == FALSE %>
 <h1>Welcome <%= current_user.username %>!</h1>
 <p>Your account is awaiting verification.</a>
@@ -13,11 +21,6 @@
 <p>Log-in to enter your monitoring data.</p>
 <% end %>
 
-<p>Thank you for being a OLW volunteer - your energy and dedication to Oregon's great lakes and reservoirs is amazing and greatly appreciated.  To learn more about your lake(s) or others, be sure to visit the Atlas of Oregon Lakes (<a href="http://aol.research.pdx.edu">http://aol.research.pdx.edu</a>) where you can view an interactive map as well as individual lake pages (many with previously collected data, photos, and basin statistics) for many lakes around Oregon.</p> 
-  
-<p>If you’ve uploaded photos for ID assistance or confirmation, we’ll be working on those weekly, so check back periodically. </p>
-
-<p>We hope you have a super experience monitoring for OLW this year!  Please remember to be safe, stay curious, and have fun out there. And let us know if you have questions or suggestions (email us at <a href="mailto:olw@pdx.edu">olw@pdx.edu</a>).</p> 
 <p>Connect with us on <%= link_to "Facebook (www.facebook.com/OregonLakeWatch)", "http://www.facebook.com/OregonLakeWatch" %>.</p>
 
 <h2>Now what?</h2> 
