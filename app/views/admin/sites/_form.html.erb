@@ -5,7 +5,7 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p id="lake_field">
     <label for="site_lake_id">Which lake do you want to add a monitoring site to?</lake><br />
-    <%= f.collection_select :lake_id, Lake.find(:all), :id, :lake_county, :prompt => "Select a lake" %>
+    <%= f.collection_select :lake_id, Lake.find(:all, :order => "name"), :id, :lake_county, :prompt => "Select a lake" %>
   </p>
 
   <p>
