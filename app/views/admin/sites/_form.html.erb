@@ -1,6 +1,6 @@
 
 <h1>Site</h1>
-<% form_for([:admin,@site]), :html => {:multipart => true} do |f| %>
+<% form_for ([:admin,@site]), :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p id="lake_field">
