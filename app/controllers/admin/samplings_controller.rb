@@ -50,8 +50,9 @@ before_filter :authorize_admin
   end
 
   def create
-    @sampling = Sampling.new(params[:sampling])
-    @sampling.user_id = current_user.id
+   @users = User.find(:all)
+   @sampling = Sampling.new(params[:sampling])
+#    @sampling.user_id = current_user.id
     if @sampling.save
       flash[:notice] = "Successfully created sampling."
       redirect_to([:admin, @sampling])
@@ -101,9 +102,9 @@ protected
  # def before_create_save(record)
  #   record.user_id = current_user.id
  # end
-  def conditions_for_collection
-    ['samplings.user_id = ?', current_user.id]
-  end
+#  def conditions_for_collection
+#    ['samplings.user_id = ?', current_user.id]
+#  end
 
 
 private
