@@ -6,6 +6,9 @@
     <label for="sampling_isverified">Verification Status:</label><br/>
     <%= f.select :isverified, [["pending"],["verified"],["rejected"]] %>
 </p> 
+ <label for= "sampling_user_id">User:</label><br/>
+    <%= f.collection_select :user_id, User.find(:all, :order => "username"), :id, :username, :prompt => "Select a User" %>
+ 
   
   <div id="lake_field">
  <label for= "sampling_lake_id">Lake:</label><br/>
