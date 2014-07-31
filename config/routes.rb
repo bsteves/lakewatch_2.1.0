@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.namespace :admin do |admin|
     admin.resources :samplings
+    admin.pending 'pending', :controller => 'samplings', :action => 'pending'
     admin.resources :organisms
     admin.resources :taxa
     admin.resources :users
