@@ -1,0 +1,50 @@
+
+<% javascript 'lakes_table' %>
+<h1>Monitoring Events</h1>
+<table id="main_table" border="0" cellpadding="0" cellspacing="0" class="sortable">
+<thead>
+  <tr>
+    <th>User</th>
+    <th>Lake</th>
+    <th>Site</th>
+    <th>Date</th>
+    <th>Secchi</th>
+    <th>Temp.</th>
+    <th>Substr.</th>
+    <th>Trap</th>
+    <th>Rake</th>
+    <th>Shoreline</th>
+    <th>Is Verified?</th>
+    <th>Notes</th>
+  </tr>
+</thead>
+ <% for sampling in @samplings %>
+    <tr>
+      <td><%=h sampling.user.username %></td>
+      <td><%=link_to h(sampling.lake.lake_county), [:admin, sampling.lake] %></td>
+      <td><%=link_to h(sampling.site.name), [:admin, sampling.site] %></td>
+      <td><%=h sampling.date %></td>
+      <td><%= check_box_tag 'sampling', 'secchi', sampling.secchi, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'temperature', sampling.temperature, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'substrate', sampling.substrate, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'trap', sampling.trap, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'rake', sampling.rake, :disabled => TRUE %></td>
+      <td><%= check_box_tag 'sampling', 'zigzag', sampling.zigzag, :disabled => TRUE %></td>
+      <td><%=h sampling.notes %></td>
+    <% if sampling.isverified == "verified" %>
+        <td style="background-color:#99FF99; color: #000000;">Verified</td>
+    <% elsif sampling.isverified == "rejected" %>
+        <td style="background-color:#FF9999; color: #000000;">Rejected</td>
+    <% else %>
+        <td style="background-color:#FFFF99; color: #000000;">Pending</td>
+    <% end %> 
+ 
+      <td><%= link_to "Show", [:admin, sampling] %></td>
+      <td><%= link_to "Edit", edit_admin_sampling_path(sampling) %></td>
+      <td><%= link_to "Delete", sampling, :confirm => 'Are you sure?', :method => :delete %></td>
+ 
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<p><%= link_to "New Sampling", new_admin_sampling_path %></p>
