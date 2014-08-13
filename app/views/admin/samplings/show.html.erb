@@ -68,7 +68,7 @@
       <%= render :partial => 'admin/physical_data/index' %>
 
    <%end%>
-   <% if logged_in? && @sampling.user_id == current_user.id %>
+   <% if logged_in? %>
        <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
        <div id='physical_data_form' style="visibility: hidden">
        <%= render :partial => 'admin/physical_data/form' %>
@@ -83,7 +83,7 @@
    <% unless @sampling.secchi_data.empty?  %>
       <%= render :partial => 'admin/secchi_data/index' %>
    <%end%>
-   <% if logged_in? && @sampling.user_id == current_user.id %>
+   <% if logged_in?  %>
        <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('secchi_data_form');" /></p>
        <div id='secchi_data_form' style="visibility: hidden">
        <%= render :partial => 'admin/secchi_data/form' %>
@@ -100,7 +100,7 @@
    <% unless @sampling.organisms.empty?  %>
         <%= render :partial => 'admin/organisms/index' %>
    <%end%>
-   <% if logged_in? && @sampling.user_id == current_user.id %>
+   <% if logged_in?  %>
         <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
         <div id='organism_form' style="visibility: hidden">
         <%= render :partial => 'admin/organisms/form' %>
