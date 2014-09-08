@@ -1,6 +1,6 @@
 class PhysicalDataController < ApplicationController
   def index
-    @physical_data = PhysicalDatum.find(:all, :order => 'sampling_id, sampling_type, depth')
+    @physical_data = PhysicalDatum.all
   end
 
 
