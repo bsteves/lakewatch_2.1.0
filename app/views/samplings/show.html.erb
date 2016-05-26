@@ -11,59 +11,50 @@
     </script>
 <% title "Sampling Event" %>
 <p>
-  <strong>User:</strong>
+  <strong>User:</strong><%=h User.find(@sampling.user_id).email %> &nbsp; &nbsp;
 
-  <%=h User.find(@sampling.user_id).email %>
-</p>
-  <strong>Lake:</strong> <%= link_to h(@lake.lake_county), @lake %> |  <strong>Site:</strong><%= link_to h(@site.name), @site %>
-</p>
-<p>
+  <strong>Lake:</strong> <%= link_to h(@lake.lake_county), @lake %> |  <strong>Site:</strong><%= link_to h(@site.name), @site %> &nbsp; &nbsp;
+
   <strong>Date:</strong>
-  <%=h @sampling.date %>
+  <%=h @sampling.date %> &nbsp; &nbsp;
 </p>
-<strong>Sampling Methods Used:</strong>
 <p>
+<strong>Sampling Methods Used:</strong>
 <% sampling_methods = Array.new %>
 <% if @sampling.secchi %>
-  Secchi-Transparency<br/>
+  Secchi-Transparency &nbsp; &nbsp;
 <% end %>
 <% if @sampling.temperature %>
-  Temperature Profile<br/>
+  Temperature Profile &nbsp; &nbsp;
 <% end %>
 <% if @sampling.substrate %>
-  Portland Substrate Sampler<br/>
+  Portland Substrate Sampler &nbsp; &nbsp;
 <% sampling_methods.push('Substrate') %>
 <% end %>
 <% if @sampling.trap %>
-  Minnow Trap<br/>
+  Minnow Trap &nbsp; &nbsp;
 <% sampling_methods.push('Trap') %>
 <% end %>
 <% if @sampling.rake %>
-  Rake Toss<br/>
+  Rake Toss &nbsp; &nbsp;
 <% sampling_methods.push('Rake') %>
 <% end %>
 <% if @sampling.zigzag %>
-  Shoreline Observation<br/>
+  Shoreline Observation &nbsp; &nbsp;
 <% sampling_methods.push('Zig Zag') %>
 <% end %>
 </p>
 <p>
   <strong>Notes:</strong>
-  <%=h @sampling.notes %>
-</p>
-<p>
+  <%=h @sampling.notes %> &nbsp; &nbsp;
   <strong>Is Verified?</strong>
       <%=h @sampling.isverified %>
 </p>
-<br/>
-<br/>
 <p>
-
       <% if logged_in? && @sampling.user_id == current_user.id %>
-  <%= link_to "Edit", edit_sampling_path(@sampling) %>&nbsp; 
-  <%= link_to "Delete", @sampling, :confirm => 'Are you sure?', :method => :delete %>&nbsp;
+  <%= link_to "Edit Sampling Event", edit_sampling_path(@sampling) %>&nbsp; 
+  <%= link_to "Delete Sampling Event", @sampling, :confirm => 'Are you sure?', :method => :delete %>&nbsp;
     <% end %>
-  <%= link_to "List", samplings_path %>
 </p>
 
 <% if @sampling.temperature == TRUE %>
@@ -75,13 +66,12 @@
 
    <%end%>
    <% if logged_in? && @sampling.user_id == current_user.id %>
-       <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('physical_data_form');" /></p>
+       <input type="button" id="btnShowHide" value="Add More Data" onclick="toggleVisibility('physical_data_form');" />
        <div id='physical_data_form' style="visibility: hidden">
        <%= render :partial => 'physical_data/form' %>
        </div>
    <% end %>
 <% end %>
-
 
 <% if @sampling.secchi == TRUE %>
    <hr>
@@ -90,7 +80,7 @@
       <%= render :partial => 'secchi_data/index' %>
    <%end%>
    <% if logged_in? && @sampling.user_id == current_user.id %>
-       <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('secchi_data_form');" /></p>
+       <input type="button" id="btnShowHide" value="Add More Data" onclick="toggleVisibility('secchi_data_form');" />
        <div id='secchi_data_form' style="visibility: hidden">
        <%= render :partial => 'secchi_data/form' %>
        </div>
@@ -109,7 +99,7 @@
         <%= render :partial => 'organisms/index' %>
    <%end%>
    <% if logged_in? && @sampling.user_id == current_user.id %>
-        <p><input type="button" id="btnShowHide" value="Show/Hide Data Entry Form" onclick="toggleVisibility('organism_form');" /></p>
+        <p><input type="button" id="btnShowHide" value="Add More Data" onclick="toggleVisibility('organism_form');" /></p>
         <div id='organism_form' style="visibility: hidden">
         <%= render :partial => 'organisms/form' %>
         </div>

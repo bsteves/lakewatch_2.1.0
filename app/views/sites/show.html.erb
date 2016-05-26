@@ -103,7 +103,7 @@
 </p>
 <% end %>
 
-      <% if @site.user_id == current_user.id %>
+      <% if  logged_in? && @site.user_id == current_user.id %>
 <p>
 <%= link_to "Add Sampling", new_site_sampling_path(:site_id => @site.id, :lake_id => @site.lake_id, :county_id => @site.county_id) %></p>
 <p>

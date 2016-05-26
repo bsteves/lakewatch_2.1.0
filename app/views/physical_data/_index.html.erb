@@ -14,8 +14,6 @@
       <td><%=h physical_datum.depth %></td>
       <td><%=h physical_datum.value %></td>
       <td><%=h physical_datum.notes %></td>
-      <td><%= link_to "Show", physical_datum %></td>
-
       <% if logged_in? && physical_datum.user_id == current_user.id %>
       <td><%= link_to "Edit", edit_physical_datum_path(physical_datum) %></td>
       <td><%= link_to "Delete", physical_datum, :confirm => 'Are you sure?', :method => :delete %></td>
